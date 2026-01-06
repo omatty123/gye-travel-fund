@@ -135,7 +135,7 @@ function renderLedger() {
   total += data.interest;
   const iRow = document.createElement("tr");
   iRow.className = "row-interest";
-  iRow.innerHTML = '<td class="month">2025 이자 (연이자)</td><td></td><td></td><td></td><td class="bal">+$' + data.interest + '</td>';
+  iRow.innerHTML = '<td class="month">2025 이자 (연이자)</td><td></td><td></td><td>+$' + data.interest + '</td><td class="bal">$' + total + '</td>';
   tbody.appendChild(iRow);
 
   // Madison expense
