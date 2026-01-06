@@ -15,6 +15,7 @@ const fundData = {
     { month: "2025-12", paid: [true, true, true] },
   ],
   currentBalance: 1362,
+  interestEarned: 12,
   trips: [
     {
       id: "milwaukee-2025",
@@ -142,6 +143,28 @@ function renderContributionTable() {
 
     tbody.appendChild(row);
   });
+
+  // Add interest row
+  if (fundData.interestEarned > 0) {
+    const interestRow = document.createElement("tr");
+    interestRow.className = "interest-row";
+    interestRow.innerHTML = `
+      <td class="month-cell">이자</td>
+      <td colspan="3"></td>
+      <td class="running-total">+$${fundData.interestEarned}</td>
+    `;
+    tbody.appendChild(interestRow);
+
+    // Final total row
+    const finalRow = document.createElement("tr");
+    finalRow.className = "final-row";
+    finalRow.innerHTML = `
+      <td class="month-cell"><strong>합계</strong></td>
+      <td colspan="3"></td>
+      <td class="running-total final-total">$${runningTotal + fundData.interestEarned}</td>
+    `;
+    tbody.appendChild(finalRow);
+  }
 }
 
 // Render trips

@@ -187,6 +187,24 @@ tr:last-child td {
   color: var(--forest);
 }
 
+.interest-row {
+  background: var(--cream);
+}
+
+.final-row {
+  background: var(--forest);
+}
+
+.final-row td {
+  color: white;
+  border-bottom: none;
+}
+
+.final-total {
+  color: white !important;
+  font-size: 1rem;
+}
+
 /* Trips Section */
 .trips {
   margin-bottom: 2rem;
