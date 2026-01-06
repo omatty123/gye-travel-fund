@@ -259,6 +259,19 @@ body {
   color: var(--black);
 }
 
+.trip-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--coral);
+  margin: 0.25rem 0;
+}
+
+.trip-info {
+  font-size: 0.9rem;
+  color: var(--gray-600);
+  margin-bottom: 0.75rem;
+}
+
 .trip-rating {
   display: flex;
   align-items: center;

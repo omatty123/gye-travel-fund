@@ -76,22 +76,20 @@ function renderTrips() {
     const dots = trip.photos.map((_, i) => '<div class="image-dot' + (i===0?' active':'') + '" data-trip="'+trip.id+'" data-i="'+i+'"></div>').join("");
 
     card.innerHTML =
-      '<div class="trip-image-container" onclick="cycleImg(\'' + trip.id + '\')">' +
+      '<div class="trip-image-container">' +
         '<div class="trip-images" id="images-' + trip.id + '">' +
           '<img src="' + trip.photos[0] + '" alt="' + trip.title + '">' +
         '</div>' +
         '<span class="trip-badge ' + trip.status + '">' + (trip.status === "upcoming" ? "Coming Up" : "Completed") + '</span>' +
+        (trip.photos.length > 1 ? '<button class="image-nav prev" onclick="cycleImg(\'' + trip.id + '\',-1)">‹</button>' : '') +
+        (trip.photos.length > 1 ? '<button class="image-nav next" onclick="cycleImg(\'' + trip.id + '\',1)">›</button>' : '') +
         '<div class="image-dots">' + dots + '</div>' +
       '</div>' +
       '<div class="trip-content">' +
-        '<div class="trip-header-row">' +
-          '<div class="trip-title">' + trip.title + '</div>' +
-          (trip.status === 'completed' ? '<div class="trip-rating">5.0</div>' : '') +
-        '</div>' +
-        '<div class="trip-location">' + trip.subtitle + '</div>' +
-        '<div class="trip-dates">' + trip.date + '</div>' +
-        (tags ? '<div class="trip-details">' + tags + '</div>' : '') +
-        (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> 숙소 비용</div>' : '') +
+        '<div class="trip-title">' + trip.title + '</div>' +
+        '<div class="trip-date">' + trip.date + '</div>' +
+        '<div class="trip-info">' + trip.subtitle + (trip.tags.length ? ' · ' + trip.tags.join(' · ') : '') + '</div>' +
+        (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
         '<div class="trip-map">' +
           '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
           '<div class="trip-address">' + trip.address + '</div>' +
@@ -105,11 +103,15 @@ function renderTrips() {
 
 // Image cycling
 const imgIdx = {};
-function cycleImg(id) {
+function cycleImg(id, dir) {
   const trip = data.trips.find(t => t.id === id);
   if (!trip || trip.photos.length <= 1) return;
 
-  imgIdx[id] = ((imgIdx[id] || 0) + 1) % trip.photos.length;
+  dir = dir || 1;
+  imgIdx[id] = imgIdx[id] || 0;
+  imgIdx[id] += dir;
+  if (imgIdx[id] < 0) imgIdx[id] = trip.photos.length - 1;
+  if (imgIdx[id] >= trip.photos.length) imgIdx[id] = 0;
 
   const container = document.getElementById("images-" + id);
   container.innerHTML = '<img src="' + trip.photos[imgIdx[id]] + '" alt="' + trip.title + '">';
