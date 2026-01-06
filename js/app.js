@@ -26,7 +26,7 @@ const data = {
       tags: ["Sauna", "Hot Tub", "Fireplace", "Lakefront"],
       address: "723 Jenifer St, Madison, WI 53703",
       airbnb: "https://www.airbnb.com/rooms/24139465",
-      photos: ["assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
+      photos: ["assets/images/madison-new-1.jpg","assets/images/madison-new-2.jpg","assets/images/madison-new-3.jpg","assets/images/madison-new-4.jpg","assets/images/madison-new-5.jpg","assets/images/madison-new-6.jpg","assets/images/madison-new-7.png","assets/images/madison-new-8.jpg","assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
     },
     {
       id: "milwaukee",
