@@ -25,8 +25,7 @@ const data = {
       cost: 987.22,
       tags: ["Sauna", "Hot Tub", "Fireplace", "Lakefront"],
       address: "723 Jenifer St, Madison, WI 53703",
-      photos: ["assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"],
-      memory: ""
+      photos: ["assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
     },
     {
       id: "milwaukee",
@@ -43,20 +42,23 @@ const data = {
   ]
 };
 
+const months = {"01":"1월","02":"2월","03":"3월","04":"4월","05":"5월","06":"6월","07":"7월","08":"8월","09":"9월","10":"10월","11":"11월","12":"12월"};
+
 // Init
 document.addEventListener("DOMContentLoaded", function() {
+  // Balance
   document.getElementById("balance").textContent = "$" + data.balance.toFixed(2);
 
   // Countdown
   const tripDate = new Date("2026-03-22");
   const days = Math.floor((tripDate - new Date()) / 86400000);
   document.getElementById("countdown").textContent = days > 0 ? "D-" + days : "NOW";
-  document.getElementById("next-trip-label").textContent = "매디슨";
+  document.getElementById("destination").textContent = "매디슨";
 
-  // Parties
-  document.getElementById("p1").textContent = data.parties[0];
-  document.getElementById("p2").textContent = data.parties[1];
-  document.getElementById("p3").textContent = data.parties[2];
+  // Party headers
+  document.getElementById("party-1").textContent = data.parties[0];
+  document.getElementById("party-2").textContent = data.parties[1];
+  document.getElementById("party-3").textContent = data.parties[2];
 
   renderTrips();
   renderLedger();
@@ -64,32 +66,37 @@ document.addEventListener("DOMContentLoaded", function() {
 
 // Trips
 function renderTrips() {
-  const container = document.getElementById("trips-container");
+  const container = document.getElementById("trip-grid");
 
   data.trips.forEach(trip => {
     const card = document.createElement("div");
-    card.className = "card";
+    card.className = "trip-card " + trip.status;
 
-    const tags = trip.tags.map(t => '<span class="card-tag">' + t + '</span>').join("");
-    const dots = trip.photos.map((_, i) => '<span class="card-dot' + (i===0?' active':'') + '"></span>').join("");
+    const tags = trip.tags.map(t => '<span class="trip-detail-tag">' + t + '</span>').join("");
+    const dots = trip.photos.map((_, i) => '<div class="image-dot' + (i===0?' active':'') + '" data-trip="'+trip.id+'" data-i="'+i+'"></div>').join("");
 
     card.innerHTML =
-      '<div class="card-img" onclick="cycleImg(\'' + trip.id + '\')">' +
-        '<img id="img-' + trip.id + '" src="' + trip.photos[0] + '">' +
-        '<span class="card-badge ' + trip.status + '">' + (trip.status === "upcoming" ? "UPCOMING" : "COMPLETED") + '</span>' +
-        '<div class="card-dots">' + dots + '</div>' +
-      '</div>' +
-      '<div class="card-body">' +
-        '<div class="card-title">' + trip.title + '</div>' +
-        '<div class="card-subtitle">' + trip.subtitle + '</div>' +
-        '<div class="card-date">' + trip.date + '</div>' +
-        (tags ? '<div class="card-tags">' + tags + '</div>' : '') +
-        (trip.cost ? '<div class="card-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
-        '<div class="card-map">' +
-          '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
-          '<div class="card-address">' + trip.address + '</div>' +
+      '<div class="trip-image-container" onclick="cycleImg(\'' + trip.id + '\')">' +
+        '<div class="trip-images" id="images-' + trip.id + '">' +
+          '<img src="' + trip.photos[0] + '" alt="' + trip.title + '">' +
         '</div>' +
-        (trip.memory ? '<div class="card-memory">' + trip.memory + '</div>' : '') +
+        '<span class="trip-badge ' + trip.status + '">' + (trip.status === "upcoming" ? "Coming Up" : "Completed") + '</span>' +
+        '<div class="image-dots">' + dots + '</div>' +
+      '</div>' +
+      '<div class="trip-content">' +
+        '<div class="trip-header-row">' +
+          '<div class="trip-title">' + trip.title + '</div>' +
+          (trip.status === 'completed' ? '<div class="trip-rating">5.0</div>' : '') +
+        '</div>' +
+        '<div class="trip-location">' + trip.subtitle + '</div>' +
+        '<div class="trip-dates">' + trip.date + '</div>' +
+        (tags ? '<div class="trip-details">' + tags + '</div>' : '') +
+        (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> 숙소 비용</div>' : '') +
+        '<div class="trip-map">' +
+          '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
+          '<div class="trip-address">' + trip.address + '</div>' +
+        '</div>' +
+        (trip.memory ? '<div class="trip-memories">' + trip.memory + '</div>' : '') +
       '</div>';
 
     container.appendChild(card);
@@ -100,21 +107,22 @@ function renderTrips() {
 const imgIdx = {};
 function cycleImg(id) {
   const trip = data.trips.find(t => t.id === id);
-  imgIdx[id] = ((imgIdx[id] || 0) + 1) % trip.photos.length;
-  document.getElementById("img-" + id).src = trip.photos[imgIdx[id]];
+  if (!trip || trip.photos.length <= 1) return;
 
-  const card = document.getElementById("img-" + id).closest(".card");
-  card.querySelectorAll(".card-dot").forEach((d, i) => {
-    d.className = "card-dot" + (i === imgIdx[id] ? " active" : "");
+  imgIdx[id] = ((imgIdx[id] || 0) + 1) % trip.photos.length;
+
+  const container = document.getElementById("images-" + id);
+  container.innerHTML = '<img src="' + trip.photos[imgIdx[id]] + '" alt="' + trip.title + '">';
+
+  document.querySelectorAll('.image-dot[data-trip="'+id+'"]').forEach((d, i) => {
+    d.className = "image-dot" + (i === imgIdx[id] ? " active" : "");
   });
 }
 
 // Ledger
 function renderLedger() {
-  const tbody = document.getElementById("ledger-body");
+  const tbody = document.getElementById("contribution-body");
   let total = 0;
-
-  const months = {"01":"1월","02":"2월","03":"3월","04":"4월","05":"5월","06":"6월","07":"7월","08":"8월","09":"9월","10":"10월","11":"11월","12":"12월"};
 
   data.contributions.forEach(c => {
     const [y, m] = c.m.split("-");
@@ -123,19 +131,19 @@ function renderLedger() {
 
     const row = document.createElement("tr");
     row.innerHTML =
-      '<td class="month">' + y.slice(2) + '년 ' + months[m] + '</td>' +
-      '<td class="' + (c.p[0] ? 'check' : 'miss') + '">' + (c.p[0] ? '✓' : '—') + '</td>' +
-      '<td class="' + (c.p[1] ? 'check' : 'miss') + '">' + (c.p[1] ? '✓' : '—') + '</td>' +
-      '<td class="' + (c.p[2] ? 'check' : 'miss') + '">' + (c.p[2] ? '✓' : '—') + '</td>' +
-      '<td class="bal">$' + total + '</td>';
+      '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
+      '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
+      '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
+      '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
+      '<td class="running-total">$' + total + '</td>';
     tbody.appendChild(row);
   });
 
   // Interest
   total += data.interest;
   const iRow = document.createElement("tr");
-  iRow.className = "row-interest";
-  iRow.innerHTML = '<td class="month">2025 이자 (연이자)</td><td></td><td></td><td>+$' + data.interest + '</td><td class="bal">$' + total + '</td>';
+  iRow.className = "interest-row";
+  iRow.innerHTML = '<td class="month-cell">2025 이자</td><td></td><td></td><td>+$' + data.interest.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
   tbody.appendChild(iRow);
 
   // Madison expense
@@ -143,14 +151,14 @@ function renderLedger() {
   if (madison && madison.cost) {
     total -= madison.cost;
     const eRow = document.createElement("tr");
-    eRow.className = "row-expense";
-    eRow.innerHTML = '<td class="month">매디슨 숙소</td><td></td><td></td><td></td><td class="bal expense">-$' + madison.cost.toFixed(2) + '</td>';
+    eRow.className = "expense-row";
+    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
     tbody.appendChild(eRow);
   }
 
-  // Total
+  // Final
   const tRow = document.createElement("tr");
-  tRow.className = "row-total";
-  tRow.innerHTML = '<td class="month">잔액</td><td></td><td></td><td></td><td class="bal total-bal">$' + total.toFixed(2) + '</td>';
+  tRow.className = "final-row";
+  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
   tbody.appendChild(tRow);
 }
