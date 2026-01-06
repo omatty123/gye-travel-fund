@@ -7,36 +7,38 @@ body {
   line-height: 1.5;
 }
 
-/* Header */
+/* Header - Dark */
 .header {
-  background: #fff;
-  padding: 20px 24px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  color: #fff;
+  padding: 28px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e0e0e0;
   flex-wrap: wrap;
   gap: 16px;
 }
 
 .header h1 {
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 700;
 }
 
 .header p {
-  font-size: 13px;
-  color: #666;
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .header-right {
   display: flex;
-  gap: 32px;
+  gap: 40px;
 }
 
 .stat { text-align: right; }
-.stat-value { font-size: 28px; font-weight: 700; }
-.stat-label { font-size: 12px; color: #888; }
+.stat-value { font-size: 32px; font-weight: 700; color: #fff; }
+.stat-label { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; }
 
 /* Main */
 .main {
@@ -69,7 +71,7 @@ body {
 
 .card-img {
   position: relative;
-  height: 220px;
+  height: 320px;
   cursor: pointer;
 }
 
@@ -77,6 +79,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 20%;
   transition: opacity 0.3s;
 }
 
