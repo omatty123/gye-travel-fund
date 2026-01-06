@@ -1,7 +1,7 @@
 // Data
 const data = {
   balance: 482.25,
-  interest: 12,
+  interest: 19.47,
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   contributions: [
     { m: "2025-04", p: [1,1,1] },
