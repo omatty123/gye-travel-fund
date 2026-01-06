@@ -82,17 +82,16 @@ function renderBalance() {
 // Render countdown to next trip
 function renderCountdown() {
   const countdownEl = document.getElementById("countdown");
-  const destinationEl = document.getElementById("destination");
+  const labelEl = document.getElementById("next-trip");
 
   const upcomingTrip = fundData.trips.find(t => t.status === "upcoming");
 
   if (!upcomingTrip) {
     countdownEl.textContent = "—";
-    destinationEl.textContent = "계획 중";
+    labelEl.textContent = "계획 중";
     return;
   }
 
-  // Set trip date to March 22, 2026 (check-in date)
   const tripDate = new Date(upcomingTrip.date + "-22");
   const now = new Date();
   const diff = tripDate - now;
@@ -104,7 +103,7 @@ function renderCountdown() {
     countdownEl.textContent = "NOW";
   }
 
-  destinationEl.textContent = upcomingTrip.name;
+  labelEl.textContent = upcomingTrip.name;
 }
 
 // Render contribution table
@@ -189,65 +188,54 @@ function renderContributionTable() {
   tbody.appendChild(finalRow);
 }
 
-// Render trips - Modern Travel Card Style
+// Render trips
 function renderTrips() {
   const tripGrid = document.getElementById("trip-grid");
 
-  // Sort trips: upcoming first, then completed
+  // Sort: upcoming first
   const sortedTrips = [...fundData.trips].sort((a, b) => {
-    if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
-    if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
-    return new Date(b.date) - new Date(a.date);
+    if (a.status === 'upcoming') return -1;
+    if (b.status === 'upcoming') return 1;
+    return 0;
   });
 
-  sortedTrips.forEach((trip, tripIndex) => {
+  sortedTrips.forEach(trip => {
     const card = document.createElement("div");
-    card.className = `trip-card ${trip.status}`;
+    card.className = "trip-card";
 
     const [year, month] = trip.date.split("-");
     const dateText = trip.dateRange ? `${year}년 ${trip.dateRange}` : `${year}년 ${monthNames[month]}`;
-    const badgeText = trip.status === "upcoming" ? "Coming Up" : "Completed";
+    const badgeText = trip.status === "upcoming" ? "Upcoming" : "Completed";
 
-    // Build amenities tags
-    const amenitiesTags = trip.amenities
-      ? trip.amenities.map(a => `<span class="trip-detail-tag">${a}</span>`).join('')
+    const tags = trip.amenities
+      ? trip.amenities.map(a => `<span class="trip-tag">${a}</span>`).join('')
       : '';
 
-    // Build map embed if address exists
-    const mapEmbed = trip.address
-      ? `<div class="trip-map">
-           <iframe
-             src="https://maps.google.com/maps?q=${encodeURIComponent(trip.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed"
-             allowfullscreen loading="lazy"></iframe>
-           <div class="trip-address">${trip.address}</div>
-         </div>`
-      : '';
+    const mapHtml = trip.address ? `
+      <div class="trip-map">
+        <iframe src="https://maps.google.com/maps?q=${encodeURIComponent(trip.address)}&z=14&output=embed" loading="lazy"></iframe>
+        <div class="trip-address">${trip.address}</div>
+      </div>
+    ` : '';
 
     card.innerHTML = `
-      <div class="trip-image-container">
-        <div class="trip-images" id="images-${trip.id}">
-          ${trip.photos.map(photo => `<img src="${photo}" alt="${trip.name}">`).join('')}
-        </div>
+      <div class="trip-image" onclick="cycleImage('${trip.id}')">
+        <img id="img-${trip.id}" src="${trip.photos[0]}" alt="${trip.name}">
+        <span class="trip-badge ${trip.status}">${badgeText}</span>
         ${trip.photos.length > 1 ? `
-          <button class="image-nav prev" onclick="slideImage('${trip.id}', -1)">‹</button>
-          <button class="image-nav next" onclick="slideImage('${trip.id}', 1)">›</button>
-          <div class="image-dots">
-            ${trip.photos.map((_, i) => `<div class="image-dot ${i === 0 ? 'active' : ''}" data-trip="${trip.id}" data-index="${i}"></div>`).join('')}
+          <div class="trip-image-nav">
+            ${trip.photos.map((_, i) => `<button class="${i === 0 ? 'active' : ''}" data-trip="${trip.id}" data-i="${i}"></button>`).join('')}
           </div>
         ` : ''}
-        <span class="trip-badge ${trip.status}">${badgeText}</span>
       </div>
-      <div class="trip-content">
-        <div class="trip-header-row">
-          <div class="trip-title">${trip.name}</div>
-          ${trip.status === 'completed' ? '<div class="trip-rating">5.0</div>' : ''}
-        </div>
-        <div class="trip-location">${trip.accommodation || trip.nameEn}</div>
-        <div class="trip-dates">${dateText} ${trip.guests ? '· ' + trip.guests : ''}</div>
-        ${amenitiesTags ? `<div class="trip-details">${amenitiesTags}</div>` : ''}
-        ${trip.cost ? `<div class="trip-price"><strong>$${trip.cost.toLocaleString()}</strong> 숙소 비용</div>` : ''}
-        ${mapEmbed}
-        ${trip.memories ? `<div class="trip-memories">"${trip.memories}"</div>` : ''}
+      <div class="trip-body">
+        <div class="trip-title">${trip.name}</div>
+        <div class="trip-subtitle">${trip.accommodation || ''}</div>
+        <div class="trip-date">${dateText}</div>
+        ${tags ? `<div class="trip-tags">${tags}</div>` : ''}
+        ${trip.cost ? `<div class="trip-price"><strong>$${trip.cost.toLocaleString()}</strong> total</div>` : ''}
+        ${mapHtml}
+        ${trip.memories ? `<div class="trip-memories">${trip.memories}</div>` : ''}
       </div>
     `;
 
@@ -255,24 +243,16 @@ function renderTrips() {
   });
 }
 
-// Image carousel state
-const imageIndexes = {};
-
-function slideImage(tripId, direction) {
+// Simple image cycling on click
+const imgIndex = {};
+function cycleImage(tripId) {
   const trip = fundData.trips.find(t => t.id === tripId);
-  if (!trip) return;
+  if (!trip || trip.photos.length <= 1) return;
 
-  if (imageIndexes[tripId] === undefined) imageIndexes[tripId] = 0;
+  imgIndex[tripId] = ((imgIndex[tripId] || 0) + 1) % trip.photos.length;
+  document.getElementById(`img-${tripId}`).src = trip.photos[imgIndex[tripId]];
 
-  imageIndexes[tripId] += direction;
-  if (imageIndexes[tripId] < 0) imageIndexes[tripId] = trip.photos.length - 1;
-  if (imageIndexes[tripId] >= trip.photos.length) imageIndexes[tripId] = 0;
-
-  const container = document.getElementById(`images-${tripId}`);
-  container.style.transform = `translateX(-${imageIndexes[tripId] * 100}%)`;
-
-  // Update dots
-  document.querySelectorAll(`.image-dot[data-trip="${tripId}"]`).forEach((dot, i) => {
-    dot.classList.toggle('active', i === imageIndexes[tripId]);
+  document.querySelectorAll(`button[data-trip="${tripId}"]`).forEach((btn, i) => {
+    btn.classList.toggle('active', i === imgIndex[tripId]);
   });
 }

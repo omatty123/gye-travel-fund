@@ -6,67 +6,65 @@
   <title>우리 가족 여행 계</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Hero Header -->
-  <header class="hero-header">
-    <div class="hero-content">
-      <p class="hero-tag">Family Travel Fund</p>
-      <h1>우리 가족 여행 계</h1>
-      <p class="hero-subtitle">함께 모아, 함께 떠나요</p>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="stat-value" id="balance">$0</span>
-          <span class="stat-label">잔액</span>
+  <div class="page">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">✈</span>
+          <div class="logo-text">
+            <h1>우리 가족 여행 계</h1>
+            <p>Family Travel Fund</p>
+          </div>
         </div>
-        <div class="hero-stat">
-          <span class="stat-value" id="countdown">D-0</span>
-          <span class="stat-label" id="destination">다음 여행</span>
+        <div class="header-stats">
+          <div class="stat">
+            <span class="stat-value" id="balance">$0</span>
+            <span class="stat-label">잔액</span>
+          </div>
+          <div class="stat">
+            <span class="stat-value" id="countdown">D-0</span>
+            <span class="stat-label" id="next-trip">다음 여행</span>
+          </div>
         </div>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <div class="container">
-    <!-- Featured Trips -->
-    <section class="featured-trips">
-      <div class="section-header">
-        <h2>Our Trips</h2>
-        <p>여행 기록</p>
-      </div>
-      <div class="trip-cards" id="trip-grid">
-      </div>
-    </section>
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Trip Cards -->
+      <section class="trips-section">
+        <h2 class="section-title">Trips</h2>
+        <div class="trips-grid" id="trip-grid"></div>
+      </section>
 
-    <!-- Fund Ledger -->
-    <section class="ledger">
-      <div class="section-header">
-        <h2>Fund Ledger</h2>
-        <p>납부 현황</p>
-      </div>
-      <div class="table-wrapper">
-        <table id="contribution-table">
-          <thead>
-            <tr>
-              <th>월</th>
-              <th id="party-1"></th>
-              <th id="party-2"></th>
-              <th id="party-3"></th>
-              <th>잔액</th>
-            </tr>
-          </thead>
-          <tbody id="contribution-body">
-          </tbody>
-        </table>
-      </div>
-    </section>
+      <!-- Ledger -->
+      <section class="ledger-section">
+        <h2 class="section-title">Fund Ledger</h2>
+        <div class="ledger-card">
+          <table id="contribution-table">
+            <thead>
+              <tr>
+                <th>월</th>
+                <th id="party-1"></th>
+                <th id="party-2"></th>
+                <th id="party-3"></th>
+                <th>잔액</th>
+              </tr>
+            </thead>
+            <tbody id="contribution-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-      <p>사랑으로 함께하는 우리 가족</p>
-      <p class="signature">올림, 양코사위</p>
+      <p>사랑으로 함께하는 우리 가족 · 올림, 양코사위</p>
     </footer>
   </div>
 
