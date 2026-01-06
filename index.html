@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>우리 가족 여행 계</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <h1>우리 가족 여행 계</h1>
+      <p class="subtitle">함께 모아, 함께 떠나요</p>
+    </header>
+
+    <!-- Fund Dashboard -->
+    <section class="dashboard">
+      <div class="balance-card">
+        <div class="balance-label">현재 잔액</div>
+        <div class="balance-amount" id="balance">$0</div>
+        <div class="balance-detail" id="balance-detail"></div>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown-card" id="countdown-section">
+        <div class="countdown-label">다음 여행까지</div>
+        <div class="countdown-timer" id="countdown"></div>
+        <div class="countdown-destination" id="destination"></div>
+      </div>
+    </section>
+
+    <!-- Contribution Table -->
+    <section class="contributions">
+      <h2>납부 현황</h2>
+      <div class="table-wrapper">
+        <table id="contribution-table">
+          <thead>
+            <tr>
+              <th>월</th>
+              <th id="party-1"></th>
+              <th id="party-2"></th>
+              <th id="party-3"></th>
+            </tr>
+          </thead>
+          <tbody id="contribution-body">
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Trip Archive -->
+    <section class="trips">
+      <h2>여행 기록</h2>
+      <div class="trip-grid" id="trip-grid">
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p>사랑으로 함께하는 우리 가족</p>
+      <p class="signature">올림, 양코사위</p>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
