@@ -23,7 +23,12 @@ const fundData = {
       date: "2026-03",
       status: "upcoming",
       budget: 1362,
-      photos: [],
+      photos: [
+        "assets/images/photo-1.jpg",
+        "assets/images/photo-2.jpg",
+        "assets/images/photo-3.jpg",
+        "assets/images/photo-4.jpg"
+      ],
       memories: ""
     }
   ]
