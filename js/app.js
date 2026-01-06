@@ -43,6 +43,7 @@ const data = {
 };
 
 const months = {"01":"1월","02":"2월","03":"3월","04":"4월","05":"5월","06":"6월","07":"7월","08":"8월","09":"9월","10":"10월","11":"11월","12":"12월"};
+const monthsEn = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June","07":"July","08":"August","09":"September","10":"October","11":"November","12":"December"};
 
 // Init
 document.addEventListener("DOMContentLoaded", function() {
@@ -71,7 +72,7 @@ function renderTrips() {
   data.trips.forEach(trip => {
     // Extract month/year for big title
     const monthYear = trip.date.match(/(\d{4})년\s*(\d+)월/);
-    const bigTitle = monthYear ? months[monthYear[2].padStart(2,'0')].replace('월','') + ' ' + monthYear[1] : '';
+    const bigTitle = monthYear ? monthsEn[monthYear[2].padStart(2,'0')] + ' ' + monthYear[1] : '';
 
     // Create wrapper with title
     const wrapper = document.createElement("div");
