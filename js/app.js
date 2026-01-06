@@ -42,8 +42,10 @@ const fundData = {
       dateRange: "3월 22일 - 24일",
       status: "upcoming",
       cost: 987.22,
-      accommodation: "Lakefront 3BR Retreat – Sauna · HotTub · Fireplace",
+      accommodation: "Lakefront 3BR Retreat",
+      amenities: ["Sauna", "Hot Tub", "Fireplace", "Lakefront"],
       guests: "6명 + 아이 1명 + 반려동물 2마리",
+      address: "723 Jenifer St, Madison, WI 53703",
       photos: [
         "assets/images/madison-1.jpg",
         "assets/images/madison-2.jpg",
@@ -73,11 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // Render balance
 function renderBalance() {
   const balanceEl = document.getElementById("balance");
-  const detailEl = document.getElementById("balance-detail");
-
   balanceEl.textContent = `$${fundData.currentBalance.toLocaleString()}`;
-
-  detailEl.textContent = `매디슨 숙소 결제 후 잔액`;
 }
 
 // Render countdown to next trip
@@ -88,7 +86,8 @@ function renderCountdown() {
   const upcomingTrip = fundData.trips.find(t => t.status === "upcoming");
 
   if (!upcomingTrip) {
-    document.getElementById("countdown-section").style.display = "none";
+    countdownEl.textContent = "—";
+    destinationEl.textContent = "계획 중";
     return;
   }
 
@@ -101,7 +100,7 @@ function renderCountdown() {
     const days = Math.floor(diff / (1000 * 60 * 60 * 24));
     countdownEl.textContent = `D-${days}`;
   } else {
-    countdownEl.textContent = "여행 중!";
+    countdownEl.textContent = "NOW";
   }
 
   destinationEl.textContent = upcomingTrip.name;
@@ -189,38 +188,65 @@ function renderContributionTable() {
   tbody.appendChild(finalRow);
 }
 
-// Render trips
+// Render trips - Modern Travel Card Style
 function renderTrips() {
   const tripGrid = document.getElementById("trip-grid");
 
-  fundData.trips.forEach(trip => {
+  // Sort trips: upcoming first, then completed
+  const sortedTrips = [...fundData.trips].sort((a, b) => {
+    if (a.status === 'upcoming' && b.status !== 'upcoming') return -1;
+    if (a.status !== 'upcoming' && b.status === 'upcoming') return 1;
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  sortedTrips.forEach((trip, tripIndex) => {
     const card = document.createElement("div");
     card.className = `trip-card ${trip.status}`;
 
-    const statusText = trip.status === "upcoming" ? "예정" : "완료";
-    const statusClass = trip.status;
-
     const [year, month] = trip.date.split("-");
     const dateText = trip.dateRange ? `${year}년 ${trip.dateRange}` : `${year}년 ${monthNames[month]}`;
+    const badgeText = trip.status === "upcoming" ? "Coming Up" : "Completed";
+
+    // Build amenities tags
+    const amenitiesTags = trip.amenities
+      ? trip.amenities.map(a => `<span class="trip-detail-tag">${a}</span>`).join('')
+      : '';
+
+    // Build map embed if address exists
+    const mapEmbed = trip.address
+      ? `<div class="trip-map">
+           <iframe
+             src="https://maps.google.com/maps?q=${encodeURIComponent(trip.address)}&t=&z=14&ie=UTF8&iwloc=&output=embed"
+             allowfullscreen loading="lazy"></iframe>
+           <div class="trip-address">${trip.address}</div>
+         </div>`
+      : '';
 
     card.innerHTML = `
-      <div class="trip-header" onclick="toggleTripPhotos('${trip.id}')">
-        <div class="trip-info">
-          <h3>${trip.name}</h3>
-          <div class="trip-date">${dateText}</div>
+      <div class="trip-image-container">
+        <div class="trip-images" id="images-${trip.id}">
+          ${trip.photos.map(photo => `<img src="${photo}" alt="${trip.name}">`).join('')}
         </div>
-        <span class="trip-status ${statusClass}">${statusText}</span>
-      </div>
-      ${trip.accommodation ? `<div class="trip-accommodation">${trip.accommodation}</div>` : ''}
-      ${trip.guests ? `<div class="trip-guests">${trip.guests}</div>` : ''}
-      ${trip.cost ? `<div class="trip-cost">숙소 비용: <strong>$${trip.cost.toLocaleString()}</strong></div>` : ''}
-      <div class="trip-photos ${trip.status === 'completed' ? 'expanded' : ''}" id="photos-${trip.id}">
-        ${trip.photos.length > 0 ? `
-          <div class="photo-grid">
-            ${trip.photos.map(photo => `<img src="${photo}" alt="여행 사진">`).join("")}
+        ${trip.photos.length > 1 ? `
+          <button class="image-nav prev" onclick="slideImage('${trip.id}', -1)">‹</button>
+          <button class="image-nav next" onclick="slideImage('${trip.id}', 1)">›</button>
+          <div class="image-dots">
+            ${trip.photos.map((_, i) => `<div class="image-dot ${i === 0 ? 'active' : ''}" data-trip="${trip.id}" data-index="${i}"></div>`).join('')}
           </div>
-        ` : '<p style="color: var(--gray); font-size: 0.9rem;">여행 후 사진이 추가됩니다</p>'}
-        ${trip.memories ? `<div class="trip-memories">${trip.memories}</div>` : ""}
+        ` : ''}
+        <span class="trip-badge ${trip.status}">${badgeText}</span>
+      </div>
+      <div class="trip-content">
+        <div class="trip-header-row">
+          <div class="trip-title">${trip.name}</div>
+          ${trip.status === 'completed' ? '<div class="trip-rating">5.0</div>' : ''}
+        </div>
+        <div class="trip-location">${trip.accommodation || trip.nameEn}</div>
+        <div class="trip-dates">${dateText} ${trip.guests ? '· ' + trip.guests : ''}</div>
+        ${amenitiesTags ? `<div class="trip-details">${amenitiesTags}</div>` : ''}
+        ${trip.cost ? `<div class="trip-price"><strong>$${trip.cost.toLocaleString()}</strong> 숙소 비용</div>` : ''}
+        ${mapEmbed}
+        ${trip.memories ? `<div class="trip-memories">"${trip.memories}"</div>` : ''}
       </div>
     `;
 
@@ -228,8 +254,24 @@ function renderTrips() {
   });
 }
 
-// Toggle trip photos section
-function toggleTripPhotos(tripId) {
-  const photosEl = document.getElementById(`photos-${tripId}`);
-  photosEl.classList.toggle("expanded");
+// Image carousel state
+const imageIndexes = {};
+
+function slideImage(tripId, direction) {
+  const trip = fundData.trips.find(t => t.id === tripId);
+  if (!trip) return;
+
+  if (imageIndexes[tripId] === undefined) imageIndexes[tripId] = 0;
+
+  imageIndexes[tripId] += direction;
+  if (imageIndexes[tripId] < 0) imageIndexes[tripId] = trip.photos.length - 1;
+  if (imageIndexes[tripId] >= trip.photos.length) imageIndexes[tripId] = 0;
+
+  const container = document.getElementById(`images-${tripId}`);
+  container.style.transform = `translateX(-${imageIndexes[tripId] * 100}%)`;
+
+  // Update dots
+  document.querySelectorAll(`.image-dot[data-trip="${tripId}"]`).forEach((dot, i) => {
+    dot.classList.toggle('active', i === imageIndexes[tripId]);
+  });
 }

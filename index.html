@@ -6,36 +6,46 @@
   <title>우리 가족 여행 계</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="container">
-    <!-- Header -->
-    <header class="header">
+  <!-- Hero Header -->
+  <header class="hero-header">
+    <div class="hero-content">
+      <p class="hero-tag">Family Travel Fund</p>
       <h1>우리 가족 여행 계</h1>
-      <p class="subtitle">함께 모아, 함께 떠나요</p>
-    </header>
-
-    <!-- Fund Dashboard -->
-    <section class="dashboard">
-      <div class="balance-card">
-        <div class="balance-label">현재 잔액</div>
-        <div class="balance-amount" id="balance">$0</div>
-        <div class="balance-detail" id="balance-detail"></div>
+      <p class="hero-subtitle">함께 모아, 함께 떠나요</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="stat-value" id="balance">$0</span>
+          <span class="stat-label">잔액</span>
+        </div>
+        <div class="hero-stat">
+          <span class="stat-value" id="countdown">D-0</span>
+          <span class="stat-label" id="destination">다음 여행</span>
+        </div>
       </div>
+    </div>
+  </header>
 
-      <!-- Countdown -->
-      <div class="countdown-card" id="countdown-section">
-        <div class="countdown-label">다음 여행까지</div>
-        <div class="countdown-timer" id="countdown"></div>
-        <div class="countdown-destination" id="destination"></div>
+  <div class="container">
+    <!-- Featured Trips -->
+    <section class="featured-trips">
+      <div class="section-header">
+        <h2>Our Trips</h2>
+        <p>여행 기록</p>
+      </div>
+      <div class="trip-cards" id="trip-grid">
       </div>
     </section>
 
-    <!-- Contribution Table -->
-    <section class="contributions">
-      <h2>납부 현황</h2>
+    <!-- Fund Ledger -->
+    <section class="ledger">
+      <div class="section-header">
+        <h2>Fund Ledger</h2>
+        <p>납부 현황</p>
+      </div>
       <div class="table-wrapper">
         <table id="contribution-table">
           <thead>
@@ -50,13 +60,6 @@
           <tbody id="contribution-body">
           </tbody>
         </table>
-      </div>
-    </section>
-
-    <!-- Trip Archive -->
-    <section class="trips">
-      <h2>여행 기록</h2>
-      <div class="trip-grid" id="trip-grid">
       </div>
     </section>
 
