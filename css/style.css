@@ -269,6 +269,14 @@ body {
   margin-bottom: 0.5rem;
 }
 
+.trip-header-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.25rem;
+}
+
 .trip-title {
   font-size: 1.1rem;
   font-weight: 600;
@@ -276,10 +284,10 @@ body {
 }
 
 .trip-date {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--coral);
-  margin: 0.25rem 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--gray-600);
+  white-space: nowrap;
 }
 
 .trip-info {

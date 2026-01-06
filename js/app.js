@@ -95,8 +95,7 @@ function renderTrips() {
         '<div class="image-dots">' + dots + '</div>' +
       '</div>' +
       '<div class="trip-content">' +
-        '<div class="trip-title">' + trip.title + '</div>' +
-        '<div class="trip-date">' + trip.date + '</div>' +
+        '<div class="trip-header-line"><span class="trip-title">' + trip.title + '</span><span class="trip-date">' + trip.date + '</span></div>' +
         '<div class="trip-info">' + trip.subtitle + (trip.tags.length ? ' · ' + trip.tags.join(' · ') : '') + '</div>' +
         (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
         '<div class="trip-map">' +
