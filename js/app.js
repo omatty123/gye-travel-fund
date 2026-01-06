@@ -13,8 +13,9 @@ const fundData = {
     { month: "2025-10", paid: [true, true, true] },
     { month: "2025-11", paid: [true, true, true] },
     { month: "2025-12", paid: [true, true, true] },
+    { month: "2026-01", paid: [false, true, true] },
   ],
-  currentBalance: 1362,
+  currentBalance: 1462,
   interestEarned: 12,
   trips: [
     {
@@ -39,7 +40,7 @@ const fundData = {
       date: "2026-03",
       dateRange: "3월 22일 - 24일",
       status: "upcoming",
-      budget: 1362,
+      budget: 1462,
       accommodation: "Lakefront 3BR Retreat – Sauna · HotTub · Fireplace",
       guests: "6명 + 아이 1명 + 반려동물 2마리",
       photos: [],
@@ -192,7 +193,7 @@ function renderTrips() {
       ${trip.accommodation ? `<div class="trip-accommodation">${trip.accommodation}</div>` : ''}
       ${trip.guests ? `<div class="trip-guests">${trip.guests}</div>` : ''}
       ${trip.budget > 0 ? `<div class="trip-budget">예산: <strong>$${trip.budget.toLocaleString()}</strong></div>` : ''}
-      <div class="trip-photos" id="photos-${trip.id}">
+      <div class="trip-photos ${trip.status === 'completed' ? 'expanded' : ''}" id="photos-${trip.id}">
         ${trip.photos.length > 0 ? `
           <div class="photo-grid">
             ${trip.photos.map(photo => `<img src="${photo}" alt="여행 사진">`).join("")}
