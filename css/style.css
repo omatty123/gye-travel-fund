@@ -350,6 +350,23 @@ body {
   font-weight: 700;
 }
 
+.airbnb-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--coral);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.airbnb-link:hover {
+  background: var(--coral-dark);
+}
+
 /* Map Container */
 .trip-map {
   margin-top: 1rem;

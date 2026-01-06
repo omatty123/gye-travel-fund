@@ -25,6 +25,7 @@ const data = {
       cost: 987.22,
       tags: ["Sauna", "Hot Tub", "Fireplace", "Lakefront"],
       address: "723 Jenifer St, Madison, WI 53703",
+      airbnb: "https://www.airbnb.com/rooms/24139465",
       photos: ["assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
     },
     {
@@ -99,6 +100,7 @@ function renderTrips() {
         '<div class="trip-header-line"><span class="trip-title">' + trip.title + '</span><span class="trip-date">' + trip.date + '</span></div>' +
         '<div class="trip-info">' + trip.subtitle + (trip.tags.length ? ' · ' + trip.tags.join(' · ') : '') + '</div>' +
         (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
+        (trip.airbnb ? '<a href="' + trip.airbnb + '" target="_blank" class="airbnb-link">View on Airbnb</a>' : '') +
         '<div class="trip-map">' +
           '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
           '<div class="trip-address">' + trip.address + '</div>' +
