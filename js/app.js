@@ -26,6 +26,7 @@ const fundData = {
       status: "completed",
       budget: 0,
       accommodation: "Lake Dr Mansion",
+      address: "2210 N Lake Dr, Milwaukee, WI 53202",
       photos: [
         "assets/images/milwaukee-1.jpg",
         "assets/images/milwaukee-2.jpg",
