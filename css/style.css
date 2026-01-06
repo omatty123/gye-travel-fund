@@ -35,14 +35,10 @@ body {
 
 /* Hero Header */
 .hero-header {
-  background: linear-gradient(135deg, rgba(10,10,10,0.8) 0%, rgba(38,38,38,0.8) 100%), url('../assets/images/family-hero.jpg');
-  background-size: auto 100%;
-  background-position: center center;
-  background-repeat: no-repeat;
+  background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
   color: var(--white);
-  padding: 5rem 1.5rem 6rem;
+  padding: 3rem 1.5rem 4rem;
   text-align: center;
-  min-height: 350px;
 }
 
 .hero-content {
