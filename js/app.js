@@ -36,7 +36,7 @@ const data = {
       cost: 0,
       tags: [],
       address: "2210 N Lake Dr, Milwaukee, WI 53202",
-      photos: ["assets/images/family-hero.jpg","assets/images/photo-1.jpg","assets/images/milwaukee-1.jpg","assets/images/photo-2.jpg","assets/images/milwaukee-2.jpg","assets/images/photo-3.jpg","assets/images/milwaukee-3.jpg","assets/images/photo-4.jpg","assets/images/milwaukee-4.jpg"],
+      photos: ["assets/images/family-hero.jpg","assets/images/photo-3.jpg","assets/images/photo-4.jpg","assets/images/photo-2.jpg","assets/images/milwaukee-1.jpg","assets/images/milwaukee-2.jpg","assets/images/milwaukee-3.jpg","assets/images/photo-1.jpg","assets/images/milwaukee-4.jpg"],
       memory: "이곳에서 우리 가족 여행 계가 시작되었습니다"
     }
   ]
