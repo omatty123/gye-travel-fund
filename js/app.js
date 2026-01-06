@@ -15,7 +15,7 @@ const fundData = {
     { month: "2025-12", paid: [true, true, true] },
     { month: "2026-01", paid: [false, true, true] },
   ],
-  currentBalance: 1462,
+  currentBalance: 474.78,
   interestEarned: 12,
   trips: [
     {
@@ -25,11 +25,12 @@ const fundData = {
       date: "2025-03",
       status: "completed",
       budget: 0,
+      accommodation: "Lake Dr Mansion",
       photos: [
-        "assets/images/photo-1.jpg",
-        "assets/images/photo-2.jpg",
-        "assets/images/photo-3.jpg",
-        "assets/images/photo-4.jpg"
+        "assets/images/milwaukee-1.jpg",
+        "assets/images/milwaukee-2.jpg",
+        "assets/images/milwaukee-3.jpg",
+        "assets/images/milwaukee-4.jpg"
       ],
       memories: "이곳에서 우리 가족 여행 계가 시작되었습니다"
     },
@@ -40,10 +41,15 @@ const fundData = {
       date: "2026-03",
       dateRange: "3월 22일 - 24일",
       status: "upcoming",
-      budget: 1462,
+      cost: 987.22,
       accommodation: "Lakefront 3BR Retreat – Sauna · HotTub · Fireplace",
       guests: "6명 + 아이 1명 + 반려동물 2마리",
-      photos: [],
+      photos: [
+        "assets/images/madison-1.jpg",
+        "assets/images/madison-2.jpg",
+        "assets/images/madison-3.jpg",
+        "assets/images/madison-4.jpg"
+      ],
       memories: ""
     }
   ]
@@ -71,8 +77,7 @@ function renderBalance() {
 
   balanceEl.textContent = `$${fundData.currentBalance.toLocaleString()}`;
 
-  const totalContributions = fundData.contributions.length * fundData.parties.length * fundData.monthlyAmount;
-  detailEl.textContent = `${fundData.contributions.length}개월 × 3가족 × $${fundData.monthlyAmount} + 이자`;
+  detailEl.textContent = `매디슨 숙소 결제 후 잔액`;
 }
 
 // Render countdown to next trip
@@ -147,25 +152,41 @@ function renderContributionTable() {
 
   // Add interest row
   if (fundData.interestEarned > 0) {
+    runningTotal += fundData.interestEarned;
     const interestRow = document.createElement("tr");
     interestRow.className = "interest-row";
     interestRow.innerHTML = `
       <td class="month-cell">이자</td>
       <td colspan="3"></td>
-      <td class="running-total">+$${fundData.interestEarned}</td>
+      <td class="running-total">$${runningTotal}</td>
     `;
     tbody.appendChild(interestRow);
-
-    // Final total row
-    const finalRow = document.createElement("tr");
-    finalRow.className = "final-row";
-    finalRow.innerHTML = `
-      <td class="month-cell"><strong>합계</strong></td>
-      <td colspan="3"></td>
-      <td class="running-total final-total">$${runningTotal + fundData.interestEarned}</td>
-    `;
-    tbody.appendChild(finalRow);
   }
+
+  // Add expense rows for trips with costs
+  fundData.trips.forEach(trip => {
+    if (trip.cost) {
+      runningTotal -= trip.cost;
+      const expenseRow = document.createElement("tr");
+      expenseRow.className = "expense-row";
+      expenseRow.innerHTML = `
+        <td class="month-cell">${trip.name}</td>
+        <td colspan="3" style="font-size: 0.75rem; color: var(--gray);">숙소</td>
+        <td class="running-total expense">-$${trip.cost.toLocaleString()}</td>
+      `;
+      tbody.appendChild(expenseRow);
+    }
+  });
+
+  // Final total row
+  const finalRow = document.createElement("tr");
+  finalRow.className = "final-row";
+  finalRow.innerHTML = `
+    <td class="month-cell"><strong>잔액</strong></td>
+    <td colspan="3"></td>
+    <td class="running-total final-total">$${runningTotal.toFixed(2)}</td>
+  `;
+  tbody.appendChild(finalRow);
 }
 
 // Render trips
@@ -192,7 +213,7 @@ function renderTrips() {
       </div>
       ${trip.accommodation ? `<div class="trip-accommodation">${trip.accommodation}</div>` : ''}
       ${trip.guests ? `<div class="trip-guests">${trip.guests}</div>` : ''}
-      ${trip.budget > 0 ? `<div class="trip-budget">예산: <strong>$${trip.budget.toLocaleString()}</strong></div>` : ''}
+      ${trip.cost ? `<div class="trip-cost">숙소 비용: <strong>$${trip.cost.toLocaleString()}</strong></div>` : ''}
       <div class="trip-photos ${trip.status === 'completed' ? 'expanded' : ''}" id="photos-${trip.id}">
         ${trip.photos.length > 0 ? `
           <div class="photo-grid">

@@ -191,6 +191,14 @@ tr:last-child td {
   background: var(--cream);
 }
 
+.expense-row {
+  background: #fff5f5;
+}
+
+.expense {
+  color: var(--coral) !important;
+}
+
 .final-row {
   background: var(--forest);
 }
@@ -281,13 +289,15 @@ tr:last-child td {
   color: var(--gray);
 }
 
-.trip-budget {
+.trip-budget,
+.trip-cost {
   padding: 0 1.25rem 1.25rem;
   font-size: 0.9rem;
   color: var(--gray);
 }
 
-.trip-budget strong {
+.trip-budget strong,
+.trip-cost strong {
   color: var(--charcoal);
 }
 
