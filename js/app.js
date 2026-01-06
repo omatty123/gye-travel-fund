@@ -17,18 +17,31 @@ const fundData = {
   currentBalance: 1362,
   trips: [
     {
-      id: "madison-2026",
-      name: "매디슨 가족 휴가",
-      nameEn: "Madison Family Vacation",
-      date: "2026-03",
-      status: "upcoming",
-      budget: 1362,
+      id: "milwaukee-2025",
+      name: "밀워키 - 계의 시작",
+      nameEn: "Milwaukee - Where It All Began",
+      date: "2025-03",
+      status: "completed",
+      budget: 0,
       photos: [
         "assets/images/photo-1.jpg",
         "assets/images/photo-2.jpg",
         "assets/images/photo-3.jpg",
         "assets/images/photo-4.jpg"
       ],
+      memories: "이곳에서 우리 가족 여행 계가 시작되었습니다"
+    },
+    {
+      id: "madison-2026",
+      name: "매디슨 가족 휴가",
+      nameEn: "Madison Family Vacation",
+      date: "2026-03",
+      dateRange: "3월 22일 - 24일",
+      status: "upcoming",
+      budget: 1362,
+      accommodation: "Lakefront 3BR Retreat – Sauna · HotTub · Fireplace",
+      guests: "6명 + 아이 1명 + 반려동물 2마리",
+      photos: [],
       memories: ""
     }
   ]
@@ -72,8 +85,8 @@ function renderCountdown() {
     return;
   }
 
-  // Set trip date to March 15, 2026 (middle of month as placeholder)
-  const tripDate = new Date(upcomingTrip.date + "-15");
+  // Set trip date to March 22, 2026 (check-in date)
+  const tripDate = new Date(upcomingTrip.date + "-22");
   const now = new Date();
   const diff = tripDate - now;
 
@@ -95,6 +108,7 @@ function renderContributionTable() {
   });
 
   const tbody = document.getElementById("contribution-body");
+  let runningTotal = 0;
 
   fundData.contributions.forEach(contrib => {
     const row = document.createElement("tr");
@@ -106,16 +120,25 @@ function renderContributionTable() {
     monthCell.textContent = `${year.slice(2)}년 ${monthNames[month]}`;
     row.appendChild(monthCell);
 
-    // Payment status for each party
+    // Payment status for each party and calculate monthly total
+    let monthlyTotal = 0;
     contrib.paid.forEach(isPaid => {
       const cell = document.createElement("td");
       if (isPaid) {
         cell.innerHTML = '<span class="check">&#10003;</span>';
+        monthlyTotal += fundData.monthlyAmount;
       } else {
         cell.innerHTML = '<span class="pending">-</span>';
       }
       row.appendChild(cell);
     });
+
+    // Running total cell
+    runningTotal += monthlyTotal;
+    const totalCell = document.createElement("td");
+    totalCell.className = "running-total";
+    totalCell.textContent = `$${runningTotal}`;
+    row.appendChild(totalCell);
 
     tbody.appendChild(row);
   });
@@ -133,7 +156,7 @@ function renderTrips() {
     const statusClass = trip.status;
 
     const [year, month] = trip.date.split("-");
-    const dateText = `${year}년 ${monthNames[month]}`;
+    const dateText = trip.dateRange ? `${year}년 ${trip.dateRange}` : `${year}년 ${monthNames[month]}`;
 
     card.innerHTML = `
       <div class="trip-header" onclick="toggleTripPhotos('${trip.id}')">
@@ -143,9 +166,9 @@ function renderTrips() {
         </div>
         <span class="trip-status ${statusClass}">${statusText}</span>
       </div>
-      <div class="trip-budget">
-        예산: <strong>$${trip.budget.toLocaleString()}</strong>
-      </div>
+      ${trip.accommodation ? `<div class="trip-accommodation">${trip.accommodation}</div>` : ''}
+      ${trip.guests ? `<div class="trip-guests">${trip.guests}</div>` : ''}
+      ${trip.budget > 0 ? `<div class="trip-budget">예산: <strong>$${trip.budget.toLocaleString()}</strong></div>` : ''}
       <div class="trip-photos" id="photos-${trip.id}">
         ${trip.photos.length > 0 ? `
           <div class="photo-grid">
