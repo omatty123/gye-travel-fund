@@ -69,6 +69,15 @@ function renderTrips() {
   const container = document.getElementById("trip-grid");
 
   data.trips.forEach(trip => {
+    // Extract month/year for big title
+    const monthYear = trip.date.match(/(\d{4})년\s*(\d+)월/);
+    const bigTitle = monthYear ? months[monthYear[2].padStart(2,'0')].replace('월','') + ' ' + monthYear[1] : '';
+
+    // Create wrapper with title
+    const wrapper = document.createElement("div");
+    wrapper.className = "trip-wrapper";
+    wrapper.innerHTML = '<div class="trip-month-title">' + bigTitle.toUpperCase() + '</div>';
+
     const card = document.createElement("div");
     card.className = "trip-card " + trip.status;
 
@@ -97,7 +106,8 @@ function renderTrips() {
         (trip.memory ? '<div class="trip-memories">' + trip.memory + '</div>' : '') +
       '</div>';
 
-    container.appendChild(card);
+    wrapper.appendChild(card);
+    container.appendChild(wrapper);
   });
 }
 

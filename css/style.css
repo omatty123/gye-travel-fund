@@ -131,6 +131,20 @@ body {
   gap: 1.5rem;
 }
 
+/* Trip Wrapper */
+.trip-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.trip-month-title {
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+  color: var(--black);
+  margin-bottom: 0.75rem;
+}
+
 /* Trip Card - Airbnb Style */
 .trip-card {
   background: var(--white);
