@@ -108,6 +108,9 @@ body {
 /* Section Headers */
 .section-header {
   margin: 3rem 0 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
 }
 
 .section-header h2 {
