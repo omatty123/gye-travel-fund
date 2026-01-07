@@ -409,6 +409,15 @@ body {
   line-height: 1.5;
 }
 
+.trip-activities a {
+  color: var(--forest);
+  text-decoration: none;
+}
+
+.trip-activities a:hover {
+  text-decoration: underline;
+}
+
 /* Memories Section */
 .trip-memories {
   margin-top: 1rem;
