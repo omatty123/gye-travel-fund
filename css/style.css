@@ -398,6 +398,17 @@ body {
   content: "📍";
 }
 
+/* Activities Section */
+.trip-activities {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: var(--gray-50);
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: var(--gray-700);
+  line-height: 1.5;
+}
+
 /* Memories Section */
 .trip-memories {
   margin-top: 1rem;

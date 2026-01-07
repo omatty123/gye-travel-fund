@@ -38,6 +38,7 @@ const data = {
       tags: [],
       address: "2210 N Lake Dr, Milwaukee, WI 53202",
       photos: ["assets/images/family-hero.jpg","assets/images/photo-3.jpg","assets/images/photo-4.jpg","assets/images/photo-2.jpg","assets/images/madison-external.jpg","assets/images/madison-externalangle.jpg","assets/images/madison-frontporch.jpg","assets/images/madison-livingroom.jpg","assets/images/madison-viewtolivingroom.jpg","assets/images/madison-masterbedroom.jpg","assets/images/madison-upstairslanding.jpg","assets/images/madison-staircase.jpg","assets/images/madison-steepstairs.jpg","assets/images/milwaukee-1.jpg","assets/images/milwaukee-2.jpg","assets/images/milwaukee-3.jpg","assets/images/milwaukee-4.jpg","assets/images/photo-1.jpg"],
+      activities: ["Went to the Zoo", "Korean restaurant", "Walks in the neighborhood", "Mitchell Park Domes"],
       memory: "이곳에서 우리 가족 여행 계가 시작되었습니다"
     }
   ]
@@ -105,6 +106,7 @@ function renderTrips() {
           '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
           '<div class="trip-address">' + trip.address + '</div>' +
         '</div>' +
+        (trip.activities ? '<div class="trip-activities"><strong>What we did:</strong> ' + trip.activities.join(' · ') + '</div>' : '') +
         (trip.memory ? '<div class="trip-memories">' + trip.memory + '</div>' : '') +
       '</div>';
 
