@@ -38,7 +38,7 @@ const data = {
       tags: [],
       address: "2210 N Lake Dr, Milwaukee, WI 53202",
       photos: ["assets/images/family-hero.jpg","assets/images/photo-3.jpg","assets/images/photo-4.jpg","assets/images/photo-2.jpg","assets/images/madison-external.jpg","assets/images/madison-externalangle.jpg","assets/images/madison-frontporch.jpg","assets/images/madison-livingroom.jpg","assets/images/madison-viewtolivingroom.jpg","assets/images/madison-masterbedroom.jpg","assets/images/madison-upstairslanding.jpg","assets/images/madison-staircase.jpg","assets/images/madison-steepstairs.jpg","assets/images/milwaukee-1.jpg","assets/images/milwaukee-2.jpg","assets/images/milwaukee-3.jpg","assets/images/milwaukee-4.jpg","assets/images/photo-1.jpg"],
-      activities: ["<a href=\"https://milwaukeezoo.org\" target=\"_blank\">Milwaukee Zoo</a>", "Korean restaurant", "Walks in the neighborhood", "<a href=\"https://mitchellparkdomes.org\" target=\"_blank\">Mitchell Park Domes</a>"],
+      activities: ["<a href=\"https://milwaukeezoo.org\" target=\"_blank\">Milwaukee Zoo</a>", "<a href=\"https://maps.google.com/?q=Stone+Bowl+Grill+1958+N+Farwell+Ave+Milwaukee+WI\" target=\"_blank\">Stone Bowl Grill</a>", "Walks in the neighborhood", "<a href=\"https://mitchellparkdomes.org\" target=\"_blank\">Mitchell Park Domes</a>"],
       memory: "이곳에서 우리 가족 여행 계가 시작되었습니다"
     }
   ]
