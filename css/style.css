@@ -46,7 +46,7 @@ body {
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -76,9 +76,8 @@ body {
 .hero-layout {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 3rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 4rem;
 }
 
 .hero-stats {
