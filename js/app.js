@@ -78,7 +78,7 @@ function renderTrips() {
     // Create wrapper with title
     const wrapper = document.createElement("div");
     wrapper.className = "trip-wrapper";
-    wrapper.innerHTML = '<div class="trip-month-title">' + bigTitle.toUpperCase() + '</div>';
+    wrapper.innerHTML = '<div class="trip-month-title">' + bigTitle + '</div>';
 
     const card = document.createElement("div");
     card.className = "trip-card " + trip.status;
