@@ -19,11 +19,11 @@ const data = {
     {
       id: "madison",
       title: "매디슨 가족 휴가",
-      subtitle: "Lakefront 3BR Retreat",
+      subtitle: "",
       date: "2026년 3월 22일 - 24일",
       status: "upcoming",
       cost: 987.22,
-      tags: ["Sauna", "Hot Tub", "Fireplace", "Lakefront"],
+      tags: [],
       address: "723 Jenifer St, Madison, WI 53703",
       airbnb: "https://www.airbnb.com/rooms/24139465",
       photos: ["assets/images/madison-new-1.jpg","assets/images/madison-new-2.jpg","assets/images/madison-new-3.jpg","assets/images/madison-new-4.jpg","assets/images/madison-new-5.jpg","assets/images/madison-new-6.jpg","assets/images/madison-new-7.png","assets/images/madison-new-8.jpg","assets/images/madison-new-9.jpg","assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
@@ -31,8 +31,8 @@ const data = {
     {
       id: "milwaukee",
       title: "밀워키 - 계의 시작",
-      subtitle: "Lake Dr Mansion",
-      date: "2025년 3월",
+      subtitle: "",
+      date: "2025년 3월 27일 - 28일",
       status: "completed",
       cost: 0,
       tags: [],
