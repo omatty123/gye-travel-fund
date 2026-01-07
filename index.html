@@ -12,11 +12,11 @@
 <body>
   <!-- Hero Header -->
   <header class="hero-header">
-    <div class="hero-content">
-      <p class="hero-tag">Family Travel Fund</p>
-      <h1>우리 가족 여행 계</h1>
-      <p class="hero-subtitle">함께 모아, 함께 떠나요</p>
-      <div class="hero-layout">
+    <div class="hero-layout">
+      <div class="hero-left">
+        <p class="hero-tag">Family Travel Fund</p>
+        <h1>우리 가족 여행 계</h1>
+        <p class="hero-subtitle">함께 모아, 함께 떠나요</p>
         <div class="hero-stats">
           <div class="hero-stat">
             <span class="stat-value" id="balance">$0</span>
@@ -27,21 +27,21 @@
             <span class="stat-label" id="destination">다음 여행</span>
           </div>
         </div>
-        <div class="hero-ledger">
-          <table id="contribution-table">
-            <thead>
-              <tr>
-                <th>월</th>
-                <th id="party-1"></th>
-                <th id="party-2"></th>
-                <th id="party-3"></th>
-                <th>잔액</th>
-              </tr>
-            </thead>
-            <tbody id="contribution-body">
-            </tbody>
-          </table>
-        </div>
+      </div>
+      <div class="hero-ledger">
+        <table id="contribution-table">
+          <thead>
+            <tr>
+              <th>월</th>
+              <th id="party-1"></th>
+              <th id="party-2"></th>
+              <th id="party-3"></th>
+              <th>잔액</th>
+            </tr>
+          </thead>
+          <tbody id="contribution-body">
+          </tbody>
+        </table>
       </div>
     </div>
   </header>
