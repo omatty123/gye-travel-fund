@@ -184,7 +184,7 @@ body {
 
 .trip-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -591,26 +591,172 @@ tr:last-child td {
   color: var(--coral);
 }
 
-/* Responsive */
+/* Mobile Ledger Section - hidden on desktop */
+.mobile-ledger-section {
+  display: none;
+}
+
+/* Responsive - Mobile */
 @media (max-width: 768px) {
+  /* Show mobile ledger section */
+  .mobile-ledger-section {
+    display: block;
+    background: var(--white);
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .mobile-ledger-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--gray-600);
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .mobile-ledger-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .mobile-ledger-wrapper table {
+    width: 100%;
+    min-width: 340px;
+    font-size: 0.85rem;
+  }
+
+  .mobile-ledger-wrapper th {
+    font-size: 0.7rem;
+    padding: 0.5rem 0.4rem;
+    text-align: center;
+    color: var(--gray-600);
+    border-bottom: 2px solid var(--gray-200);
+    white-space: nowrap;
+  }
+
+  .mobile-ledger-wrapper td {
+    padding: 0.45rem 0.4rem;
+    text-align: center;
+    border-bottom: 1px solid var(--gray-100);
+  }
+
+  .mobile-ledger-wrapper .month-cell {
+    text-align: left;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .mobile-ledger-wrapper .check {
+    color: var(--forest);
+    font-weight: bold;
+  }
+
+  .mobile-ledger-wrapper .pending {
+    color: var(--gray-400);
+  }
+
+  .mobile-ledger-wrapper .running-total {
+    color: var(--forest);
+    font-weight: 600;
+  }
+
+  .mobile-ledger-wrapper .interest-row {
+    background: #f0fdf4;
+  }
+
+  .mobile-ledger-wrapper .expense-row {
+    background: #fef2f2;
+  }
+
+  .mobile-ledger-wrapper .expense {
+    color: var(--coral);
+  }
+
+  .mobile-ledger-wrapper .final-row {
+    background: var(--gray-800);
+  }
+
+  .mobile-ledger-wrapper .final-row td {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .mobile-ledger-wrapper .final-total {
+    color: var(--gold) !important;
+  }
+  /* Hero - stack vertically */
+  .hero-header {
+    padding: 2rem 1rem;
+  }
+
+  .hero-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    padding: 0;
+    gap: 2rem;
+  }
+
+  .hero-left {
+    padding-left: 0;
+    text-align: center;
+    width: 100%;
+  }
+
   .hero-header h1 {
     font-size: 2rem;
   }
 
+  .hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
   .hero-stats {
-    gap: 2rem;
+    justify-content: center;
+    gap: 3rem;
   }
 
   .stat-value {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
+  /* Hide ledger in hero on mobile - too cramped */
+  .hero-ledger {
+    display: none;
+  }
+
+  /* Trip cards */
   .trip-cards {
     grid-template-columns: 1fr;
   }
 
+  .trip-month-title {
+    font-size: 1.5rem;
+  }
+
+  .trip-header-line {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .trip-date {
+    font-size: 0.85rem;
+  }
+
+  /* Image nav - always visible for touch */
+  .image-nav {
+    opacity: 0.9;
+  }
+
   .section-header {
     margin: 2rem 0 1rem;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer {
+    padding: 2rem 1rem;
   }
 }
 

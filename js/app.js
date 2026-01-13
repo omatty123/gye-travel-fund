@@ -3,6 +3,7 @@ const data = {
   balance: 482.25,
   interest: 19.47,
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
+  partiesShort: ["부모님", "Joe", "Dom"],
   contributions: [
     { m: "2025-04", p: [1,1,1] },
     { m: "2025-05", p: [1,1,1] },
@@ -58,13 +59,19 @@ document.addEventListener("DOMContentLoaded", function() {
   document.getElementById("countdown").textContent = days > 0 ? "D-" + days : "NOW";
   document.getElementById("destination").textContent = "매디슨";
 
-  // Party headers
+  // Party headers - desktop uses full names
   document.getElementById("party-1").textContent = data.parties[0];
   document.getElementById("party-2").textContent = data.parties[1];
   document.getElementById("party-3").textContent = data.parties[2];
 
+  // Mobile party headers - use short names
+  document.getElementById("mobile-party-1").textContent = data.partiesShort[0];
+  document.getElementById("mobile-party-2").textContent = data.partiesShort[1];
+  document.getElementById("mobile-party-3").textContent = data.partiesShort[2];
+
   renderTrips();
   renderLedger();
+  renderMobileLedger();
 });
 
 // Trips
@@ -138,6 +145,52 @@ function cycleImg(id, dir) {
 // Ledger
 function renderLedger() {
   const tbody = document.getElementById("contribution-body");
+  let total = 0;
+
+  data.contributions.forEach(c => {
+    const [y, m] = c.m.split("-");
+    const paid = c.p.reduce((a,b) => a+b, 0) * 50;
+    total += paid;
+
+    const row = document.createElement("tr");
+    row.innerHTML =
+      '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
+      '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
+      '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
+      '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
+      '<td class="running-total">$' + total + '</td>';
+    tbody.appendChild(row);
+  });
+
+  // Interest
+  total += data.interest;
+  const iRow = document.createElement("tr");
+  iRow.className = "interest-row";
+  iRow.innerHTML = '<td class="month-cell">2025 이자</td><td></td><td></td><td>+$' + data.interest.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
+  tbody.appendChild(iRow);
+
+  // Madison expense
+  const madison = data.trips.find(t => t.id === "madison");
+  if (madison && madison.cost) {
+    total -= madison.cost;
+    const eRow = document.createElement("tr");
+    eRow.className = "expense-row";
+    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
+    tbody.appendChild(eRow);
+  }
+
+  // Final
+  const tRow = document.createElement("tr");
+  tRow.className = "final-row";
+  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
+  tbody.appendChild(tRow);
+}
+
+// Mobile Ledger
+function renderMobileLedger() {
+  const tbody = document.getElementById("mobile-contribution-body");
+  if (!tbody) return;
+
   let total = 0;
 
   data.contributions.forEach(c => {
