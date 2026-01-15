@@ -1,6 +1,6 @@
 // Data
 const data = {
-  balance: 482.25,
+  balance: 582.25,
   interest: 19.47,
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   partiesShort: ["부모님", "Joe", "Dom"],
@@ -14,7 +14,8 @@ const data = {
     { m: "2025-10", p: [1,1,1] },
     { m: "2025-11", p: [1,1,1] },
     { m: "2025-12", p: [1,1,1] },
-    { m: "2026-01", p: [0,1,1] }
+    { m: "2026-01", p: [1,1,1] },
+    { m: "2026-02", p: [1,0,0] }
   ],
   trips: [
     {
