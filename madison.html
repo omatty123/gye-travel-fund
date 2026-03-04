@@ -21,11 +21,14 @@
   <header class="madison-hero">
     <div class="madison-hero-row">
       <div class="madison-hero-left">
-        <h1>Things to Do in Madison <span class="madison-subtitle">매디슨에서 할 거리</span></h1>
-        <p class="hero-tag">March 22-24, 2026</p>
+        <h1 id="hero-title">매디슨에서 할 거리</h1>
+        <p class="hero-tag">3월 22-24, 2026</p>
       </div>
-      <div class="madison-weather-widget" id="weather-widget">
-        <span class="weather-loading">Loading weather...</span>
+      <div class="madison-hero-right">
+        <div class="madison-weather-widget" id="weather-widget">
+          <span class="weather-loading">Loading...</span>
+        </div>
+        <button class="lang-toggle-btn" id="lang-toggle"><span class="lang-flag">🇺🇸</span> ENG</button>
       </div>
     </div>
   </header>
@@ -47,7 +50,7 @@
     </div>
     <label class="weather-toggle">
       <input type="checkbox" id="rainy-toggle">
-      <span>Rain-friendly only / 비 와도 OK</span>
+      <span id="rainy-label">비 와도 OK</span>
     </label>
   </div>
 

@@ -863,6 +863,9 @@ tr:last-child td {
   background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
   color: var(--white);
   padding: 1.25rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .madison-hero-row {
@@ -883,6 +886,37 @@ tr:last-child td {
   font-size: 0.95rem;
   color: var(--gray-400);
   font-weight: 300;
+}
+
+.madison-hero-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.lang-toggle-btn {
+  padding: 0.5rem 1.25rem;
+  background: rgba(255,255,255,0.1);
+  border: 2px solid var(--white);
+  border-radius: 12px;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.lang-toggle-btn:hover {
+  background: rgba(255,255,255,0.2);
+  transform: scale(1.05);
+}
+
+.lang-flag {
+  font-size: 1.3rem;
+  vertical-align: middle;
+  margin-right: 0.3rem;
 }
 
 .madison-weather-widget {
@@ -1023,7 +1057,7 @@ tr:last-child td {
 .activity-card {
   background: var(--white);
   border-radius: 16px;
-  padding: 1.25rem;
+  overflow: hidden;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
   animation: fadeInUp 0.5s ease-out;
@@ -1032,6 +1066,22 @@ tr:last-child td {
 .activity-card:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
+
+.activity-image {
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.activity-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.activity-card-body {
+  padding: 1rem 1.25rem 1.25rem;
 }
 
 .activity-card-top {
