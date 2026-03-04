@@ -1,7 +1,10 @@
 // Data
 const data = {
-  balance: 782.25,
-  interest: 19.47,
+  balance: 785.71,
+  interest: [
+    { label: "2025 이자", amount: 19.47 },
+    { label: "2026 이자 (1-2월)", amount: 3.46 }
+  ],
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   partiesShort: ["부모님", "Joe", "Dom"],
   contributions: [
@@ -166,11 +169,13 @@ function renderLedger() {
   });
 
   // Interest
-  total += data.interest;
-  const iRow = document.createElement("tr");
-  iRow.className = "interest-row";
-  iRow.innerHTML = '<td class="month-cell">2025 이자</td><td></td><td></td><td>+$' + data.interest.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(iRow);
+  data.interest.forEach(function(int) {
+    total += int.amount;
+    const iRow = document.createElement("tr");
+    iRow.className = "interest-row";
+    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
+    tbody.appendChild(iRow);
+  });
 
   // Madison expense
   const madison = data.trips.find(t => t.id === "madison");
@@ -212,11 +217,13 @@ function renderMobileLedger() {
   });
 
   // Interest
-  total += data.interest;
-  const iRow = document.createElement("tr");
-  iRow.className = "interest-row";
-  iRow.innerHTML = '<td class="month-cell">2025 이자</td><td></td><td></td><td>+$' + data.interest.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(iRow);
+  data.interest.forEach(function(int) {
+    total += int.amount;
+    const iRow = document.createElement("tr");
+    iRow.className = "interest-row";
+    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
+    tbody.appendChild(iRow);
+  });
 
   // Madison expense
   const madison = data.trips.find(t => t.id === "madison");
