@@ -102,18 +102,6 @@ const activities = [
     hours: "월-금 8:30am-4:30pm, 토 9am-1pm"
   },
   {
-    name: "Madison Children's Museum", nameKo: "매디슨 어린이 박물관",
-    category: "indoor", weather: "rainy",
-    description: "Hands-on exhibits across multiple floors. Rooftop garden with animals. Open Sunday only (closed Mon-Tue during our trip).",
-    descriptionKo: "다층 체험형 전시관. 옥상 정원에 동물들. 일요일만 개관 (월-화 휴관으로 여행 중 일요일만 가능).",
-    distance: "8 min drive", distanceKo: "차로 8분",
-    address: "100 N Hamilton St",
-    url: "https://madisonchildrensmuseum.org/",
-    image: "assets/images/activities/childrens-museum.jpg",
-    tags: ["kid-friendly"],
-    hours: "수-일 9am - 4pm (월·화 휴관)"
-  },
-  {
     name: "Wisconsin State Capitol Tour", nameKo: "위스콘신 주청사 투어",
     category: "indoor", weather: "rainy",
     description: "Free guided tours of the beautiful state capitol building. 45-55 minutes. Observation deck is summer only.",

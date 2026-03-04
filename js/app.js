@@ -149,96 +149,107 @@ function cycleImg(id, dir) {
   });
 }
 
-// Ledger
+// Ledger (newest first, total on top)
 function renderLedger() {
   const tbody = document.getElementById("contribution-body");
+
+  // Compute full total first
   let total = 0;
+  data.contributions.forEach(c => { total += c.p.reduce((a,b) => a+b, 0) * 50; });
+  data.interest.forEach(function(int) { total += int.amount; });
+  const madison = data.trips.find(t => t.id === "madison");
+  if (madison && madison.cost) total -= madison.cost;
 
-  data.contributions.forEach(c => {
+  // Final row on top
+  const tRow = document.createElement("tr");
+  tRow.className = "final-row";
+  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
+  tbody.appendChild(tRow);
+
+  // Madison expense
+  if (madison && madison.cost) {
+    const eRow = document.createElement("tr");
+    eRow.className = "expense-row";
+    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td></td>';
+    tbody.appendChild(eRow);
+  }
+
+  // Interest (reversed)
+  for (let i = data.interest.length - 1; i >= 0; i--) {
+    const int = data.interest[i];
+    const iRow = document.createElement("tr");
+    iRow.className = "interest-row";
+    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td></td>';
+    tbody.appendChild(iRow);
+  }
+
+  // Contributions newest first with running total descending
+  let runDown = 0;
+  data.contributions.forEach(c => { runDown += c.p.reduce((a,b) => a+b, 0) * 50; });
+  for (let i = data.contributions.length - 1; i >= 0; i--) {
+    const c = data.contributions[i];
     const [y, m] = c.m.split("-");
-    const paid = c.p.reduce((a,b) => a+b, 0) * 50;
-    total += paid;
-
     const row = document.createElement("tr");
     row.innerHTML =
       '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
       '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
       '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
       '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
-      '<td class="running-total">$' + total + '</td>';
+      '<td class="running-total">$' + runDown + '</td>';
     tbody.appendChild(row);
-  });
-
-  // Interest
-  data.interest.forEach(function(int) {
-    total += int.amount;
-    const iRow = document.createElement("tr");
-    iRow.className = "interest-row";
-    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-    tbody.appendChild(iRow);
-  });
-
-  // Madison expense
-  const madison = data.trips.find(t => t.id === "madison");
-  if (madison && madison.cost) {
-    total -= madison.cost;
-    const eRow = document.createElement("tr");
-    eRow.className = "expense-row";
-    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-    tbody.appendChild(eRow);
+    runDown -= c.p.reduce((a,b) => a+b, 0) * 50;
   }
-
-  // Final
-  const tRow = document.createElement("tr");
-  tRow.className = "final-row";
-  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(tRow);
 }
 
-// Mobile Ledger
+// Mobile Ledger (newest first, total on top)
 function renderMobileLedger() {
   const tbody = document.getElementById("mobile-contribution-body");
   if (!tbody) return;
 
+  // Compute full total first
   let total = 0;
+  data.contributions.forEach(c => { total += c.p.reduce((a,b) => a+b, 0) * 50; });
+  data.interest.forEach(function(int) { total += int.amount; });
+  const madison = data.trips.find(t => t.id === "madison");
+  if (madison && madison.cost) total -= madison.cost;
 
-  data.contributions.forEach(c => {
+  // Final row on top
+  const tRow = document.createElement("tr");
+  tRow.className = "final-row";
+  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
+  tbody.appendChild(tRow);
+
+  // Madison expense
+  if (madison && madison.cost) {
+    const eRow = document.createElement("tr");
+    eRow.className = "expense-row";
+    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td></td>';
+    tbody.appendChild(eRow);
+  }
+
+  // Interest (reversed)
+  for (let i = data.interest.length - 1; i >= 0; i--) {
+    const int = data.interest[i];
+    const iRow = document.createElement("tr");
+    iRow.className = "interest-row";
+    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td></td>';
+    tbody.appendChild(iRow);
+  }
+
+  // Contributions newest first with running total descending
+  let runDown = 0;
+  data.contributions.forEach(c => { runDown += c.p.reduce((a,b) => a+b, 0) * 50; });
+  for (let i = data.contributions.length - 1; i >= 0; i--) {
+    const c = data.contributions[i];
     const [y, m] = c.m.split("-");
-    const paid = c.p.reduce((a,b) => a+b, 0) * 50;
-    total += paid;
-
     const row = document.createElement("tr");
     row.innerHTML =
       '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
       '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
       '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
       '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
-      '<td class="running-total">$' + total + '</td>';
+      '<td class="running-total">$' + runDown + '</td>';
     tbody.appendChild(row);
-  });
-
-  // Interest
-  data.interest.forEach(function(int) {
-    total += int.amount;
-    const iRow = document.createElement("tr");
-    iRow.className = "interest-row";
-    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-    tbody.appendChild(iRow);
-  });
-
-  // Madison expense
-  const madison = data.trips.find(t => t.id === "madison");
-  if (madison && madison.cost) {
-    total -= madison.cost;
-    const eRow = document.createElement("tr");
-    eRow.className = "expense-row";
-    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td class="running-total">$' + total.toFixed(2) + '</td>';
-    tbody.appendChild(eRow);
+    runDown -= c.p.reduce((a,b) => a+b, 0) * 50;
   }
-
-  // Final
-  const tRow = document.createElement("tr");
-  tRow.className = "final-row";
-  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(tRow);
 }
