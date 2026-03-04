@@ -964,9 +964,6 @@ tr:last-child td {
 
 /* Filter Bar */
 .filter-bar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
   background: var(--white);
   padding: 0.75rem 2rem;
   border-bottom: 1px solid var(--gray-200);
