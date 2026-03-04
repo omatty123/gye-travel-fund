@@ -265,7 +265,7 @@ const activities = [
   },
   {
     name: "State Street", nameKo: "스테이트 스트릿",
-    category: "neighborhood", weather: "fair",
+    category: "outdoor", weather: "fair",
     description: "Madison's famous pedestrian street connecting the Capitol to UW campus. Shops, restaurants, and people-watching for 8 blocks.",
     descriptionKo: "주청사에서 대학교까지 이어지는 매디슨의 유명한 보행자 전용 거리. 8블록의 상점, 식당, 거리 구경.",
     distance: "8 min drive", distanceKo: "차로 8분",
@@ -277,7 +277,7 @@ const activities = [
   },
   {
     name: "West High School", nameKo: "웨스트 고등학교",
-    category: "neighborhood", weather: "fair",
+    category: "outdoor", weather: "fair",
     description: "Drive by and see the school.",
     descriptionKo: "학교 앞을 지나가며 구경.",
     distance: "10 min drive", distanceKo: "차로 10분",
