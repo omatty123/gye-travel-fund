@@ -1,6 +1,6 @@
 // Data
 const data = {
-  balance: 582.25,
+  balance: 742.25,
   interest: 19.47,
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   partiesShort: ["부모님", "Joe", "Dom"],
@@ -15,7 +15,9 @@ const data = {
     { m: "2025-11", p: [1,1,1] },
     { m: "2025-12", p: [1,1,1] },
     { m: "2026-01", p: [1,1,1] },
-    { m: "2026-02", p: [1,0,0] }
+    { m: "2026-02", p: [1,0,0] },
+    { m: "2026-03", p: [1,1,1], amt: 40 },
+    { m: "2026-04", p: [1,0,0], amt: 40 }
   ],
   trips: [
     {
@@ -150,7 +152,8 @@ function renderLedger() {
 
   data.contributions.forEach(c => {
     const [y, m] = c.m.split("-");
-    const paid = c.p.reduce((a,b) => a+b, 0) * 50;
+    const amt = c.amt || 50;
+    const paid = c.p.reduce((a,b) => a+b, 0) * amt;
     total += paid;
 
     const row = document.createElement("tr");
@@ -196,7 +199,8 @@ function renderMobileLedger() {
 
   data.contributions.forEach(c => {
     const [y, m] = c.m.split("-");
-    const paid = c.p.reduce((a,b) => a+b, 0) * 50;
+    const amt = c.amt || 50;
+    const paid = c.p.reduce((a,b) => a+b, 0) * amt;
     total += paid;
 
     const row = document.createElement("tr");
