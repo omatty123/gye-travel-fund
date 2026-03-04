@@ -115,6 +115,7 @@ function renderTrips() {
         '<div class="trip-info">' + trip.subtitle + (trip.tags.length ? ' · ' + trip.tags.join(' · ') : '') + '</div>' +
         (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
         (trip.airbnb ? '<a href="' + trip.airbnb + '" target="_blank" class="airbnb-link">View on Airbnb</a>' : '') +
+        (trip.id === 'madison' ? '<a href="madison.html" class="things-to-do-link">Things to Do / 할 거리</a>' : '') +
         '<div class="trip-map">' +
           '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
           '<div class="trip-address">' + trip.address + '</div>' +

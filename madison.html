@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>매디슨에서 할 거리 - Things to Do</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+  <!-- Breadcrumb -->
+  <nav class="breadcrumb">
+    <a href="index.html">&larr; 여행 계 홈 / Back to Travel Fund</a>
+  </nav>
+
+  <!-- Hero -->
+  <header class="madison-hero">
+    <p class="hero-tag">March 22-24, 2026</p>
+    <h1>Things to Do in Madison</h1>
+    <p class="madison-subtitle">매디슨에서 할 거리</p>
+    <p class="madison-weather-note">Late March in Madison can be chilly or rainy. Check the forecast and have indoor backup plans ready.</p>
+  </header>
+
+  <!-- Map -->
+  <section class="map-section">
+    <iframe src="https://maps.google.com/maps?q=725+Jenifer+St+Madison+WI+53703&z=14&output=embed" loading="lazy"></iframe>
+    <div class="map-address">725 Jenifer St, Madison, WI 53703</div>
+  </section>
+
+  <!-- Filter Bar -->
+  <div class="filter-bar">
+    <div class="filter-pills">
+      <button class="filter-pill active" data-category="all">All</button>
+      <button class="filter-pill" data-category="outdoor">Outdoors</button>
+      <button class="filter-pill" data-category="indoor">Indoors</button>
+      <button class="filter-pill" data-category="food">Food</button>
+      <button class="filter-pill" data-category="neighborhood">Neighborhood</button>
+    </div>
+    <label class="weather-toggle">
+      <input type="checkbox" id="rainy-toggle">
+      <span>Rain-friendly only / 비 와도 OK</span>
+    </label>
+  </div>
+
+  <!-- Activities -->
+  <div class="container">
+    <div id="activity-container"></div>
+
+    <footer class="footer">
+      <p>사랑으로 함께하는 우리 가족</p>
+      <p class="signature">올림, 양코사위</p>
+    </footer>
+  </div>
+
+  <script src="js/madison.js?v=1"></script>
+</body>
+</html>
