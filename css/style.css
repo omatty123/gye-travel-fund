@@ -761,11 +761,31 @@ tr:last-child td {
 
   /* Madison page mobile */
   .madison-hero {
-    padding: 2rem 1rem 1.5rem;
+    padding: 1rem;
+  }
+
+  .madison-hero-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
   .madison-hero h1 {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+  }
+
+  .madison-weather-widget {
+    text-align: left;
+  }
+
+  .weather-temp {
+    font-size: 1.4rem;
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .weather-desc {
+    display: inline;
   }
 
   .breadcrumb {
@@ -842,31 +862,50 @@ tr:last-child td {
 .madison-hero {
   background: linear-gradient(135deg, var(--black) 0%, var(--gray-800) 100%);
   color: var(--white);
-  padding: 2.5rem 2rem 2rem;
+  padding: 1.25rem 2rem;
+}
+
+.madison-hero-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
 }
 
 .madison-hero h1 {
-  font-size: 2.2rem;
+  font-size: 1.6rem;
   font-weight: 900;
   letter-spacing: -0.02em;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.15rem;
 }
 
 .madison-subtitle {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: var(--gray-400);
   font-weight: 300;
-  margin-bottom: 1rem;
 }
 
-.madison-weather-note {
-  font-size: 0.85rem;
+.madison-weather-widget {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.weather-loading {
+  font-size: 0.8rem;
+  color: var(--gray-400);
+}
+
+.weather-temp {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+}
+
+.weather-desc {
+  font-size: 0.8rem;
   color: var(--gray-400);
   font-weight: 300;
-  padding: 0.6rem 1rem;
-  background: rgba(255,255,255,0.06);
-  border-radius: 8px;
-  display: inline-block;
 }
 
 /* Map Section */

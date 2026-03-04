@@ -50,18 +50,43 @@ const activities = [
     hours: "Always open"
   },
 
+  {
+    name: "Picnic Point",
+    nameKo: "피크닉 포인트",
+    category: "outdoor",
+    weather: "fair",
+    description: "A narrow peninsula jutting into Lake Mendota on the UW campus. A 1.5 mile round-trip walk through woods with beautiful lake views on both sides.",
+    distance: "15 min drive",
+    address: "2000 University Bay Dr",
+    url: null,
+    tags: ["free", "kid-friendly"],
+    hours: "Daily 6am - 10pm"
+  },
+  {
+    name: "UW-Madison Campus Walk",
+    nameKo: "위스콘신 대학교 캠퍼스 투어",
+    category: "outdoor",
+    weather: "fair",
+    description: "Walk the beautiful UW-Madison campus along the lakeshore path. Bascom Hill, the Red Gym, Memorial Union Terrace (great for sitting by the lake).",
+    distance: "10 min drive",
+    address: "716 Langdon St (Memorial Union)",
+    url: null,
+    tags: ["free"],
+    hours: "Always open"
+  },
+
   // INDOOR
   {
     name: "Madison Children's Museum",
     nameKo: "매디슨 어린이 박물관",
     category: "indoor",
     weather: "rainy",
-    description: "Hands-on exhibits across multiple floors. Rooftop garden with animals. Free admission Thursdays 4-8pm.",
+    description: "Hands-on exhibits across multiple floors. Rooftop garden with animals. Open Sunday only (closed Mon-Tue during our trip).",
     distance: "8 min drive",
     address: "100 N Hamilton St",
     url: "https://madisonchildrensmuseum.org/",
     tags: ["kid-friendly"],
-    hours: "Wed-Sun 9am - 4pm"
+    hours: "Wed-Sun 9am - 4pm (CLOSED Mon & Tue)"
   },
   {
     name: "Wisconsin State Capitol Tour",
@@ -88,7 +113,69 @@ const activities = [
     hours: "Mon-Fri 10am-7pm, Sat-Sun 11am-5pm"
   },
 
-  // FOOD
+  // FOOD - KOREAN
+  {
+    name: "New Seoul Korean",
+    nameKo: "뉴서울",
+    category: "food",
+    weather: "any",
+    description: "Madison's longtime favorite Korean restaurant. Rock cooker bibimbap, bulgogi, kimbap, tteokbokki. Multiple-time Best of Madison winner. Kid-friendly and relaxed.",
+    distance: "15 min drive",
+    address: "721 N High Point Rd",
+    url: "https://newseoulmadison.com/",
+    tags: ["kid-friendly", "korean"],
+    hours: "Mon 11am-1:30pm & 5-8pm, Wed-Sat same, Tue dinner only, Sun closed"
+  },
+  {
+    name: "SGD Dubu Tofu & Korean BBQ",
+    nameKo: "소공동 순두부",
+    category: "food",
+    weather: "any",
+    description: "Signature sundubu jjigae (soon tofu soup) on State Street. Also serves Korean BBQ and bibimbap. Note: closed Tuesdays (March 24).",
+    distance: "8 min drive",
+    address: "559 State St",
+    url: "https://www.sgdrestaurant.com/",
+    tags: ["korean"],
+    hours: "Mon, Wed-Sun 11am-9pm (CLOSED Tue)"
+  },
+  {
+    name: "Sol's On the Square",
+    nameKo: "솔스 온 더 스퀘어",
+    category: "food",
+    weather: "any",
+    description: "Korean classics just off the Capitol Square. Bibimbap, bulgogi, seafood pancake, kimchi soup. Reservations accepted.",
+    distance: "8 min drive",
+    address: "117 E Mifflin St",
+    url: null,
+    tags: ["kid-friendly", "korean"],
+    hours: "Lunch Mon-Sat 11am-2:30pm, Dinner Mon-Sat 4:30pm+"
+  },
+  {
+    name: "Korill Hut Korean BBQ & Hot Pot",
+    nameKo: "코릴 헛 한식뷔페",
+    category: "food",
+    weather: "any",
+    description: "All-you-can-eat Korean BBQ and hot pot. Grill at your table with a variety of meats and marinades. Fun interactive format for kids.",
+    distance: "15 min drive",
+    address: "232 East Towne Way",
+    url: "https://www.korillhut.com/",
+    tags: ["kid-friendly", "korean"],
+    hours: "Daily 11:30am-10pm, Fri-Sat until 11pm"
+  },
+  {
+    name: "5 Star Korean BBQ",
+    nameKo: "5스타 코리안 바베큐",
+    category: "food",
+    weather: "any",
+    description: "Bibimbap, bulgogi, jajangmyeon, fried dumplings, kimchi jjigae. Broad menu with options at various spice levels.",
+    distance: "8 min drive",
+    address: "605 E Washington Ave",
+    url: "https://5starkoreanbbq.com/",
+    tags: ["korean"],
+    hours: "Tue-Thu 3:30-9pm, Fri-Sat 11am-9pm, Sun 11am-8:30pm (CLOSED Mon)"
+  },
+
+  // FOOD - OTHER
   {
     name: "Lazy Jane's Cafe & Bakery",
     nameKo: "레이지 제인스 카페",
@@ -140,6 +227,30 @@ const activities = [
     hours: "Varies by shop"
   },
   {
+    name: "State Street",
+    nameKo: "스테이트 스트릿",
+    category: "neighborhood",
+    weather: "fair",
+    description: "Madison's famous pedestrian street connecting the Capitol to the UW campus. Shops, restaurants, street performers, and people-watching for 8 blocks.",
+    distance: "8 min drive",
+    address: "State St (Capitol to campus)",
+    url: null,
+    tags: ["free"],
+    hours: "Always open"
+  },
+  {
+    name: "West High School",
+    nameKo: "웨스트 고등학교",
+    category: "neighborhood",
+    weather: "fair",
+    description: "Drive by and see the school.",
+    distance: "10 min drive",
+    address: "30 Ash St",
+    url: null,
+    tags: ["free"],
+    hours: "Drive-by"
+  },
+  {
     name: "Willy Street Co-op",
     nameKo: "윌리 스트릿 협동조합",
     category: "neighborhood",
@@ -163,7 +274,8 @@ const categoryInfo = {
 const tagColors = {
   "free": "var(--forest)",
   "kid-friendly": "var(--coral)",
-  "walkable": "var(--gray-600)"
+  "walkable": "var(--gray-600)",
+  "korean": "#d94f70"
 };
 
 // State
@@ -174,7 +286,37 @@ let rainyOnly = false;
 document.addEventListener("DOMContentLoaded", function() {
   renderActivities();
   setupFilters();
+  fetchWeather();
 });
+
+// Weather via Open-Meteo (free, no API key)
+function fetchWeather() {
+  var widget = document.getElementById("weather-widget");
+  fetch("https://api.open-meteo.com/v1/forecast?latitude=43.0731&longitude=-89.4012&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/Chicago")
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      var temp = Math.round(data.current.temperature_2m);
+      var code = data.current.weather_code;
+      var desc = weatherCodeToText(code);
+      widget.innerHTML = '<span class="weather-temp">' + temp + '\u00B0F</span><span class="weather-desc">' + desc + '</span>';
+    })
+    .catch(function() {
+      widget.innerHTML = '<span class="weather-desc">Weather unavailable</span>';
+    });
+}
+
+function weatherCodeToText(code) {
+  if (code === 0) return "Clear";
+  if (code <= 3) return "Partly cloudy";
+  if (code <= 49) return "Foggy";
+  if (code <= 59) return "Drizzle";
+  if (code <= 69) return "Rain";
+  if (code <= 79) return "Snow";
+  if (code <= 82) return "Rain showers";
+  if (code <= 86) return "Snow showers";
+  if (code >= 95) return "Thunderstorm";
+  return "Cloudy";
+}
 
 function renderActivities() {
   var container = document.getElementById("activity-container");
