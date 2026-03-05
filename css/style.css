@@ -119,18 +119,24 @@ body {
   color: #4ade80;
 }
 
+.hero-ledger .interest-row {
+  background: transparent !important;
+}
+
 .hero-ledger .interest-row td {
-  color: var(--white);
-  background: transparent;
+  color: var(--white) !important;
+}
+
+.hero-ledger .expense-row {
+  background: transparent !important;
 }
 
 .hero-ledger .expense-row td {
-  color: var(--white);
-  background: transparent;
+  color: var(--white) !important;
 }
 
-.hero-ledger .expense {
-  color: var(--coral);
+.hero-ledger .expense-row .expense {
+  color: var(--coral) !important;
 }
 
 .hero-ledger .final-row {
