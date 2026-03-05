@@ -158,7 +158,7 @@ const activities = [
     descriptionKo: "캐피톨 스퀘어 근처 한식당. 비빔밥, 불고기, 해물파전, 김치찌개. 예약 가능.",
     distance: "8 min drive", distanceKo: "차로 8분",
     address: "117 E Mifflin St",
-    url: null,
+    url: "https://sols-on-the-square.restaurants-world.net/menu",
     image: "assets/images/activities/sols-square.jpg",
     tags: ["kid-friendly", "korean"],
     hours: "점심 월-토 11am-2:30pm, 저녁 월-토 4:30pm+"
