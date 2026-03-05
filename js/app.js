@@ -8,6 +8,7 @@ const data = {
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   partiesShort: ["부모님", "Joe", "Dom"],
   contributions: [
+    { m: "2025-03", p: [1,1,1] },
     { m: "2025-04", p: [1,1,1] },
     { m: "2025-05", p: [1,1,1] },
     { m: "2025-06", p: [1,1,1] },
