@@ -852,6 +852,24 @@ tr:last-child td {
   background: var(--forest-dark);
 }
 
+.photos-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  margin-left: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: var(--gray-800);
+  color: var(--white);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.photos-link:hover {
+  background: var(--black);
+}
+
 /* ========================================
    MADISON PAGE
    ======================================== */

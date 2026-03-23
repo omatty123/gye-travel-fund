@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Madison Photos - 매디슨 사진</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --white: #ffffff;
+      --gray-50: #fafafa;
+      --gray-100: #f5f5f5;
+      --gray-200: #e5e5e5;
+      --gray-400: #a3a3a3;
+      --gray-600: #525252;
+      --gray-800: #262626;
+      --coral: #ff5a5f;
+      --coral-dark: #e04850;
+      --forest: #008489;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { font-size: 16px; }
+
+    body {
+      font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .breadcrumb {
+      background: var(--black);
+      padding: 0.75rem 2rem;
+      border-bottom: 1px solid var(--gray-800);
+    }
+
+    .breadcrumb a {
+      color: var(--coral);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .breadcrumb a:hover {
+      text-decoration: underline;
+    }
+
+    .page-header {
+      padding: 2rem 2rem 1rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .page-header p {
+      color: var(--gray-400);
+      font-size: 0.95rem;
+      font-weight: 300;
+    }
+
+    .photo-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 1rem 2rem 3rem;
+      columns: 3;
+      column-gap: 1rem;
+    }
+
+    .photo-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .photo-item img,
+    .photo-item video {
+      width: 100%;
+      display: block;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .photo-item:hover img,
+    .photo-item:hover video {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    #lightbox-media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #lightbox-media img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 2rem;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: none;
+      color: var(--white);
+      font-size: 1.5rem;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+    }
+
+    .lightbox-nav:hover {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
+
+    .lightbox-counter {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--gray-400);
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      color: var(--gray-600);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--gray-800);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .footer .signature {
+      margin-top: 0.5rem;
+      font-weight: 600;
+      color: var(--coral);
+    }
+
+    @media (max-width: 900px) {
+      .photo-grid { columns: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .photo-grid {
+        columns: 1;
+        padding: 1rem;
+      }
+      .page-header {
+        padding: 1.5rem 1rem 0.75rem;
+      }
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+      .breadcrumb {
+        padding: 0.75rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="breadcrumb">
+    <a href="index.html">&larr; 여행 계 홈 / Back to Travel Fund</a>
+  </nav>
+
+  <div class="page-header">
+    <h1>Madison, March 2026</h1>
+    <p>매디슨 가족 휴가 사진</p>
+  </div>
+
+  <div class="photo-grid" id="photo-grid"></div>
+
+  <footer class="footer">
+    <p>사랑으로 함께하는 우리 가족</p>
+    <p class="signature">올림, 양코사위</p>
+  </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&lsaquo;</button>
+    <div id="lightbox-media"></div>
+    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rsaquo;</button>
+    <div class="lightbox-counter" id="lightbox-counter"></div>
+  </div>
+
+  <script>
+    var photos = [
+      "assets/images/madison-photo-6.jpeg",
+      "assets/images/IMG_2124.jpeg",
+      "assets/images/IMG_2122.jpeg",
+      "assets/images/madison-photo-4.jpeg",
+      "assets/images/IMG_2119.jpeg",
+      "assets/images/madison-photo-1.jpeg",
+      "assets/images/IMG_2121.jpeg",
+      "assets/images/madison-photo-5.jpeg",
+      "assets/images/madison-photo-7.jpeg",
+      "assets/images/madison-photo-3.jpeg",
+      "assets/images/IMG_2107.jpeg",
+      "assets/images/IMG_2125.jpeg",
+      { type: "video", src: "assets/images/madison-video-1.mp4" }
+    ];
+    var currentIdx = 0;
+
+    // Build grid
+    var grid = document.getElementById("photo-grid");
+    photos.forEach(function(item, i) {
+      var div = document.createElement("div");
+      div.className = "photo-item";
+      div.onclick = function() { openLightbox(i); };
+      if (typeof item === "string") {
+        var img = document.createElement("img");
+        img.src = item;
+        img.alt = "Madison trip photo";
+        img.loading = "lazy";
+        div.appendChild(img);
+      } else {
+        var vid = document.createElement("video");
+        vid.src = item.src;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.muted = true;
+        vid.playsInline = true;
+        div.appendChild(vid);
+      }
+      grid.appendChild(div);
+    });
+
+    function getSrc(item) { return typeof item === "string" ? item : item.src; }
+    function isVideo(item) { return typeof item !== "string"; }
+
+    function openLightbox(i) {
+      currentIdx = i;
+      var lb = document.getElementById("lightbox");
+      showLightboxItem(i);
+      document.getElementById("lightbox-counter").textContent = (i + 1) + " / " + photos.length;
+      lb.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
+
+    function showLightboxItem(i) {
+      var container = document.getElementById("lightbox-media");
+      var item = photos[i];
+      container.innerHTML = "";
+      if (isVideo(item)) {
+        var vid = document.createElement("video");
+        vid.src = item.src;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.controls = true;
+        vid.playsInline = true;
+        vid.style.maxWidth = "90vw";
+        vid.style.maxHeight = "90vh";
+        vid.style.borderRadius = "8px";
+        container.appendChild(vid);
+      } else {
+        var img = document.createElement("img");
+        img.src = item;
+        img.alt = "";
+        container.appendChild(img);
+      }
+      document.getElementById("lightbox-counter").textContent = (i + 1) + " / " + photos.length;
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+      document.body.style.overflow = "";
+    }
+
+    function navLightbox(dir) {
+      currentIdx += dir;
+      if (currentIdx < 0) currentIdx = photos.length - 1;
+      if (currentIdx >= photos.length) currentIdx = 0;
+      showLightboxItem(currentIdx);
+    }
+
+    document.getElementById("lightbox").addEventListener("click", function(e) {
+      if (e.target === this) closeLightbox();
+    });
+
+    document.addEventListener("keydown", function(e) {
+      if (!document.getElementById("lightbox").classList.contains("active")) return;
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") navLightbox(-1);
+      if (e.key === "ArrowRight") navLightbox(1);
+    });
+  </script>
+</body>
+</html>
