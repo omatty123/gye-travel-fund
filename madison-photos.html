@@ -345,6 +345,9 @@
     }
 
     function closeLightbox() {
+      var vid = document.querySelector("#lightbox-media video");
+      if (vid) { vid.pause(); vid.currentTime = 0; }
+      document.getElementById("lightbox-media").innerHTML = "";
       document.getElementById("lightbox").classList.remove("active");
       document.body.style.overflow = "";
     }
