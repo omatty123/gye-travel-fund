@@ -1,9 +1,9 @@
 // Data
 const data = {
-  balance: 885.71,
+  balance: 1294.03,
   interest: [
     { label: "2025 이자", amount: 19.47 },
-    { label: "2026 이자 (1-2월)", amount: 3.46 }
+    { label: "2026 이자 (1-5월)", amount: 11.78 }
   ],
   parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
   partiesShort: ["부모님", "Joe", "Dom"],
@@ -20,7 +20,9 @@ const data = {
     { m: "2026-01", p: [1,1,1] },
     { m: "2026-02", p: [1,1,1] },
     { m: "2026-03", p: [1,1,1] },
-    { m: "2026-04", p: [1,0,0] }
+    { m: "2026-04", p: [1,1,1] },
+    { m: "2026-05", p: [1,1,1] },
+    { m: "2026-06", p: [1,1,1] }
   ],
   trips: [
     {
@@ -28,7 +30,7 @@ const data = {
       title: "매디슨 가족 휴가",
       subtitle: "",
       date: "2026년 3월 22일 - 24일",
-      status: "upcoming",
+      status: "completed",
       cost: 987.22,
       tags: [],
       address: "725 Jenifer St, Madison, WI 53703",
@@ -59,11 +61,18 @@ document.addEventListener("DOMContentLoaded", function() {
   // Balance
   document.getElementById("balance").textContent = "$" + data.balance.toFixed(2);
 
-  // Countdown
-  const tripDate = new Date("2026-03-22");
-  const days = Math.floor((tripDate - new Date()) / 86400000);
-  document.getElementById("countdown").textContent = days > 0 ? "D-" + days : "NOW";
-  document.getElementById("destination").textContent = "매디슨";
+  // Countdown — next upcoming trip, or TBD if none scheduled
+  const nextTrip = data.trips.find(t => t.status === "upcoming");
+  if (nextTrip) {
+    const md = nextTrip.date.match(/(\d{4})년\s*(\d+)월\s*(\d+)일/);
+    const tripDate = md ? new Date(+md[1], +md[2] - 1, +md[3]) : null;
+    const days = tripDate ? Math.floor((tripDate - new Date()) / 86400000) : 0;
+    document.getElementById("countdown").textContent = days > 0 ? "D-" + days : "NOW";
+    document.getElementById("destination").textContent = nextTrip.title;
+  } else {
+    document.getElementById("countdown").textContent = "미정";
+    document.getElementById("destination").textContent = "다음 여행";
+  }
 
   // Party headers - desktop uses full names
   document.getElementById("party-1").textContent = data.parties[0];
