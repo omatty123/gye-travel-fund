@@ -1,6 +1,7 @@
 // Data
 const data = {
-  balance: 1454.07,
+  balance: 1654.07,
+  pendingReceipt: { amount: 200, label: "부모님 7–10월 회비" },
   interest: [
     { label: "2025 이자", amount: 19.47 },
     { label: "2026 이자 (1-8월)", amount: 21.82 }
@@ -23,9 +24,10 @@ const data = {
     { m: "2026-04", p: [1,1,1] },
     { m: "2026-05", p: [1,1,1] },
     { m: "2026-06", p: [1,1,1] },
-    { m: "2026-07", p: [0,0,1] },
-    { m: "2026-08", p: [0,0,1] },
-    { m: "2026-09", p: [0,0,1] }
+    { m: "2026-07", p: [1,0,1] },
+    { m: "2026-08", p: [1,0,1] },
+    { m: "2026-09", p: [1,0,1] },
+    { m: "2026-10", p: [1,0,0] }
   ],
   trips: [
     {
@@ -63,6 +65,13 @@ const monthsEn = {"01":"January","02":"February","03":"March","04":"April","05":
 document.addEventListener("DOMContentLoaded", function() {
   // Balance
   document.getElementById("balance").textContent = "$" + data.balance.toFixed(2);
+  const receiptNote = document.getElementById("receipt-note");
+  if (data.pendingReceipt && data.pendingReceipt.amount > 0) {
+    document.getElementById("balance-label").textContent = "잔액 (입금 예정 포함)";
+    document.getElementById("bank-balance").textContent = "은행 잔액 $" + (data.balance - data.pendingReceipt.amount).toFixed(2);
+    document.getElementById("pending-receipt").textContent = data.pendingReceipt.label + " $" + data.pendingReceipt.amount.toFixed(2) + " 입금 예정";
+    receiptNote.hidden = false;
+  }
 
   // Countdown — next upcoming trip, or TBD if none scheduled
   const nextTrip = data.trips.find(t => t.status === "upcoming");
