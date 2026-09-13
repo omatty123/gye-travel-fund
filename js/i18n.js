@@ -57,21 +57,17 @@
     "ko": "2027년 3월 · 성인 6명 + 아이 1명 · 위스콘신",
     "en": "March 2027 · 6 adults + 1 child · Wisconsin"
   },
-  "researchStatus": {
-    "ko": "6개 지역 · 숙소 후보 15곳",
-    "en": "6 areas · 15 possible stays"
-  },
   "springIntro": {
-    "ko": "도시도, 작은 마을도, 숲속도 좋아요. Milwaukee·Sheboygan부터 Cedarburg·Port Washington, 호수와 캐빈까지 여섯 지역을 비교해요. 각 지역에 2–3개 후보가 있어요.",
-    "en": "Cities, small towns, lakes, and cabins are all on the table. Compare six areas, including Milwaukee, Sheboygan, Cedarburg, and Port Washington, with two or three candidates in each."
+    "ko": "도시, 작은 마을, 호숫가와 숲속 숙소를 함께 비교해요. 숙소·관리업체의 공식 웹사이트와 Vrbo 등 여러 출처에서 성인 6명과 아이 1명의 잠자리, 반려견 동반 규정을 확인했어요. 각 후보의 근거 링크도 함께 볼 수 있어요.",
+    "en": "Compare cities, small towns, lakes, and cabins. We researched owner and rental-agency websites, Vrbo, and other sources for sleeping space for six adults and one child, with an explicit check of pet-dog policies. Each candidate links to the sources behind it."
   },
   "bookingNote": {
     "ko": "정확한 날짜·숙박 일수·예산은 아직 미정이에요. 2026년 9월 13일 확인한 숙소 정보이며, 2027년 3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
     "en": "Exact dates, number of nights, and budget are still undecided. Listing details were checked September 13, 2026; March 2027 availability and total prices have not been checked."
   },
   "seasonNote": {
-    "ko": "3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 사진은 각 Airbnb 숙소 호스트가 제공한 사진이에요.",
-    "en": "For March, think shoreline walks and time together indoors. Swimming, boats, and outdoor facilities need separate seasonal checks. Photos are supplied by the Airbnb hosts."
+    "ko": "3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 숙소 사진은 각 소유주·관리업체의 등록 페이지에서 제공해요.",
+    "en": "For March, think shoreline walks and time together indoors. Swimming, boats, and outdoor facilities need separate seasonal checks. Property photos come from the owner or manager’s listing."
   },
   "ledgerDate": {
     "ko": "가족별 매월 $50 · 2026년 9월 13일 업데이트",
@@ -206,12 +202,12 @@
     "en": "new tab"
   },
   "hostPhoto": {
-    "ko": "호스트 제공 숙소 사진",
-    "en": "host-provided lodging photo"
+    "ko": "소유주·관리업체가 제공한 숙소 사진",
+    "en": "owner- or manager-provided property photo"
   },
   "photoFallback": {
-    "ko": "Airbnb에서 숙소 사진 보기",
-    "en": "View photos on Airbnb"
+    "ko": "숙소 페이지에서 사진 보기",
+    "en": "View photos on the property page"
   },
   "sourceDate": {
     "ko": "2026.09.13 확인",
@@ -358,16 +354,36 @@
     "en": "Website"
   },
   "chooseMarch": {
-    "ko": "Airbnb에서 2027년 3월 날짜를 직접 선택해 주세요. 검색 결과의 기본 날짜는 다를 수 있어요.",
-    "en": "Choose your March 2027 dates on Airbnb; its default search dates may differ."
+    "ko": "예약 사이트에서 2027년 3월의 실제 날짜와 인원·반려견 수를 선택해 주세요. 기본 날짜는 다를 수 있으며, 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
+    "en": "Enter your actual March 2027 dates, guests, and dogs on the booking site. Default dates may differ; availability and total prices remain unchecked."
   },
   "siteDescription": {
     "ko": "가족 여행 회비, 여행 기록, 2027년 3월 위스콘신의 도시·마을·호숫가 숙소 후보.",
     "en": "Family travel contributions, memories, and city, small-town, and lakeside stays for March 2027 in Wisconsin."
   },
-  "petSearchCount": {
-    "ko": "반려동물 1마리로 검색을 시작하니 실제 마릿수로 바꿔 주세요.",
-    "en": "Pet-friendly searches start with one pet; adjust to your actual number."
+  "viewProperty": {
+    "ko": "숙소 보기",
+    "en": "View property"
+  },
+  "priceInformation": {
+    "ko": "요금 안내",
+    "en": "Price information"
+  },
+  "listingSources": {
+    "ko": "숙소 정보 출처",
+    "en": "Property information sources"
+  },
+  "propertyListing": {
+    "ko": "숙소 등록 정보",
+    "en": "Property listing"
+  },
+  "ownerWebsite": {
+    "ko": "숙소 공식 웹사이트",
+    "en": "Owner website"
+  },
+  "managerWebsite": {
+    "ko": "관리업체 웹사이트",
+    "en": "Manager website"
   }
 };
   const valid = value => value === 'en' || value === 'ko';

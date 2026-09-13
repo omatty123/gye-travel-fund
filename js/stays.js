@@ -1,691 +1,452 @@
-// Preliminary candidates checked September 13, 2026. Prices and March 2027 availability unverified.
+// Owner, manager, county, and Vrbo research checked September 13, 2026.
+// March 2027 availability and dated totals unverified. Published pet permission remains subject to limits.
 const regions = [
   {
-    "id": "milwaukee",
+    "id": "forest",
     "name": {
-      "ko": "밀워키",
-      "en": "Milwaukee"
+      "en": "Elkhart Lake · Kettle Moraine",
+      "ko": "엘크하트 레이크 · 케틀모레인"
     },
     "description": {
-      "ko": "도시 여행: 식당·카페와 호숫가를 함께. 계단, 주차, 밤 소음을 비교해요.",
-      "en": "City stay: restaurants, cafés, and the lakefront. Compare stairs, parking, and nighttime noise."
-    },
-    "query": "Milwaukee, Wisconsin"
-  },
-  {
-    "id": "sheboygan",
-    "name": {
-      "ko": "셰보이건",
-      "en": "Sheboygan"
-    },
-    "description": {
-      "ko": "작은 도시와 호수: 개성 있는 오래된 집이나 해변 근처 주택에서 머물러요.",
-      "en": "Small city meets lake: a characterful historic home or a house close to the beach."
-    },
-    "query": "Sheboygan, Wisconsin"
-  },
-  {
-    "id": "smalltown",
-    "name": {
-      "ko": "시더버그 · 포트워싱턴",
-      "en": "Cedarburg · Port Washington"
-    },
-    "description": {
-      "ko": "작은 마을 여행: 시더버그의 상점과 카페, 또는 포트워싱턴의 항구 산책.",
-      "en": "Small-town stay: Cedarburg shops and cafés, or harbor walks in Port Washington."
-    },
-    "query": "Cedarburg, Wisconsin"
-  },
-  {
-    "id": "geneva",
-    "name": {
-      "ko": "제네바 · 로더데일 호수",
-      "en": "Geneva · Lauderdale Lakes"
-    },
-    "description": {
-      "ko": "남부 위스콘신: 호수 마을과 통나무집. Chicago 쪽에 더 가까워요.",
-      "en": "Southern Wisconsin: lake towns and log cabins, nearer Chicago."
-    },
-    "query": "Elkhorn, Wisconsin"
+      "en": "Indoor-pool retreat, lakeside log cabin, or a house inside a county park. Three different ways to spend time together near trails.",
+      "ko": "실내 수영장, 호숫가 통나무집, 공원 안 주택. 산책로 가까이에서 함께 쉬는 세 가지 선택이에요."
+    }
   },
   {
     "id": "shore",
     "name": {
-      "ko": "오스트버그 호숫가",
-      "en": "Oostburg lakeshore"
+      "en": "Port Washington · Sheboygan",
+      "ko": "포트워싱턴 · 셰보이건"
     },
     "description": {
-      "ko": "Lake Michigan 전망과 해변 산책. Appleton 쪽에 더 가깝고 Kohler-Andrae를 함께 둘러보기 좋아요.",
-      "en": "Lake Michigan views and shoreline walks, nearer Appleton, with Kohler-Andrae nearby."
-    },
-    "query": "Oostburg, Wisconsin"
+      "en": "Lake Michigan towns with restaurants and shoreline walks. Home Port has the clearest sleeping layout; Suncatcher adds a fenced yard.",
+      "ko": "식당과 호숫가 산책을 함께 즐기는 작은 도시들. 홈 포트는 잠자리 구성이 명확하고, 선캐처에는 울타리 마당이 있어요."
+    }
   },
   {
-    "id": "forest",
+    "id": "city",
     "name": {
-      "ko": "캐스케이드 · 케틀모레인",
-      "en": "Cascade · Kettle Moraine"
+      "en": "Milwaukee · Racine",
+      "ko": "밀워키 · 러신"
     },
     "description": {
-      "ko": "북부 Kettle Moraine 주변의 숲속 숙소. 집에서 쉬고 숲길을 걷는 여행이에요.",
-      "en": "Woodland stays around northern Kettle Moraine, for time at the house and on forest trails."
+      "en": "An urban base near Brady Street or a distinctive mid-century home near Racine. These are farther south toward Chicago.",
+      "ko": "브래디 스트리트 근처 도시 숙소 또는 러신의 개성 있는 미드센추리 주택. 시카고 쪽에 더 가까운 남부 후보예요."
+    }
+  },
+  {
+    "id": "geneva",
+    "name": {
+      "en": "Geneva Lake · Williams Bay",
+      "ko": "제네바 호수 · 윌리엄스베이"
     },
-    "query": "Cascade, Wisconsin"
+    "description": {
+      "en": "A practical lake-town alternative, with a family house close to the shore and dining.",
+      "ko": "호숫가와 식당 가까이에서 머무는 실용적인 호수 마을 대안이에요."
+    }
   }
 ];
 const stays = [
   {
-    "id": "569027432195208903",
-    "region": "milwaukee",
+    "id": "elkhart-pool",
+    "region": "forest",
     "name": {
-      "ko": "미드센추리 모던 무스",
-      "en": "Mid-Century Modern Moose"
+      "en": "Elkhart Lake indoor-pool home",
+      "ko": "엘크하트 레이크 실내 수영장 하우스"
+    },
+    "location": {
+      "en": "Near Elkhart Lake",
+      "ko": "엘크하트 레이크 근교"
+    },
+    "capacity": 13,
+    "bedrooms": 5,
+    "baths": 4,
+    "rating": null,
+    "url": "https://evolve.com/vacation-rentals/us/wi/elkhart-lake/512606",
+    "sourceName": "Evolve",
+    "photo": "https://d3kpuwe9hkbxpz.cloudfront.net/listings/512606/a0FPl000002jvk9MAA?width=1200",
+    "sources": [
+      {
+        "label": {
+          "en": "Manager listing & house rules",
+          "ko": "관리업체 숙소 정보·이용 규정"
+        },
+        "url": "https://evolve.com/vacation-rentals/us/wi/elkhart-lake/512606"
+      }
+    ],
+    "text": {
+      "en": {
+        "fit": "Top pick for March amenities",
+        "description": "Private indoor pool and hot tub in a separate pool house; Ice Age Trail 0.2 mile away.",
+        "beds": "Two kings + queen for six adults; twins for the child. Additional bunks and sofa bed.",
+        "check": "Three entry steps, multiple floors; fourth bathroom is in the pool house. Confirm pool access and heating for your dates."
+      },
+      "ko": {
+        "fit": "3월 실내 시설을 중시한다면 첫 후보",
+        "description": "별동에 전용 실내 수영장과 온수 욕조가 있고, 아이스 에이지 트레일이 약 320m 거리예요.",
+        "beds": "성인은 킹 2개와 퀸 1개, 아이는 싱글 침대를 쓸 수 있어요. 이층침대와 소파베드도 있어요.",
+        "check": "입구 계단 3개와 여러 층이 있어요. 네 번째 욕실은 수영장 별동에 있어요. 해당 날짜의 수영장 이용과 난방을 확인해요."
+      }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "en": "Up to 2 pets. Published $50 pet fee, plus fees/taxes; weight limit unstated.",
+        "ko": "최대 2마리. 반려동물 요금 $50에 수수료·세금이 추가돼요. 몸무게 제한은 미기재."
+      },
+      "source": "https://evolve.com/vacation-rentals/us/wi/elkhart-lake/512606",
+      "checked": "2026-09-13"
+    },
+    "priceNote": {
+      "en": "Splurge candidate; no March 2027 quote yet.",
+      "ko": "비용이 큰 후보예요. 2027년 3월 견적은 아직 없어요."
+    }
+  },
+  {
+    "id": "birchwood-cabin",
+    "region": "forest",
+    "name": {
+      "en": "Birchwood Log Cabin",
+      "ko": "버치우드 통나무집"
+    },
+    "location": {
+      "en": "Campbellsport · Kettle Moraine",
+      "ko": "캠벨스포트 · 케틀모레인"
+    },
+    "capacity": 14,
+    "bedrooms": 4,
+    "baths": 2,
+    "rating": null,
+    "url": "https://www.birchwoodlogcabin.com/listings/455104",
+    "sourceName": "Owner website",
+    "photo": "https://bookingenginecdn.hostaway.com/listing/174384-455104-RIQTsOehtNK4fpLQurnPKmUFhHF4ODKX2wpWHzhGdFc-691de39d2abb4?width=1920&quality=70&format=webp&v=2",
+    "sources": [
+      {
+        "label": {
+          "en": "Vrbo rules",
+          "ko": "Vrbo 이용 규정"
+        },
+        "url": "https://www.vrbo.com/3495865"
+      },
+      {
+        "label": {
+          "en": "Owner pet terms",
+          "ko": "공식 반려견 약관"
+        },
+        "url": "https://www.birchwoodlogcabin.com/terms-and-conditions"
+      }
+    ],
+    "text": {
+      "en": {
+        "fit": "Top pick for cabin atmosphere",
+        "description": "Year-round log cabin on a peninsula, with lake views, wood stove, and generous gathering space.",
+        "beds": "Three kings accommodate six adults; a queen in one downstairs room can suit the child. Fourth sleeping area is an open loft.",
+        "check": "Birchwood Lake is view-only: no swimming, fishing, or boating. Stairs and a steep embankment; supervise the child."
+      },
+      "ko": {
+        "fit": "통나무집 분위기를 원한다면 첫 후보",
+        "description": "반도 지형에 자리한 연중 운영 통나무집. 호수 전망, 장작 난로, 넉넉한 공용 공간이 있어요.",
+        "beds": "킹 3개에 성인 6명, 아래층 방의 추가 퀸에 아이가 잘 수 있어요. 네 번째 침실 공간은 개방형 로프트예요.",
+        "check": "버치우드 호수는 감상만 가능해요. 수영·낚시·보트는 금지예요. 계단과 가파른 물가 경사가 있어 아이를 살펴야 해요."
+      }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "en": "Prior approval required. Up to 2 dogs, each under 50 lb; kennel when alone, no beds/furniture. Fee unlisted.",
+        "ko": "사전 승인 필요. 각각 50lb(약 22.7kg) 미만인 개 최대 2마리. 혼자 두면 켄넬 사용, 침대·가구 금지. 요금 미기재."
+      },
+      "source": "https://www.vrbo.com/3495865",
+      "checked": "2026-09-13"
+    }
+  },
+  {
+    "id": "sandy-knoll",
+    "region": "forest",
+    "name": {
+      "en": "Sandy Knoll Ranger House",
+      "ko": "샌디놀 레인저 하우스"
+    },
+    "location": {
+      "en": "West Bend · Sandy Knoll County Park",
+      "ko": "웨스트벤드 · 샌디놀 카운티 공원"
+    },
+    "capacity": 8,
+    "bedrooms": 3,
+    "baths": 2.5,
+    "rating": null,
+    "url": "https://www.vrbo.com/739483",
+    "sourceName": "Vrbo",
+    "photo": "https://media.vrbo.com/lodging/32000000/31540000/31533200/31533148/ec4181e9.jpg?impolicy=resizecrop&ra=fit&rw=297",
+    "sources": [
+      {
+        "label": {
+          "en": "County park & rental information",
+          "ko": "카운티 공원·대여 안내"
+        },
+        "url": "https://www.washcowisco.gov/departments/parks___trails/venues/the_barn_at_sandy_knoll"
+      }
+    ],
+    "text": {
+      "en": {
+        "fit": "Practical park stay for a dog-centered trip",
+        "description": "A straightforward house inside a county park, with trails, playgrounds, and an eight-acre dog park.",
+        "beds": "Queen + double + two twins for six adults; double futon for the child.",
+        "check": "Less design-focused than the other picks. Confirm the futon setup and dog-park access rules."
+      },
+      "ko": {
+        "fit": "강아지와 공원에서 보내는 실용적인 선택",
+        "description": "산책로와 놀이터, 약 9,800평 규모의 반려견 공원이 있는 카운티 공원 안 주택이에요.",
+        "beds": "퀸 1개·더블 1개·싱글 2개에 성인 6명, 더블 푸톤에 아이가 잘 수 있어요.",
+        "check": "다른 후보보다 디자인은 수수해요. 푸톤 침구와 반려견 공원 이용 규정을 확인해요."
+      }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "en": "Up to 2 dogs; crate when unattended, no beds/furniture. Additional fee applies; confirm amount.",
+        "ko": "개 최대 2마리. 혼자 두면 크레이트 사용, 침대·가구 금지. 추가 요금 액수는 확인이 필요해요."
+      },
+      "source": "https://www.vrbo.com/739483",
+      "checked": "2026-09-13"
+    }
+  },
+  {
+    "id": "home-port",
+    "region": "shore",
+    "name": {
+      "en": "Home Port Vacation Escape",
+      "ko": "홈 포트 베케이션 이스케이프"
+    },
+    "location": {
+      "en": "Port Washington · near downtown",
+      "ko": "포트워싱턴 · 시내 근처"
+    },
+    "capacity": 14,
+    "bedrooms": 4,
+    "baths": 3,
+    "rating": null,
+    "url": "https://homeportvacationescapes.holidayfuture.com/listings/161404",
+    "sourceName": "Owner website",
+    "photo": "https://bookingenginecdn.hostaway.com/listing/52954-161404-0afj2--MZzyWrrZaoRhybnKtUi6fl9YqwZ1QXCVxe85s-66b69e5961191?width=1920&quality=70&format=webp&v=2",
+    "sources": [
+      {
+        "label": {
+          "en": "Vrbo listing & dog limit",
+          "ko": "Vrbo 숙소 정보·반려견 제한"
+        },
+        "url": "https://www.vrbo.com/3238984"
+      }
+    ],
+    "text": {
+      "en": {
+        "fit": "Top pick for a small-town weekend",
+        "description": "An 1865 brick house, four blocks from downtown and Lake Michigan. Piano, wood stove, and heated downstairs tile.",
+        "beds": "King + three queens + twin, with additional child/sofa beds. Plenty of conventional beds for seven.",
+        "check": "Whole-house rental combines two apartments. Stairs between floors; upstairs footsteps can carry below."
+      },
+      "ko": {
+        "fit": "작은 마을에서 보낼 주말의 첫 후보",
+        "description": "1865년 벽돌집으로 시내와 미시간 호수에서 네 블록 거리예요. 피아노, 장작 난로, 아래층 온돌 타일이 있어요.",
+        "beds": "킹 1개·퀸 3개·싱글 1개에 추가 아동용 침대와 소파베드가 있어요. 일곱 명의 일반 침대가 충분해요.",
+        "check": "아파트 두 채를 합친 집 전체 대여예요. 층 사이 계단이 있고 위층 발소리가 아래로 들릴 수 있어요."
+      }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "en": "Dogs only, up to 3. Weight limit and pet fee not published; confirm both.",
+        "ko": "개만 가능하며 최대 3마리. 몸무게 제한과 반려견 요금은 미기재로 확인이 필요해요."
+      },
+      "source": "https://www.vrbo.com/3238984",
+      "checked": "2026-09-13"
+    }
+  },
+  {
+    "id": "suncatcher",
+    "region": "shore",
+    "name": {
+      "en": "The Suncatcher",
+      "ko": "선캐처"
+    },
+    "location": {
+      "en": "Sheboygan · near the lakefront",
+      "ko": "셰보이건 · 호숫가 근처"
+    },
+    "capacity": 8,
+    "bedrooms": 3,
+    "baths": 2,
+    "rating": null,
+    "url": "https://www.vrbo.com/3711777",
+    "sourceName": "Vrbo",
+    "photo": "https://media.vrbo.com/lodging/101000000/100400000/100391500/100391495/a4ffea08.jpg?impolicy=resizecrop&ra=fit&rw=598",
+    "sources": [],
+    "text": {
+      "en": {
+        "fit": "Lake-and-town option with a fenced yard",
+        "description": "Walkable to the shoreline and downtown, with a gas fireplace and child equipment.",
+        "beds": "King + two queens cover six adults. Two extra sleeping spots are listed, but descriptions disagree: twins or floor mattresses.",
+        "check": "Confirm the child’s actual bed before choosing this one; verify which child equipment is provided."
+      },
+      "ko": {
+        "fit": "울타리 마당이 있는 호수 도시 숙소",
+        "description": "호숫가와 시내까지 걸어갈 수 있고 가스 벽난로와 아동용 물품이 있어요.",
+        "beds": "킹 1개·퀸 2개에 성인 6명. 추가 두 자리는 싱글 침대인지 바닥 매트리스인지 설명이 서로 달라요.",
+        "check": "선택 전에 아이의 실제 침대를 꼭 확인해요. 제공되는 아동용 물품도 확인이 필요해요."
+      }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "en": "Up to 2 pets; fully fenced yard. Weight limits and pet fee are not stated in the checked Vrbo rules.",
+        "ko": "반려동물 최대 2마리, 울타리 마당. 확인한 Vrbo 규정에는 몸무게 제한과 요금이 나와 있지 않아요."
+      },
+      "source": "https://www.vrbo.com/3711777",
+      "checked": "2026-09-13"
+    }
+  },
+  {
+    "id": "brady-retreat",
+    "region": "city",
+    "name": {
+      "en": "Brady St Retreat #2",
+      "ko": "브래디 스트리트 리트리트 #2"
     },
     "location": {
       "en": "Milwaukee · Brady Street",
       "ko": "밀워키 · 브래디 스트리트"
     },
     "capacity": 8,
-    "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.97,
-    "url": "https://www.airbnb.com/rooms/569027432195208903",
-    "photo": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-569027432195208903/original/5549568a-89bb-4c7b-9f7b-7e36418f389e.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "걸어서 식당과 카페로",
-        "description": "1891년 빅토리아풍 건물 안의 현대적인 아파트. 전용 주차 한 자리.",
-        "beds": "퀸 2개 + 싱글 2개. 일곱 번째는 침대형 의자 확인.",
-        "check": "계단, 추가 차량 주차, 식탁 배치를 확인해요. 호스트가 별도 계약과 $500 보증금 홀드를 명시했어요."
-      },
-      "en": {
-        "fit": "Walk to restaurants and cafés",
-        "description": "Modern apartment in an 1891 Victorian building, with one dedicated parking space.",
-        "beds": "2 queens + 2 twins; check the pullout chair for the seventh guest.",
-        "check": "Check stairs, extra parking, and dining layout. Host lists a separate rental agreement and $500 security hold."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/569027432195208903",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "1395673693479252768",
-    "region": "milwaukee",
-    "name": {
-      "ko": "브래디 스트리트 클래식 하우스",
-      "en": "Timeless & Classic near Brady Street"
-    },
-    "location": {
-      "en": "Milwaukee · Brady Street",
-      "ko": "밀워키 · 브래디 스트리트"
-    },
-    "capacity": 8,
-    "bedrooms": 3,
-    "baths": 1.5,
-    "rating": 4.86,
-    "url": "https://www.airbnb.com/rooms/1395673693479252768",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-1395673693479252768/original/98535daf-ae5e-47a9-85b2-40d912590a42.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "도시 속 개성 있는 집",
-        "description": "8인 주방 좌석, 전기 벽난로, 위층 라운지가 있는 주택.",
-        "beds": "킹 1개 + 퀸 2개 + 퀸 소파베드. 아이는 소파베드가 필요해요.",
-        "check": "입구와 침실까지 계단이 있어요. 밤 소음과 주차 조건도 확인해요."
-      },
-      "en": {
-        "fit": "A characterful city house",
-        "description": "Kitchen seating for eight, an electric fireplace, and an upstairs lounge.",
-        "beds": "1 king + 2 queens + queen sofa bed; child would use the sofa bed.",
-        "check": "Stairs at the entrance and up to every bedroom. Check nighttime noise and parking arrangements."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/1395673693479252768",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "49572965",
-    "region": "sheboygan",
-    "name": {
-      "ko": "허먼 하이슨 빅토리아 저택",
-      "en": "Herman Hayssen Victorian Manor"
-    },
-    "location": {
-      "en": "Sheboygan · Historic Grant",
-      "ko": "셰보이건 · 히스토릭 그랜트"
-    },
-    "capacity": 8,
-    "bedrooms": 4,
-    "baths": 3.5,
-    "rating": 4.97,
-    "url": "https://www.airbnb.com/rooms/49572965",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-49572965/original/03d4b233-e729-41af-9b87-9de81ad440c1.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "숙소 자체가 특별한 여행",
-        "description": "1895년 저택의 스테인드글라스, 피아노, 벽난로 두 개.",
-        "beds": "퀸 4개로 7명 수용 가능. 침실 네 개를 나눠 써요.",
-        "check": "큰 저택이라 전체 요금을 먼저 비교해요. 침실 층과 벽난로 사용 조건 확인."
-      },
-      "en": {
-        "fit": "A destination in itself",
-        "description": "An 1895 manor with stained glass, a piano, and two fireplaces.",
-        "beds": "4 queen beds accommodate seven across four bedrooms.",
-        "check": "Compare the full quote for this large manor. Confirm bedroom floors and fireplace use."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/49572965",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "1102526909065242585",
-    "region": "sheboygan",
-    "name": {
-      "ko": "쿨 체인지 레이크 하우스",
-      "en": "Cool Change Lake & Beach House"
-    },
-    "location": {
-      "en": "Sheboygan · North Side Beach",
-      "ko": "셰보이건 · 노스사이드 비치"
-    },
-    "capacity": 8,
     "bedrooms": 4,
     "baths": 2,
-    "rating": 5,
-    "url": "https://www.airbnb.com/rooms/1102526909065242585",
-    "photo": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTEwMjUyNjkwOTA2NTI0MjU4NQ%3D%3D/original/b9f4b881-ec0d-4922-a1ff-a8533fad299a.jpeg?im_w=720",
+    "rating": null,
+    "url": "https://www.vrbo.com/4822393",
+    "sourceName": "Vrbo",
+    "photo": "https://media.vrbo.com/lodging/121000000/120450000/120444400/120444316/cacd3ff0.jpg?impolicy=resizecrop&rw=297&ra=fit",
+    "sources": [
+      {
+        "label": {
+          "en": "Expedia pet-policy cross-check",
+          "ko": "Expedia 반려동물 규정 교차 확인"
+        },
+        "url": "https://www.expedia.com/Milwaukee-Hotels-Brady-St-Retreat-4BR-House-W-Patio-Fenced-Yard.h120444316.Hotel-Information"
+      }
+    ],
     "text": {
-      "ko": {
-        "fit": "도시·호수·편한 잠자리",
-        "description": "호수에서 한 블록 떨어진 주택. 벽난로와 1층 침실이 있어요.",
-        "beds": "킹 2개 + 퀸 1개 + 긴 싱글 2개. 소파베드 없이 가능.",
-        "check": "3월에는 산책 위주로 생각해요. 총요금과 욕실의 층별 위치를 확인해요."
-      },
       "en": {
-        "fit": "City, lake, and a strong bed layout",
-        "description": "A house one block from the lake, with a fireplace and main-floor bedroom.",
-        "beds": "2 kings + 1 queen + 2 Twin XL beds; no sofa bed needed.",
-        "check": "Plan for walks in March. Check the total quote and bathroom locations by floor."
+        "fit": "Top pick for an urban weekend",
+        "description": "Restaurants a minute’s walk away, a private fenced yard, and one garage space.",
+        "beds": "Three queens for six adults; fourth bedroom has a twin daybed that expands to a full bed.",
+        "check": "Near nightlife, so consider possible evening noise. Confirm stairs and parking for additional cars."
+      },
+      "ko": {
+        "fit": "도시에서 보낼 주말의 첫 후보",
+        "description": "식당까지 도보 약 1분. 전용 울타리 마당과 차고 한 자리가 있어요.",
+        "beds": "퀸 3개에 성인 6명. 네 번째 방에는 더블 크기로 펼쳐지는 싱글 데이베드가 있어요.",
+        "check": "유흥가 근처라 저녁 소음 가능성을 고려해요. 계단과 추가 차량 주차를 확인해요."
       }
     },
     "petPolicy": {
-      "status": "not_allowed",
+      "status": "allowed",
       "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
+        "en": "Up to 2 pets, each under 50 lb. Pet fee not disclosed.",
+        "ko": "각각 50lb(약 22.7kg) 미만인 반려동물 최대 2마리. 요금은 미기재."
       },
-      "source": "https://www.airbnb.com/rooms/1102526909065242585",
+      "source": "https://www.vrbo.com/4822393",
       "checked": "2026-09-13"
     }
   },
   {
-    "id": "41060231",
-    "region": "smalltown",
+    "id": "racine-modern",
+    "region": "city",
     "name": {
-      "ko": "아워 해피 플레이스",
-      "en": "Our Happy Place in Cedarburg"
+      "en": "Mid-Century Modern Dream Getaway",
+      "ko": "미드센추리 모던 드림 겟어웨이"
     },
     "location": {
-      "en": "Cedarburg · Historic downtown",
-      "ko": "시더버그 · 구시가지"
+      "en": "Racine area · near Lake Michigan",
+      "ko": "러신 지역 · 미시간 호수 근처"
     },
     "capacity": 7,
     "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.98,
-    "url": "https://www.airbnb.com/rooms/41060231",
-    "photo": "https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6NDEwNjAyMzE%3D/original/bd8601cd-fc0c-4e41-a424-8aa7dcb9524e.jpeg?im_w=720",
+    "baths": 2.5,
+    "rating": null,
+    "url": "https://www.vrbo.com/3809365",
+    "sourceName": "Vrbo",
+    "photo": "https://media.vrbo.com/lodging/102000000/101750000/101747500/101747484/e401416a.jpg?impolicy=resizecrop&rw=598&ra=fit",
+    "sources": [],
     "text": {
-      "ko": {
-        "fit": "작은 마을을 걸어서 즐기기",
-        "description": "시내 상점 근처의 집. 포치, 피아노, 게임룸이 있어요.",
-        "beds": "퀸 3개와 일반 소파가 표시돼 있어요. 아이의 잠자리를 꼭 확인해야 해요.",
-        "check": "정원은 7명이지만 침대는 6명분이에요. 일곱 번째 잠자리 해결 전에는 조건부 후보."
-      },
       "en": {
-        "fit": "Walkable small-town weekend",
-        "description": "Home near downtown shops, with a porch, piano, and game room.",
-        "beds": "3 queens plus ordinary couches are listed. Confirm the child’s sleeping arrangement.",
-        "check": "Capacity is seven, but beds cover six. A conditional option until the seventh sleeping spot is resolved."
+        "fit": "Architecture wildcard — one dog only",
+        "description": "Window-filled mid-century home with billiards, piano, and a fenced dog run. Seasonal lake views from a wooded bluff; no direct lake access.",
+        "beds": "Listing disagrees: king + two queens + twin versus two queens + double + folding twin. Confirm all bed sizes.",
+        "check": "Suitable only after resolving beds. Interior steps and a backyard ravine."
+      },
+      "ko": {
+        "fit": "건축이 매력적인 별도 후보 — 개 한 마리만",
+        "description": "큰 창이 있는 미드센추리 주택. 당구대, 피아노, 울타리 반려견 공간이 있어요. 숲이 우거진 절벽 위 계절별 호수 전망이며 호수로 직접 내려갈 수 없어요.",
+        "beds": "침대 설명이 달라요. 킹·퀸 2개·싱글인지, 퀸 2개·더블·접이식 싱글인지 전부 확인해야 해요.",
+        "check": "잠자리 확인 후 판단할 후보예요. 실내 단차와 뒤뜰 계곡이 있어요."
       }
     },
     "petPolicy": {
-      "status": "not_allowed",
+      "status": "allowed",
       "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
+        "en": "Only 1 dog, under 50 lb. Pet fee not specified.",
+        "ko": "50lb(약 22.7kg) 미만인 개 한 마리만 가능해요. 요금은 미기재."
       },
-      "source": "https://www.airbnb.com/rooms/41060231",
+      "source": "https://www.vrbo.com/3809365",
       "checked": "2026-09-13"
     }
   },
   {
-    "id": "1115482145177109031",
-    "region": "smalltown",
-    "name": {
-      "ko": "그레이트 레이크스 스테이",
-      "en": "Great Lakes Stay"
-    },
-    "location": {
-      "en": "Port Washington · Marina area",
-      "ko": "포트워싱턴 · 항구 주변"
-    },
-    "capacity": 8,
-    "bedrooms": 4,
-    "baths": 2,
-    "rating": 4.96,
-    "url": "https://www.airbnb.com/rooms/1115482145177109031",
-    "photo": "https://a0.muscache.com/im/pictures/hosting/Hosting-1115482145177109031/original/2d480c60-8c63-468b-9b76-b19ac3d94aac.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "항구 마을 + 침실 네 개",
-        "description": "항구·식당 근처의 듀플렉스 위층 두 개 층을 사용해요.",
-        "beds": "큰 침대 3개 + 싱글 2개. 퀸·더블 표기가 서로 달라 확인 필요.",
-        "check": "입구 계단과 내부 계단, 주차 한 자리. 다른 세대가 있는 건물이에요."
-      },
-      "en": {
-        "fit": "Harbor town with four bedrooms",
-        "description": "Upper duplex unit across two levels, near the marina and restaurants.",
-        "beds": "3 larger beds + 2 twins; queen/full sizes differ between listing sections.",
-        "check": "Entry and internal stairs; one driveway space. Another household occupies the building."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "반려동물 금지. 숙소의 다른 개가 다른 반려견에게 우호적이지 않다고 명시돼 있어요.",
-        "en": "Strict no-pets rule; host reports a resident dog that is unfriendly toward other dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/1115482145177109031",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "632787861244278518",
+    "id": "williams-bay",
     "region": "geneva",
     "name": {
-      "ko": "로더데일 레이크 통나무집",
-      "en": "Lake House Log Cabin"
+      "en": "Lakeside Family Home · Walk to Beach",
+      "ko": "호숫가 패밀리 홈 · 해변 도보 거리"
     },
     "location": {
-      "en": "Elkhorn · Lauderdale Lakes",
-      "ko": "엘크혼 · 로더데일 호수"
+      "en": "Williams Bay · Geneva Lake",
+      "ko": "윌리엄스베이 · 제네바 호수"
     },
     "capacity": 8,
-    "bedrooms": 4,
-    "baths": 3,
-    "rating": 4.87,
-    "url": "https://www.airbnb.com/rooms/632787861244278518",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-632787861244278518/original/f7fb0cb0-7694-414e-8f7f-8ad153eda65a.jpeg?im_w=960",
+    "bedrooms": 3,
+    "baths": 2,
+    "rating": null,
+    "url": "https://www.vrppartners.com/rentals/lakeside-family-home-walk-to-beach",
+    "sourceName": "VRP Partners",
+    "photo": "https://assets.guesty.com/image/upload/v1764267552/production/63ac959132a6260056687d2f/baiahdrbbetebnwoib8q.jpg",
+    "sources": [
+      {
+        "label": {
+          "en": "Matching Vrbo listing",
+          "ko": "동일 숙소 Vrbo 정보"
+        },
+        "url": "https://www.vrbo.com/4975251"
+      }
+    ],
     "text": {
-      "ko": {
-        "fit": "가족 잠자리 구성이 편리",
-        "description": "통나무집의 벽난로와 큰 식탁. 호수와 숲길을 함께 즐길 후보.",
-        "beds": "퀸 3개 + 싱글 2개. 소파베드 없이 7명 가능.",
-        "check": "침실이 세 층에 있어요. 아이 방과 로프트의 독립성, 호수 접근을 확인해요."
-      },
       "en": {
-        "fit": "An easy sleeping layout for seven",
-        "description": "Log cabin with a fireplace and large dining table, near lakes and woodland walks.",
-        "beds": "3 queens + 2 twins; seven can sleep without a sofa bed.",
-        "check": "Bedrooms span three floors. Check child placement, loft privacy, and lake access."
+        "fit": "Practical alternative near Geneva Lake",
+        "description": "Covered porch, substantial kitchen, and a walkable lake-and-dining location. A convenient town house rather than a secluded retreat.",
+        "beds": "King; queen; queen + twin bunks. Six adults use conventional beds; child shares a family bedroom.",
+        "check": "Reviews mention road noise and occasional cleaning issues. Confirm current condition before booking."
+      },
+      "ko": {
+        "fit": "제네바 호수 근처의 실용적인 대안",
+        "description": "지붕 있는 현관, 넉넉한 주방, 걸어갈 수 있는 호숫가와 식당. 외딴 휴양지보다는 편리한 마을 주택이에요.",
+        "beds": "킹 방, 퀸 방, 퀸과 싱글 이층침대 방. 성인 6명은 일반 침대, 아이는 가족과 같은 방을 써요.",
+        "check": "후기에 도로 소음과 일부 청결 문제가 언급돼요. 예약 전 현재 상태를 확인해요."
       }
     },
     "petPolicy": {
       "status": "allowed",
       "detail": {
-        "ko": "숙소에서 반려견 동반을 명시해요. 마릿수·체중 제한과 추가 요금은 확인이 필요해요.",
-        "en": "Listing explicitly welcomes dogs. Number/weight limits and any pet fee still need confirmation."
+        "en": "Pets explicitly allowed. Number, size limits, and fees are unpublished; confirm for your dogs.",
+        "ko": "반려동물 허용 명시. 마릿수·크기 제한과 요금이 미기재라 우리 강아지 조건으로 확인해야 해요."
       },
-      "source": "https://www.airbnb.com/rooms/632787861244278518",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "736213061316661642",
-    "region": "geneva",
-    "name": {
-      "ko": "애비 스프링스 A프레임",
-      "en": "Abbey Springs A-frame"
-    },
-    "location": {
-      "en": "Fontana · Geneva Lake",
-      "ko": "폰태나 · 제네바 호수"
-    },
-    "capacity": 8,
-    "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.83,
-    "url": "https://www.airbnb.com/rooms/736213061316661642",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-736213061316661642/original/dadda6dd-1119-4d72-bd57-d920bcbe978a.jpeg?im_w=960",
-    "text": {
-      "ko": {
-        "fit": "A프레임 + 전용 온수 욕조",
-        "description": "독특한 지붕의 집과 커뮤니티 호수 접근.",
-        "beds": "킹 1개 + 퀸 1개 + 싱글 2개. 아이는 소파베드 또는 유아 침대 확인.",
-        "check": "온수 욕조 봄 운영, 클럽·수영장 이용료와 소파베드 크기 확인."
-      },
-      "en": {
-        "fit": "A-frame with a private hot tub",
-        "description": "Distinctive roofline and community lake access.",
-        "beds": "1 king + 1 queen + 2 twins. Check sofa bed or crib for the child.",
-        "check": "Confirm spring hot-tub operation, club/pool fees, and sofa-bed size."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/736213061316661642",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "45351720",
-    "region": "geneva",
-    "name": {
-      "ko": "링컨 통나무집",
-      "en": "Lincoln Log Cabin"
-    },
-    "location": {
-      "en": "Elkhorn · Lake Geneva countryside",
-      "ko": "엘크혼 · 제네바 호수 인근 전원"
-    },
-    "capacity": 8,
-    "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.87,
-    "url": "https://www.airbnb.com/rooms/45351720",
-    "photo": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-45351720/original/1b8c9b13-b26a-4d8f-ac0d-47546fa0966c.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "전원 속 아늑한 통나무집",
-        "description": "벽난로, 마당과 화덕. Lake Geneva 시내까지 차로 이동.",
-        "beds": "퀸 4개를 침실 세 개에 배치. 한 가족은 퀸 두 개 방 사용 가능.",
-        "check": "사진 설명과 침대 표기를 다시 확인해요. 호숫가 숙소는 아니에요."
-      },
-      "en": {
-        "fit": "A cozy countryside cabin",
-        "description": "Fireplace, yard, and fire pit, a drive from downtown Lake Geneva.",
-        "beds": "4 queens in three bedrooms; one family can use the two-queen room.",
-        "check": "Reconfirm beds against photo captions. This is a countryside stay, not lakefront."
-      }
-    },
-    "petPolicy": {
-      "status": "allowed",
-      "detail": {
-        "ko": "최대 2마리, 각각 40lb(약 18kg) 이하. 견종 사전 승인 필요. 기본 반려견 요금은 없지만 침대·가구 사용 금지, 과도한 털 청소는 최대 $100. 배변패드 금지, 어린 강아지는 사전 문의.",
-        "en": "Maximum 2 dogs, each 40 lb or less; breed approval required. No standard pet fee. No dogs on beds/furniture; up to $100 for excessive hair. No pee pads; host prefers no puppies."
-      },
-      "source": "https://www.airbnb.com/rooms/45351720",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "22672718",
-    "region": "shore",
-    "name": {
-      "ko": "샴바 온 더 레이크",
-      "en": "Shamba on the Lake"
-    },
-    "location": {
-      "en": "Oostburg · Lake Michigan",
-      "ko": "오스트버그 · 미시간 호수"
-    },
-    "capacity": 9,
-    "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.96,
-    "url": "https://www.airbnb.com/rooms/22672718",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-22672718/original/661929f3-5a4c-487d-8834-8b0213237204.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "호수 전망과 해변 바로 앞",
-        "description": "숲으로 둘러싸인 부지, 호수 전망, 가스 벽난로.",
-        "beds": "킹 1개 + 퀸 1개 + 싱글 3개. 일곱 명 모두 침대 사용 가능.",
-        "check": "성인 2명과 아이가 싱글 침대 방을 함께 쓰는 구성이에요. 봄 해변 상태 확인."
-      },
-      "en": {
-        "fit": "Direct beach access and lake views",
-        "description": "Wooded grounds, lake views, and a gas fireplace.",
-        "beds": "1 king + 1 queen + 3 twins; beds for all seven.",
-        "check": "Two adults and the child would share the twin room. Check spring beach conditions."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/22672718",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "30311883",
-    "region": "shore",
-    "name": {
-      "ko": "오스트버그 비치프런트 하우스",
-      "en": "Renovated Beachfront Home"
-    },
-    "location": {
-      "en": "Oostburg · Lake Michigan",
-      "ko": "오스트버그 · 미시간 호수"
-    },
-    "capacity": 10,
-    "bedrooms": 4,
-    "baths": 3,
-    "rating": 4.79,
-    "url": "https://www.airbnb.com/rooms/30311883",
-    "photo": "https://a0.muscache.com/im/pictures/714d9cd2-4af6-48cc-801b-68996685c039.jpg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "집 안에서도 넓은 호수 전망",
-        "description": "호수 전망의 위층 라운지, 전용 마당과 데크.",
-        "beds": "퀸 1개 + 더블 1개 + 싱글 3개가 표시돼 있어요.",
-        "check": "요약은 침실 4개, 잠자리 표는 3개예요. 배치 확인 필요. 현재 규정상 위층 데크 출입은 금지돼 있어요."
-      },
-      "en": {
-        "fit": "Big lake views from indoors",
-        "description": "Upper lounge overlooking the lake, with private yard and decks.",
-        "beds": "Listed sleeping rooms show 1 queen + 1 double + 3 twins.",
-        "check": "Summary lists four bedrooms; sleeping cards show three. Confirm layout. Current rules prohibit access to the upper-floor deck."
-      }
-    },
-    "petPolicy": {
-      "status": "allowed",
-      "detail": {
-        "ko": "하우스 규칙에서 반려동물 동반을 허용해요. 마릿수·체중 제한과 요금은 별도 확인해요.",
-        "en": "House rules allow pets. Confirm dog count, weight restrictions, and fees."
-      },
-      "source": "https://www.airbnb.com/rooms/30311883",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "24282648",
-    "region": "shore",
-    "name": {
-      "ko": "숲속 캐빈과 미시간 해변",
-      "en": "Woodsy Cabin & Lake Michigan Beach"
-    },
-    "location": {
-      "en": "Oostburg · Lake Michigan",
-      "ko": "오스트버그 · 미시간 호수"
-    },
-    "capacity": 8,
-    "bedrooms": 3,
-    "baths": 2,
-    "rating": 4.94,
-    "url": "https://www.airbnb.com/rooms/24282648",
-    "photo": "https://a0.muscache.com/im/pictures/prohost-api/Hosting-24282648/original/12c11638-6e96-42e3-ac20-c13df31aece9.jpeg?im_w=960",
-    "text": {
-      "ko": {
-        "fit": "숲속 숙소와 호수 산책",
-        "description": "실내 벽난로와 호숫가 산책. 침실 외에 덴이 있어요.",
-        "beds": "퀸 2개 + 싱글 2개, 추가 소파베드. 아이 잠자리 확인.",
-        "check": "해변까지 실제 도보 거리와 접근 조건, 소파베드 크기 확인."
-      },
-      "en": {
-        "fit": "Woodland cabin and shoreline walks",
-        "description": "Indoor fireplace and lake walks, with a den beyond the three bedrooms.",
-        "beds": "2 queens + 2 twins, plus pullouts. Check the child’s sleeping spot.",
-        "check": "Confirm walking distance and access to the beach, plus pullout-bed size."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/24282648",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "52426262",
-    "region": "forest",
-    "name": {
-      "ko": "레이븐스우드",
-      "en": "The Ravenswood"
-    },
-    "location": {
-      "en": "Cascade · Kettle Moraine",
-      "ko": "캐스케이드 · 케틀모레인"
-    },
-    "capacity": 8,
-    "bedrooms": 3,
-    "baths": 1.5,
-    "rating": 5,
-    "url": "https://www.airbnb.com/rooms/52426262",
-    "photo": "https://a0.muscache.com/im/pictures/9318976a-12da-4162-a143-cebc6ccfd811.jpg?im_w=960",
-    "text": {
-      "ko": {
-        "fit": "숲속 분위기 · 침대는 조건부",
-        "description": "주립 숲에 접한 부지, 벽난로 두 개와 게임룸.",
-        "beds": "킹 1개 + 퀸 1개 + 2층 침대 두 세트. 성인 2명도 벙크룸 사용.",
-        "check": "호스트는 성인 4명이 편하게 머무는 집이라고 해요. 성인 6명은 벙크룸 사용 필요. 침실은 모두 위층이며 계단은 아동 안전 처리가 안 돼 있어요."
-      },
-      "en": {
-        "fit": "Woodland atmosphere; conditional bed fit",
-        "description": "Grounds bordering state forest, with two fireplaces and a game room.",
-        "beds": "1 king + 1 queen + two bunk sets. Two adults also use the bunk room.",
-        "check": "Host says the cabin fits four adults comfortably. Our six adults would need the bunk room. All bedrooms upstairs; open stairs are not childproofed."
-      }
-    },
-    "petPolicy": {
-      "status": "allowed",
-      "detail": {
-        "ko": "반려동물 최대 2마리, 추가 요금 없음. 예약 후 반려동물 정보 확인 필요. 배변 훈련·중성화·예방접종·기생충 예방 필수. 과도한 청소·손상은 실비 청구.",
-        "en": "Maximum 2 pets; no additional pet fee. Verify pet details after booking. House-trained, spayed/neutered, vaccinated, on parasite prevention. Excess cleaning/damage charged at cost."
-      },
-      "source": "https://www.airbnb.com/rooms/52426262",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "19294134",
-    "region": "forest",
-    "name": {
-      "ko": "버드 하우스 앳 더 윌로스",
-      "en": "The Bird House at the Willows"
-    },
-    "location": {
-      "en": "Cascade · Private lake community",
-      "ko": "캐스케이드 · 호수 커뮤니티"
-    },
-    "capacity": 12,
-    "bedrooms": 5,
-    "baths": 3,
-    "rating": 4.96,
-    "url": "https://www.airbnb.com/rooms/19294134",
-    "photo": "https://a0.muscache.com/im/pictures/miso/Hosting-19294134/original/56dc89f0-9806-4494-927b-158f91e3e8a8.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "넉넉한 공간의 호숫가 캐빈",
-        "description": "가족 중심 호수 커뮤니티의 큰 집. 벽난로와 공용 게임룸.",
-        "beds": "킹 방 1개 + 퀸 방 2개, 추가 벙크·로프트 침대.",
-        "check": "큰 집의 총요금을 비교해요. 로프트는 사다리 접근이라 아이 자리로 신중히 검토."
-      },
-      "en": {
-        "fit": "A spacious lake-community cabin",
-        "description": "Large family-oriented lake house, with fireplace and shared game room.",
-        "beds": "1 king room + 2 queen rooms, plus bunks and loft beds.",
-        "check": "Compare the quote for this larger house. Ladder-access loft needs careful child placement."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
-        "en": "Current Airbnb rules do not allow pet dogs."
-      },
-      "source": "https://www.airbnb.com/rooms/19294134",
-      "checked": "2026-09-13"
-    }
-  },
-  {
-    "id": "1196675674918172644",
-    "region": "forest",
-    "name": {
-      "ko": "하이랜더 하이드어웨이",
-      "en": "Highlander Hideaway"
-    },
-    "location": {
-      "en": "Cascade · Private lake community",
-      "ko": "캐스케이드 · 호수 커뮤니티"
-    },
-    "capacity": 11,
-    "bedrooms": 3,
-    "baths": 1.5,
-    "rating": 5,
-    "url": "https://www.airbnb.com/rooms/1196675674918172644",
-    "photo": "https://a0.muscache.com/im/pictures/hosting/Hosting-1196675674918172644/original/585431df-9c29-42c6-83cc-73e945212861.jpeg?im_w=720",
-    "text": {
-      "ko": {
-        "fit": "숲길과 공용 호수 접근",
-        "description": "70에이커 이상 숲·산책로가 있는 호수 커뮤니티.",
-        "beds": "퀸 2개 + 더블 2개 + 싱글·벙크 침대.",
-        "check": "공용 공간 범위와 봄 이용 조건 확인. 숙소 정보에 CO 경보기가 미기재되어 호스트 확인 필요."
-      },
-      "en": {
-        "fit": "Woodland trails and shared lake access",
-        "description": "Lake community with access to more than 70 acres of woods and trails.",
-        "beds": "2 queens + 2 doubles, plus single and bunk beds.",
-        "check": "Confirm shared areas and spring access. Listing does not report a CO alarm; verify with the host."
-      }
-    },
-    "petPolicy": {
-      "status": "not_allowed",
-      "detail": {
-        "ko": "현재 Airbnb 하우스 규칙에서 반려동물 동반을 금지해요.",
-        "en": "Current Airbnb house rules explicitly prohibit pets."
-      },
-      "source": "https://www.airbnb.com/rooms/1196675674918172644",
+      "source": "https://www.vrppartners.com/rentals/lakeside-family-home-walk-to-beach",
       "checked": "2026-09-13"
     }
   }

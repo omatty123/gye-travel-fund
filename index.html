@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script src="js/i18n.js?v=20260913-pets1"></script>
+  <script src="js/i18n.js?v=20260913-research2"></script>
   <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,10 +21,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css?v=20260913-pets1">
+  <link rel="stylesheet" href="css/home.css?v=20260913-research2">
   <script src="js/fund-data.js?v=20260913" defer></script>
-  <script src="js/stays.js?v=20260913-pets1" defer></script>
-  <script src="js/app.js?v=20260913-pets1" defer></script>
+  <script src="js/stays.js?v=20260913-research2" defer></script>
+  <script src="js/app.js?v=20260913-research2" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
@@ -40,15 +40,15 @@
   </div></header>
   <main id="main" class="page-width">
     <section id="spring" aria-labelledby="spring-heading">
-      <div class="section-heading"><div><h2 id="spring-heading" data-i18n="springTitle">다음 봄, 어디로 갈까요?</h2><p data-i18n="springGroup">2027년 3월 · 성인 6명 + 아이 1명 · 위스콘신</p></div><span class="research-status" data-i18n="researchStatus">6개 지역 · 숙소 후보 15곳</span></div>
-      <p class="section-intro" data-i18n="springIntro">도시도, 작은 마을도, 숲속도 좋아요. Milwaukee·Sheboygan부터 Cedarburg·Port Washington, 호수와 캐빈까지 여섯 지역을 비교해요. 각 지역에 2–3개 후보가 있어요.</p>
+      <div class="section-heading"><div><h2 id="spring-heading" data-i18n="springTitle">다음 봄, 어디로 갈까요?</h2><p data-i18n="springGroup">2027년 3월 · 성인 6명 + 아이 1명 · 위스콘신</p></div><span class="research-status" id="research-status"></span></div>
+      <p class="section-intro" data-i18n="springIntro">도시, 작은 마을, 호숫가와 숲속 숙소를 함께 비교해요. 숙소·관리업체의 공식 웹사이트와 Vrbo 등 여러 출처에서 성인 6명과 아이 1명의 잠자리, 반려견 동반 규정을 확인했어요. 각 후보의 근거 링크도 함께 볼 수 있어요.</p>
       <p class="booking-note" data-i18n="bookingNote">정확한 날짜·숙박 일수·예산은 아직 미정이에요. 2026년 9월 13일 확인한 숙소 정보이며, 2027년 3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.</p>
       <div id="area-controls" class="area-controls" role="group" data-i18n-aria-label="areaFilter"></div>
-      <label class="pet-filter"><input id="dogs-only" type="checkbox" aria-controls="stay-list" aria-describedby="pet-filter-note"><span data-i18n="dogsOnly">반려견 동반이 가능한 숙소만 보기</span></label>
+      <label class="pet-filter"><input id="dogs-only" type="checkbox" checked aria-controls="stay-list" aria-describedby="pet-filter-note"><span data-i18n="dogsOnly">반려견 동반이 가능한 숙소만 보기</span></label>
       <p id="pet-filter-note" class="pet-filter-note" data-i18n="petFilterNote">반려견 동반 가능 여부가 확인된 숙소만 표시해요. 마릿수·크기 제한과 추가 요금은 예약 전에 확인해 주세요.</p>
       <p id="stay-count" class="stay-count" role="status"></p>
       <div id="stay-list"></div>
-      <p class="season-note" data-i18n="seasonNote">3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 사진은 각 Airbnb 숙소 호스트가 제공한 사진이에요.</p>
+      <p class="season-note" data-i18n="seasonNote">3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 숙소 사진은 각 소유주·관리업체의 등록 페이지에서 제공해요.</p>
     </section>
     <section id="ledger" aria-labelledby="ledger-heading">
       <div class="section-heading"><div><h2 id="ledger-heading" data-i18n="ledger">회비 내역</h2><p data-i18n="ledgerDate">가족별 매월 $50 · 2026년 9월 13일 업데이트</p></div><button id="history-toggle" type="button" aria-expanded="false" aria-controls="contribution-body">2025년 내역도 보기</button></div>

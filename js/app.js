@@ -7,8 +7,8 @@ const local = value => value[I18n.language];
 const translated = key => escapeHTML(t(key));
 const external = ' target="_blank" rel="noopener noreferrer"';
 let showHistory = false;
-let selectedArea = 'milwaukee';
-let dogsOnly = false;
+let selectedArea = 'all';
+let dogsOnly = true;
 const imgIdx = {};
 const tripCopy = {
   madison: {en: {title:'Madison family vacation',date:'March 22–24, 2026'},ko:{title:'매디슨 가족 휴가',date:'2026년 3월 22–24일'}},
@@ -67,21 +67,33 @@ function renderAreaControls() {
     renderStays();
   }));
 }
+function sourceLink(source, context = '') {
+  const label = typeof source.label === 'string' ? source.label : local(source.label);
+  return `<a href="${escapeHTML(source.url)}"${external}>${escapeHTML(label)}<span class="sr-only">${context?' — '+escapeHTML(context):''} (${translated('newTab')})</span></a>`;
+}
 function renderStay(stay) {
   const copy = local(stay.text), name = local(stay.name);
   const facts = I18n.language==='ko' ? `최대 ${stay.capacity}명 · 침실 ${stay.bedrooms} · 욕실 ${stay.baths}` : `Up to ${stay.capacity} guests · ${stay.bedrooms} bedrooms · ${stay.baths} bathrooms`;
   const policy = stay.petPolicy || {status:'unknown',detail:{en:t('petUnknownDetail'),ko:t('petUnknownDetail')}};
   const policyKey = {allowed:'petAllowed',not_allowed:'petNotAllowed',unknown:'petUnknown'}[policy.status] || 'petUnknown';
+  const sources = stay.sources || [];
+  const photo = stay.photo ? `<img src="${escapeHTML(stay.photo)}" alt="${escapeHTML(name+' · '+t('hostPhoto'))}" width="960" height="640" loading="lazy" decoding="async">` : `<span>${translated('photoFallback')}</span>`;
+  const rating = Number.isFinite(stay.rating) ? ` · ${stay.rating.toFixed(2)} / 5` : '';
+  const sourceNames = {'Owner website':t('ownerWebsite'),'Manager website':t('managerWebsite')};
+  const sourceName = typeof stay.sourceName === 'object' && stay.sourceName ? local(stay.sourceName) : sourceNames[stay.sourceName] || stay.sourceName;
   return `<article class="stay">
-    <a class="stay-photo" href="${stay.url}"${external} aria-label="${escapeHTML(name+' · '+t('photosDates')+' ('+t('newTab')+')')}"><img src="${stay.photo}" alt="${escapeHTML(name+' · '+t('hostPhoto'))}" width="960" height="640" loading="lazy" decoding="async"></a>
+    <a class="stay-photo" href="${escapeHTML(stay.url)}"${external} aria-label="${escapeHTML(name+' · '+t('viewProperty')+' ('+t('newTab')+')')}">${photo}</a>
     <div class="stay-content"><h4>${escapeHTML(name)}</h4><p class="stay-location">${escapeHTML(local(stay.location))}</p><p class="stay-fit">${escapeHTML(copy.fit)}</p><p class="stay-facts">${facts}</p>
     <div class="pet-policy pet-policy-${escapeHTML(policy.status)}"><strong>${translated(policyKey)}</strong><p>${escapeHTML(local(policy.detail))}</p></div><p>${escapeHTML(copy.description)}</p>
-    <dl class="stay-details"><div><dt>${translated('beds')}</dt><dd>${escapeHTML(copy.beds)}</dd></div><div><dt>${translated('check')}</dt><dd>${escapeHTML(copy.check)}</dd></div></dl>
-    <div class="stay-links"><a class="primary-link" href="${stay.url}?adults=6&children=1"${external}>${translated('photosDates')}<span class="sr-only"> — ${escapeHTML(name)} (${translated('newTab')})</span></a></div>
-    <p class="listing-source">Airbnb · ${stay.rating.toFixed(2)} / 5 · ${translated('sourceDate')}</p></div>
+    <dl class="stay-details"><div><dt>${translated('beds')}</dt><dd>${escapeHTML(copy.beds)}</dd></div><div><dt>${translated('check')}</dt><dd>${escapeHTML(copy.check)}</dd></div>${stay.priceNote?`<div><dt>${translated('priceInformation')}</dt><dd>${escapeHTML(local(stay.priceNote))}</dd></div>`:''}</dl>
+    <div class="stay-links"><a class="primary-link" href="${escapeHTML(stay.url)}"${external}>${translated('viewProperty')}<span class="sr-only"> — ${escapeHTML(name)} (${translated('newTab')})</span></a></div>
+    ${sources.length?`<div class="stay-sources" aria-label="${translated('listingSources')}">${sources.map(source=>sourceLink(source,name)).join('')}</div>`:''}
+    <p class="listing-source">${escapeHTML(sourceName || t('propertyListing'))}${rating} · ${translated('sourceDate')}</p></div>
   </article>`;
 }
 function renderStays() {
+  const totalAreas = new Set(stays.map(stay=>stay.region)).size;
+  document.getElementById('research-status').textContent = I18n.language==='ko'?`${totalAreas}개 지역 · 숙소 후보 ${stays.length}곳`:`${totalAreas} areas · ${stays.length} possible stays`;
   document.getElementById('dogs-only').checked = dogsOnly;
   const filteredStays = stays.filter(stay=>(selectedArea==='all'||stay.region===selectedArea)&&(!dogsOnly||stay.petPolicy?.status==='allowed'));
   const shownRegions = regions.filter(area=>(selectedArea==='all'||area.id===selectedArea)&&filteredStays.some(stay=>stay.region===area.id));
@@ -98,11 +110,8 @@ function renderStays() {
     return;
   }
   document.getElementById('stay-list').innerHTML = shownRegions.map(area=>{
-    const query = new URLSearchParams({query:area.query,adults:'6',children:'1',room_types:'Entire home/apt'});
-    if (dogsOnly) query.set('pets','1');
-    const extras = area.id==='smalltown' ? ['Cedarburg, Wisconsin','Port Washington, Wisconsin'] : [area.query];
-    const searches = extras.map(place=>{const q=new URLSearchParams(query);q.set('query',place);return `<a href="https://www.airbnb.com/s/homes?${q.toString()}"${external}>${translated('searchArea')} · ${escapeHTML(place.split(',')[0])}<span class="sr-only"> (${translated('newTab')})</span></a>`;}).join('');
-    return `<div class="stay-area"><div class="area-heading"><h3>${escapeHTML(local(area.name))}</h3><p>${escapeHTML(local(area.description))}</p><div class="area-searches">${searches}</div><p class="search-date-note">${translated('chooseMarch')}${dogsOnly?' '+translated('petSearchCount'):''}</p></div>${filteredStays.filter(stay=>stay.region===area.id).map(renderStay).join('')}</div>`;
+    const searches = (area.sources || []).map(source=>sourceLink(source,local(area.name))).join('');
+    return `<div class="stay-area"><div class="area-heading"><h3>${escapeHTML(local(area.name))}</h3><p>${escapeHTML(local(area.description))}</p>${searches?`<div class="area-searches">${searches}</div><p class="search-date-note">${translated('chooseMarch')}</p>`:''}</div>${filteredStays.filter(stay=>stay.region===area.id).map(renderStay).join('')}</div>`;
   }).join('');
   document.querySelectorAll('.stay-photo img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const message=document.createElement('span');message.textContent=t('photoFallback');img.parentElement.append(message);},{once:true}));
 }
