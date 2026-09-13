@@ -103,6 +103,7 @@
     .photo-item video {
       width: 100%;
       display: block;
+      height: auto;
       transition: transform 0.3s ease, filter 0.3s ease;
     }
 
@@ -123,7 +124,7 @@
       justify-content: center;
     }
 
-    .lightbox.active {
+    .lightbox[open] {
       display: flex;
     }
 
@@ -232,6 +233,12 @@
         padding: 0.75rem 1rem;
       }
     }
+    .photo-item { display:block; width:100%; padding:0; border:0; background:#262626; color:white; }
+    .photo-item:focus-visible, button:focus-visible, a:focus-visible { outline:3px solid #ffb400; outline-offset:4px; }
+    dialog.lightbox { width:100vw; height:100vh; max-width:none; max-height:none; padding:0; margin:0; border:0; }
+    dialog.lightbox::backdrop { background:rgba(0,0,0,.95); }
+    .footer { color:var(--gray-400); }
+    @media(prefers-reduced-motion:reduce) { .photo-item img,.photo-item video { transition:none; } .photo-item:hover img,.photo-item:hover video { transform:none; filter:none; } }
   </style>
 </head>
 <body>
@@ -244,7 +251,7 @@
     <p>매디슨 가족 휴가 사진</p>
   </div>
 
-  <div class="photo-grid" id="photo-grid"></div>
+  <main><div class="photo-grid" id="photo-grid"></div></main>
 
   <footer class="footer">
     <p>사랑으로 함께하는 우리 가족</p>
@@ -252,13 +259,13 @@
   </footer>
 
   <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <button class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&lsaquo;</button>
+  <dialog class="lightbox" id="lightbox" aria-label="매디슨 가족 여행 사진">
+    <button type="button" aria-label="사진 닫기" class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button type="button" aria-label="이전 사진" class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&lsaquo;</button>
     <div id="lightbox-media"></div>
-    <button class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rsaquo;</button>
-    <div class="lightbox-counter" id="lightbox-counter"></div>
-  </div>
+    <button type="button" aria-label="다음 사진" class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rsaquo;</button>
+    <div class="lightbox-counter" id="lightbox-counter" aria-live="polite"></div>
+  </dialog>
 
   <script>
     var photos = [
@@ -282,25 +289,104 @@
       "assets/images/IMG_2137.jpeg",
       { type: "video", src: "assets/images/madison-video-1.mp4" }
     ];
+    var photoDimensions = {
+      "assets/images/madison-photo-6.jpeg": [
+            1000,
+            1133
+      ],
+      "assets/images/IMG_2124.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2122.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/madison-photo-4.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2119.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/madison-photo-1.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2121.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/madison-photo-5.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/madison-photo-7.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/madison-photo-3.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2107.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2125.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2130.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2132.jpeg": [
+            1000,
+            750
+      ],
+      "assets/images/IMG_2134.jpeg": [
+            1000,
+            1334
+      ],
+      "assets/images/IMG_2135.jpeg": [
+            1000,
+            1334
+      ],
+      "assets/images/IMG_2136.jpeg": [
+            1000,
+            1334
+      ],
+      "assets/images/IMG_2137.jpeg": [
+            1000,
+            1334
+      ]
+};
     var currentIdx = 0;
+    var previousFocus = null;
 
     // Build grid
     var grid = document.getElementById("photo-grid");
     photos.forEach(function(item, i) {
-      var div = document.createElement("div");
+      var div = document.createElement("button");
+      div.type = "button";
+      div.setAttribute("aria-label", "매디슨 여행 " + (typeof item === "string" ? "사진 " : "영상 ") + (i + 1) + " 크게 보기");
       div.className = "photo-item";
       div.onclick = function() { openLightbox(i); };
       if (typeof item === "string") {
         var img = document.createElement("img");
-        img.src = item;
-        img.alt = "Madison trip photo";
+        img.src = "assets/optimized/" + item.split("/").pop().replace(/\.(jpe?g|png)$/i, ".webp");
+        img.alt = "매디슨 가족 여행 · 사진 " + (i + 1);
+        img.width = photoDimensions[item][0];
+        img.height = photoDimensions[item][1];
+        img.decoding = "async";
         img.loading = "lazy";
         div.appendChild(img);
       } else {
         var vid = document.createElement("video");
         vid.src = item.src;
-        vid.autoplay = true;
-        vid.loop = true;
+        vid.preload = "metadata";
         vid.muted = true;
         vid.playsInline = true;
         div.appendChild(vid);
@@ -312,11 +398,12 @@
     function isVideo(item) { return typeof item !== "string"; }
 
     function openLightbox(i) {
+      previousFocus = document.activeElement;
       currentIdx = i;
       var lb = document.getElementById("lightbox");
       showLightboxItem(i);
       document.getElementById("lightbox-counter").textContent = (i + 1) + " / " + photos.length;
-      lb.classList.add("active");
+      lb.showModal();
       document.body.style.overflow = "hidden";
     }
 
@@ -338,19 +425,22 @@
       } else {
         var img = document.createElement("img");
         img.src = item;
-        img.alt = "";
+        img.alt = "매디슨 가족 여행 · 사진 " + (i + 1);
         container.appendChild(img);
       }
       document.getElementById("lightbox-counter").textContent = (i + 1) + " / " + photos.length;
     }
 
     function closeLightbox() {
-      var vid = document.querySelector("#lightbox-media video");
-      if (vid) { vid.pause(); vid.currentTime = 0; }
-      document.getElementById("lightbox-media").innerHTML = "";
-      document.getElementById("lightbox").classList.remove("active");
-      document.body.style.overflow = "";
+      document.getElementById("lightbox").close();
     }
+    document.getElementById("lightbox").addEventListener("close", function() {
+      var video = this.querySelector("video");
+      if (video) video.pause();
+      document.getElementById("lightbox-media").innerHTML = "";
+      document.body.style.overflow = "";
+      if (previousFocus) previousFocus.focus();
+    });
 
     function navLightbox(dir) {
       currentIdx += dir;
@@ -364,8 +454,8 @@
     });
 
     document.addEventListener("keydown", function(e) {
-      if (!document.getElementById("lightbox").classList.contains("active")) return;
-      if (e.key === "Escape") closeLightbox();
+      if (!document.getElementById("lightbox").open || e.target.tagName === "VIDEO") return;
+
       if (e.key === "ArrowLeft") navLightbox(-1);
       if (e.key === "ArrowRight") navLightbox(1);
     });

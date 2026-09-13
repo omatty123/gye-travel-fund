@@ -1,278 +1,46 @@
-// Data
-const data = {
-  balance: 1704.07,
-  bankStatement: { balance: 1454.07, date: "2026-09-02" },
-  pendingReceipt: { amount: 200, label: "부모님 7–10월 회비" },
-  interest: [
-    { label: "2025 이자", amount: 19.47 },
-    { label: "2026 이자 (1-8월)", amount: 21.82 }
-  ],
-  parties: ["아버지 어머니", "Joe/Heejin/Ben", "Dominica/Matty"],
-  partiesShort: ["부모님", "Joe", "Dom"],
-  contributions: [
-    { m: "2025-04", p: [1,1,1] },
-    { m: "2025-05", p: [1,1,1] },
-    { m: "2025-06", p: [1,1,1] },
-    { m: "2025-07", p: [1,1,1] },
-    { m: "2025-08", p: [1,1,1] },
-    { m: "2025-09", p: [1,1,1] },
-    { m: "2025-10", p: [1,1,1] },
-    { m: "2025-11", p: [1,1,1] },
-    { m: "2025-12", p: [1,1,1] },
-    { m: "2026-01", p: [1,1,1] },
-    { m: "2026-02", p: [1,1,1] },
-    { m: "2026-03", p: [1,1,1] },
-    { m: "2026-04", p: [1,1,1] },
-    { m: "2026-05", p: [1,1,1] },
-    { m: "2026-06", p: [1,1,1] },
-    { m: "2026-07", p: [1,1,1] },
-    { m: "2026-08", p: [1,0,1] },
-    { m: "2026-09", p: [1,0,1] },
-    { m: "2026-10", p: [1,0,0] }
-  ],
-  trips: [
-    {
-      id: "madison",
-      title: "매디슨 가족 휴가",
-      subtitle: "",
-      date: "2026년 3월 22일 - 24일",
-      status: "completed",
-      cost: 987.22,
-      tags: [],
-      address: "725 Jenifer St, Madison, WI 53703",
-      airbnb: "https://www.airbnb.com/rooms/24139465",
-      photos: ["assets/images/madison-new-1.jpg","assets/images/madison-new-2.jpg","assets/images/madison-new-3.jpg","assets/images/madison-new-4.jpg","assets/images/madison-new-5.jpg","assets/images/madison-new-6.jpg","assets/images/madison-new-7.png","assets/images/madison-new-8.jpg","assets/images/madison-new-9.jpg","assets/images/madison-1.jpg","assets/images/madison-2.jpg","assets/images/madison-3.jpg","assets/images/madison-4.jpg"]
-    },
-    {
-      id: "milwaukee",
-      title: "밀워키 - 계의 시작",
-      subtitle: "",
-      date: "2025년 3월 27일 - 28일",
-      status: "completed",
-      cost: 0,
-      tags: [],
-      address: "2210 N Lake Dr, Milwaukee, WI 53202",
-      photos: ["assets/images/family-hero.jpg","assets/images/photo-3.jpg","assets/images/photo-4.jpg","assets/images/photo-2.jpg","assets/images/madison-external.jpg","assets/images/madison-externalangle.jpg","assets/images/madison-frontporch.jpg","assets/images/madison-livingroom.jpg","assets/images/madison-viewtolivingroom.jpg","assets/images/madison-masterbedroom.jpg","assets/images/madison-upstairslanding.jpg","assets/images/madison-staircase.jpg","assets/images/madison-steepstairs.jpg","assets/images/milwaukee-1.jpg","assets/images/milwaukee-2.jpg","assets/images/milwaukee-3.jpg","assets/images/milwaukee-4.jpg","assets/images/photo-1.jpg"],
-      activities: ["<a href=\"https://milwaukeezoo.org\" target=\"_blank\">Milwaukee Zoo</a>", "<a href=\"https://maps.google.com/?q=Stone+Bowl+Grill+1958+N+Farwell+Ave+Milwaukee+WI\" target=\"_blank\">Stone Bowl Grill</a>", "Walks in the neighborhood", "<a href=\"https://www.mitchellparkdomes.com/\" target=\"_blank\">Mitchell Park Domes</a>"],
-      memory: "이곳에서 우리 가족 여행 계가 시작되었습니다"
-    }
-  ]
-};
-
-const months = {"01":"1월","02":"2월","03":"3월","04":"4월","05":"5월","06":"6월","07":"7월","08":"8월","09":"9월","10":"10월","11":"11월","12":"12월"};
-const monthsEn = {"01":"January","02":"February","03":"March","04":"April","05":"May","06":"June","07":"July","08":"August","09":"September","10":"October","11":"November","12":"December"};
-
-// Init
-document.addEventListener("DOMContentLoaded", function() {
-  // Balance
-  document.getElementById("balance").textContent = "$" + data.balance.toFixed(2);
-  const receiptNote = document.getElementById("receipt-note");
-  if (data.pendingReceipt && data.pendingReceipt.amount > 0) {
-    document.getElementById("balance-label").textContent = "잔액 (입금 예정 포함)";
-    document.getElementById("bank-balance").textContent = "은행 명세서 잔액 (" + data.bankStatement.date + ") $" + data.bankStatement.balance.toFixed(2);
-    document.getElementById("pending-receipt").textContent = data.pendingReceipt.label + " $" + data.pendingReceipt.amount.toFixed(2) + " 입금 예정";
-    receiptNote.hidden = false;
-  }
-
-  // Countdown — next upcoming trip, or TBD if none scheduled
-  const nextTrip = data.trips.find(t => t.status === "upcoming");
-  if (nextTrip) {
-    const md = nextTrip.date.match(/(\d{4})년\s*(\d+)월\s*(\d+)일/);
-    const tripDate = md ? new Date(+md[1], +md[2] - 1, +md[3]) : null;
-    const days = tripDate ? Math.floor((tripDate - new Date()) / 86400000) : 0;
-    document.getElementById("countdown").textContent = days > 0 ? "D-" + days : "NOW";
-    document.getElementById("destination").textContent = nextTrip.title;
-  } else {
-    document.getElementById("countdown").textContent = "미정";
-    document.getElementById("destination").textContent = "다음 여행";
-  }
-
-  // Party headers - desktop uses full names
-  document.getElementById("party-1").textContent = data.parties[0];
-  document.getElementById("party-2").textContent = data.parties[1];
-  document.getElementById("party-3").textContent = data.parties[2];
-
-  // Mobile party headers - use short names
-  document.getElementById("mobile-party-1").textContent = data.partiesShort[0];
-  document.getElementById("mobile-party-2").textContent = data.partiesShort[1];
-  document.getElementById("mobile-party-3").textContent = data.partiesShort[2];
-
-  renderTrips();
-  renderLedger();
-  renderMobileLedger();
-});
-
-// Trips
-function renderTrips() {
-  const container = document.getElementById("trip-grid");
-
-  data.trips.forEach(trip => {
-    // Extract month/year for big title
-    const monthYear = trip.date.match(/(\d{4})년\s*(\d+)월/);
-    const bigTitle = monthYear ? monthsEn[monthYear[2].padStart(2,'0')] + ' ' + monthYear[1] : '';
-
-    // Create wrapper with title
-    const wrapper = document.createElement("div");
-    wrapper.className = "trip-wrapper";
-    wrapper.innerHTML = '<div class="trip-month-title">' + bigTitle + '</div>';
-
-    const card = document.createElement("div");
-    card.className = "trip-card " + trip.status;
-
-    const tags = trip.tags.map(t => '<span class="trip-detail-tag">' + t + '</span>').join("");
-    const dots = trip.photos.map((_, i) => '<div class="image-dot' + (i===0?' active':'') + '" data-trip="'+trip.id+'" data-i="'+i+'"></div>').join("");
-
-    card.innerHTML =
-      '<div class="trip-image-container">' +
-        '<div class="trip-images" id="images-' + trip.id + '">' +
-          '<img src="' + trip.photos[0] + '" alt="' + trip.title + '">' +
-        '</div>' +
-        '<span class="trip-badge ' + trip.status + '">' + (trip.status === "upcoming" ? "Coming Up" : "Completed") + '</span>' +
-        (trip.photos.length > 1 ? '<button class="image-nav prev" onclick="cycleImg(\'' + trip.id + '\',-1)">‹</button>' : '') +
-        (trip.photos.length > 1 ? '<button class="image-nav next" onclick="cycleImg(\'' + trip.id + '\',1)">›</button>' : '') +
-        '<div class="image-dots">' + dots + '</div>' +
-      '</div>' +
-      '<div class="trip-content">' +
-        '<div class="trip-header-line"><span class="trip-title">' + trip.title + '</span><span class="trip-date">' + trip.date + '</span></div>' +
-        '<div class="trip-info">' + trip.subtitle + (trip.tags.length ? ' · ' + trip.tags.join(' · ') : '') + '</div>' +
-        (trip.cost ? '<div class="trip-price"><strong>$' + trip.cost.toFixed(2) + '</strong> total</div>' : '') +
-        (trip.airbnb ? '<a href="' + trip.airbnb + '" target="_blank" class="airbnb-link">View on Airbnb</a>' : '') +
-        (trip.id === 'madison' ? '<a href="madison.html" class="things-to-do-link">Things to Do / 할 거리</a>' : '') +
-        (trip.id === 'madison' ? '<a href="madison-photos.html" class="photos-link">Photos / 사진</a>' : '') +
-        '<div class="trip-map">' +
-          '<iframe src="https://maps.google.com/maps?q=' + encodeURIComponent(trip.address) + '&z=14&output=embed" loading="lazy"></iframe>' +
-          '<div class="trip-address">' + trip.address + '</div>' +
-        '</div>' +
-        (trip.activities ? '<div class="trip-activities"><strong>What we did:</strong> ' + trip.activities.join(' · ') + '</div>' : '') +
-        (trip.memory ? '<div class="trip-memories">' + trip.memory + '</div>' : '') +
-      '</div>';
-
-    wrapper.appendChild(card);
-    container.appendChild(wrapper);
-  });
+const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
+const cents = value => Math.round(value * 100);
+const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const optimized = path => 'assets/optimized/' + path.split('/').pop().replace(/\.(jpe?g|png)$/i, '.webp');
+function calculateFund(fund) {
+  const contributions = fund.contributions.reduce((sum, row) => sum + row.p.reduce((a,b)=>a+b,0)*5000,0);
+  const interest = fund.interest.reduce((sum,row)=>sum+cents(row.amount),0);
+  const expenses = fund.trips.reduce((sum,trip)=>sum+cents(trip.cost||0),0);
+  return {contributions,interest,expenses,balance:contributions+interest-expenses};
 }
-
-// Image cycling
-const imgIdx = {};
-function cycleImg(id, dir) {
-  const trip = data.trips.find(t => t.id === id);
-  if (!trip || trip.photos.length <= 1) return;
-
-  dir = dir || 1;
-  imgIdx[id] = imgIdx[id] || 0;
-  imgIdx[id] += dir;
-  if (imgIdx[id] < 0) imgIdx[id] = trip.photos.length - 1;
-  if (imgIdx[id] >= trip.photos.length) imgIdx[id] = 0;
-
-  const container = document.getElementById("images-" + id);
-  container.innerHTML = '<img src="' + trip.photos[imgIdx[id]] + '" alt="' + trip.title + '">';
-
-  document.querySelectorAll('.image-dot[data-trip="'+id+'"]').forEach((d, i) => {
-    d.className = "image-dot" + (i === imgIdx[id] ? " active" : "");
-  });
+function renderFund() {
+  const totals=calculateFund(data);
+  document.getElementById('balance').textContent=money(totals.balance);
+  document.getElementById('pending-receipt').textContent=data.pendingReceipt.label+' '+money(cents(data.pendingReceipt.amount))+' 입금 예정액 포함';
+  const bankRows=[{label:'은행 명세서 · '+data.bankStatement.date,amount:cents(data.bankStatement.balance)},...data.confirmedOutsideStatement.map(row=>({label:row.label,amount:cents(row.amount)})),{label:data.pendingReceipt.label+' · 입금 예정',amount:cents(data.pendingReceipt.amount)}];
+  document.getElementById('bank-reconciliation').innerHTML=bankRows.map((row,i)=>'<div><dt>'+escapeHTML(row.label)+'</dt><dd>'+(i?'+':'')+money(row.amount)+'</dd></div>').join('');
+  if(bankRows.reduce((sum,row)=>sum+row.amount,0)!==totals.balance){const warning=document.createElement('p');warning.className='reconciliation-warning';warning.textContent='회비 기록과 은행 확인 내역의 차이를 확인해 주세요.';document.querySelector('.reconciliation').append(warning);}
+  document.getElementById('fund-equation').innerHTML=[['누적 회비',totals.contributions],['이자',totals.interest],['여행비',-totals.expenses],['계 잔액',totals.balance]].map(([label,amount])=>'<div><dt>'+label+'</dt><dd>'+money(amount)+'</dd></div>').join('');
 }
-
-// Ledger (newest first, total on top)
-function renderLedger() {
-  const tbody = document.getElementById("contribution-body");
-
-  // Compute full total first
-  let total = 0;
-  data.contributions.forEach(c => { total += c.p.reduce((a,b) => a+b, 0) * 50; });
-  data.interest.forEach(function(int) { total += int.amount; });
-  const madison = data.trips.find(t => t.id === "madison");
-  if (madison && madison.cost) total -= madison.cost;
-
-  // Final row on top
-  const tRow = document.createElement("tr");
-  tRow.className = "final-row";
-  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(tRow);
-
-  // Madison expense
-  if (madison && madison.cost) {
-    const eRow = document.createElement("tr");
-    eRow.className = "expense-row";
-    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td></td>';
-    tbody.appendChild(eRow);
-  }
-
-  // Interest (reversed)
-  for (let i = data.interest.length - 1; i >= 0; i--) {
-    const int = data.interest[i];
-    const iRow = document.createElement("tr");
-    iRow.className = "interest-row";
-    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td></td>';
-    tbody.appendChild(iRow);
-  }
-
-  // Contributions newest first with running total descending
-  let runDown = 0;
-  data.contributions.forEach(c => { runDown += c.p.reduce((a,b) => a+b, 0) * 50; });
-  for (let i = data.contributions.length - 1; i >= 0; i--) {
-    const c = data.contributions[i];
-    const [y, m] = c.m.split("-");
-    const row = document.createElement("tr");
-    row.innerHTML =
-      '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
-      '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
-      '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
-      '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
-      '<td class="running-total">$' + runDown + '</td>';
-    tbody.appendChild(row);
-    runDown -= c.p.reduce((a,b) => a+b, 0) * 50;
-  }
+let showHistory=false;
+function renderLedger(){
+  let cumulative=0;
+  const rows=data.contributions.map(row=>{cumulative+=row.p.reduce((a,b)=>a+b,0)*5000;return {...row,cumulative};});
+  const currentMonth=new Date().toLocaleDateString('sv-SE',{timeZone:'America/Chicago'}).slice(0,7);
+  document.getElementById('contribution-body').innerHTML=rows.filter(row=>showHistory||row.m>='2026-01').reverse().map(row=>{
+    const [year,month]=row.m.split('-');
+    const payments=row.p.map((paid,i)=>{const future=row.m>currentMonth;const status=paid?'납부 확인':future?'예정':'기록 확인 필요';return '<td><span class="'+(paid?'paid':'unrecorded')+'" aria-label="'+escapeHTML(data.parties[i]+' '+status)+'">'+(paid?'✓':future?'예정':'—')+'</span></td>';}).join('');
+    return '<tr><th scope="row">'+year+'년 '+Number(month)+'월</th>'+payments+'<td class="numeric">'+money(row.cumulative)+'</td></tr>';
+  }).join('');
 }
-
-// Mobile Ledger (newest first, total on top)
-function renderMobileLedger() {
-  const tbody = document.getElementById("mobile-contribution-body");
-  if (!tbody) return;
-
-  // Compute full total first
-  let total = 0;
-  data.contributions.forEach(c => { total += c.p.reduce((a,b) => a+b, 0) * 50; });
-  data.interest.forEach(function(int) { total += int.amount; });
-  const madison = data.trips.find(t => t.id === "madison");
-  if (madison && madison.cost) total -= madison.cost;
-
-  // Final row on top
-  const tRow = document.createElement("tr");
-  tRow.className = "final-row";
-  tRow.innerHTML = '<td class="month-cell"><strong>잔액</strong></td><td></td><td></td><td></td><td class="running-total final-total">$' + total.toFixed(2) + '</td>';
-  tbody.appendChild(tRow);
-
-  // Madison expense
-  if (madison && madison.cost) {
-    const eRow = document.createElement("tr");
-    eRow.className = "expense-row";
-    eRow.innerHTML = '<td class="month-cell">매디슨 숙소</td><td></td><td></td><td class="expense">-$' + madison.cost.toFixed(2) + '</td><td></td>';
-    tbody.appendChild(eRow);
-  }
-
-  // Interest (reversed)
-  for (let i = data.interest.length - 1; i >= 0; i--) {
-    const int = data.interest[i];
-    const iRow = document.createElement("tr");
-    iRow.className = "interest-row";
-    iRow.innerHTML = '<td class="month-cell">' + int.label + '</td><td></td><td></td><td>+$' + int.amount.toFixed(2) + '</td><td></td>';
-    tbody.appendChild(iRow);
-  }
-
-  // Contributions newest first with running total descending
-  let runDown = 0;
-  data.contributions.forEach(c => { runDown += c.p.reduce((a,b) => a+b, 0) * 50; });
-  for (let i = data.contributions.length - 1; i >= 0; i--) {
-    const c = data.contributions[i];
-    const [y, m] = c.m.split("-");
-    const row = document.createElement("tr");
-    row.innerHTML =
-      '<td class="month-cell">' + y.slice(2) + '년 ' + months[m] + '</td>' +
-      '<td><span class="' + (c.p[0] ? 'check' : 'pending') + '">' + (c.p[0] ? '✓' : '—') + '</span></td>' +
-      '<td><span class="' + (c.p[1] ? 'check' : 'pending') + '">' + (c.p[1] ? '✓' : '—') + '</span></td>' +
-      '<td><span class="' + (c.p[2] ? 'check' : 'pending') + '">' + (c.p[2] ? '✓' : '—') + '</span></td>' +
-      '<td class="running-total">$' + runDown + '</td>';
-    tbody.appendChild(row);
-    runDown -= c.p.reduce((a,b) => a+b, 0) * 50;
-  }
+function renderStays(){
+  document.getElementById('stay-list').innerHTML=stays.map(stay=>'<article class="stay"><a class="stay-photo" href="'+stay.url+'" target="_blank" rel="noopener noreferrer" aria-label="'+escapeHTML(stay.name)+' 숙소 사진 보기 (새 창)"><img src="'+stay.photo+'" alt="'+escapeHTML(stay.name)+'의 호스트 제공 숙소 사진" width="960" height="640" loading="lazy" decoding="async"></a><div class="stay-content"><h3>'+escapeHTML(stay.name)+'</h3><p class="stay-location">'+escapeHTML(stay.location)+'</p><p class="stay-fit">'+escapeHTML(stay.fit)+'</p><p class="stay-facts">'+escapeHTML(stay.facts)+'</p><p>'+escapeHTML(stay.description)+'</p><dl class="stay-details"><div><dt>잠자리</dt><dd>'+escapeHTML(stay.beds)+'</dd></div><div><dt>확인할 점</dt><dd>'+escapeHTML(stay.check)+'</dd></div></dl><p class="stay-location">'+escapeHTML(stay.setting)+'</p><div class="stay-links"><a class="primary-link" href="'+stay.url+'?adults=6&children=1" target="_blank" rel="noopener noreferrer">사진·예약 날짜 보기<span class="sr-only"> — '+escapeHTML(stay.name)+' (새 창)</span></a><a href="'+stay.natureUrl+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(stay.nature)+'<span class="sr-only"> (새 창)</span></a></div><p class="listing-source">Airbnb · '+escapeHTML(stay.rating)+' · 2026.09.13 확인</p></div></article>').join('');
+  document.querySelectorAll('.stay-photo img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const message=document.createElement('span');message.textContent='Airbnb에서 숙소 사진 보기';img.parentElement.append(message);},{once:true}));
 }
+const imgIdx={};
+const arrow=direction=>'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="'+(direction<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'"/></svg>';
+function renderTrips(){
+  document.getElementById('trip-grid').innerHTML=data.trips.map(trip=>{
+    imgIdx[trip.id]=0;
+    return '<article class="trip-card"><div class="trip-image-container"><img id="image-'+trip.id+'" src="'+optimized(trip.photos[0])+'" alt="'+escapeHTML(trip.title)+' · 사진 1" width="1000" height="700" loading="lazy" decoding="async"><div class="photo-controls"><button type="button" data-trip="'+trip.id+'" data-direction="-1" aria-label="'+escapeHTML(trip.title)+' 이전 사진">'+arrow(-1)+'</button><span id="count-'+trip.id+'" aria-live="polite">1 / '+trip.photos.length+'</span><button type="button" data-trip="'+trip.id+'" data-direction="1" aria-label="'+escapeHTML(trip.title)+' 다음 사진">'+arrow(1)+'</button></div></div><div class="trip-content"><h3>'+escapeHTML(trip.title)+'</h3><p class="trip-date">'+escapeHTML(trip.date)+'</p>'+(trip.cost?'<p class="trip-cost">숙소 비용 '+money(cents(trip.cost))+'</p>':'')+'<div class="trip-links">'+(trip.id==='madison'?'<a href="madison-photos.html">가족 사진 보기</a><a href="madison.html">매디슨에서 할 거리</a>':'')+(trip.airbnb?'<a href="'+trip.airbnb+'" target="_blank" rel="noopener noreferrer">머물렀던 숙소<span class="sr-only"> (새 창)</span></a>':'')+'</div><details class="trip-details"><summary>장소와 여행 메모</summary><p>'+escapeHTML(trip.address)+'</p><a href="https://maps.google.com/?q='+encodeURIComponent(trip.address)+'" target="_blank" rel="noopener noreferrer">지도에서 보기<span class="sr-only"> (새 창)</span></a>'+(trip.activities?'<p>'+trip.activities.join(' · ')+'</p>':'')+(trip.memory?'<p>'+escapeHTML(trip.memory)+'</p>':'')+'</details></div></article>';
+  }).join('');
+  document.querySelectorAll('[data-direction]').forEach(button=>button.addEventListener('click',()=>cycleImg(button.dataset.trip,Number(button.dataset.direction))));
+  document.querySelectorAll('#trip-grid a[target="_blank"]').forEach(a=>a.rel='noopener noreferrer');
+}
+function cycleImg(id,direction){const trip=data.trips.find(trip=>trip.id===id);imgIdx[id]=(imgIdx[id]+direction+trip.photos.length)%trip.photos.length;const img=document.getElementById('image-'+id);img.src=optimized(trip.photos[imgIdx[id]]);img.alt=trip.title+' · 사진 '+(imgIdx[id]+1);document.getElementById('count-'+id).textContent=(imgIdx[id]+1)+' / '+trip.photos.length;}
+document.addEventListener('DOMContentLoaded',()=>{renderFund();renderLedger();renderStays();renderTrips();document.getElementById('history-toggle').addEventListener('click',event=>{showHistory=!showHistory;event.currentTarget.setAttribute('aria-expanded',String(showHistory));event.currentTarget.textContent=showHistory?'2026년만 보기':'2025년 내역도 보기';renderLedger();});});

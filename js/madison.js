@@ -291,8 +291,8 @@ const activities = [
 
 const categoryInfo = {
   outdoor:      { label: "Outdoors", labelKo: "야외 활동", color: "var(--forest)" },
-  indoor:       { label: "Indoors / Rainy Day", labelKo: "실내 / 비 오는 날", color: "var(--coral)" },
-  food:         { label: "Food", labelKo: "먹거리", color: "var(--gold)" },
+  indoor:       { label: "Indoors / Rainy Day", labelKo: "실내 / 비 오는 날", color: "#a82c39" },
+  food:         { label: "Food", labelKo: "먹거리", color: "#795000" },
   neighborhood: { label: "Neighborhood", labelKo: "동네 산책", color: "var(--gray-600)" }
 };
 
@@ -304,10 +304,10 @@ const tagLabels = {
 };
 
 const tagColors = {
-  "free": "var(--forest)",
-  "kid-friendly": "var(--coral)",
+  "free": "var(--forest-dark)",
+  "kid-friendly": "#a82c39",
   "walkable": "var(--gray-600)",
-  "korean": "#d94f70"
+  "korean": "#a52c50"
 };
 
 const weatherLabels = {
@@ -333,7 +333,6 @@ document.addEventListener("DOMContentLoaded", function() {
   renderActivities();
   setupFilters();
   setupLangToggle();
-  fetchWeather();
   updateLangUI();
 });
 
@@ -344,8 +343,8 @@ function setupLangToggle() {
     btn.addEventListener("click", function() {
       lang = lang === "ko" ? "en" : "ko";
       btn.innerHTML = lang === "ko"
-        ? '<span class="lang-flag">\u{1F1FA}\u{1F1F8}</span> ENG'
-        : '<span class="lang-flag">\u{1F1F0}\u{1F1F7}</span> 한국어';
+        ? 'English'
+        : '한국어';
       renderActivities();
       filterActivities();
       updateLangUI();
@@ -354,6 +353,13 @@ function setupLangToggle() {
 }
 
 function updateLangUI() {
+  document.documentElement.lang = lang;
+  document.getElementById("archive-note").textContent = lang === "ko" ? "지난 여행 · 2026년 3월" : "Past trip · March 2026";
+  document.querySelector(".archive-context").textContent = lang === "ko"
+    ? "2026년 3월 여행 때의 안내입니다. 영업시간 등은 방문 전 각 장소의 웹사이트에서 확인해 주세요."
+    : "Guide from our March 2026 trip. Check each venue’s website for current opening hours before visiting.";
+  document.querySelector(".hero-tag").textContent = lang === "ko" ? "3월 22-24, 2026" : "March 22–24, 2026";
+  document.getElementById("map-link").textContent = lang === "ko" ? "지도에서 보기 (새 창)" : "Open map (new tab)";
   // Update filter pills
   document.querySelectorAll(".filter-pill").forEach(function(pill) {
     var cat = pill.dataset.category;
@@ -371,35 +377,6 @@ function updateLangUI() {
   if (heroTitle) {
     heroTitle.textContent = lang === "ko" ? "매디슨에서 할 거리" : "Things to Do in Madison";
   }
-}
-
-// Weather via Open-Meteo (free, no API key)
-function fetchWeather() {
-  var widget = document.getElementById("weather-widget");
-  fetch("https://api.open-meteo.com/v1/forecast?latitude=43.0731&longitude=-89.4012&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/Chicago")
-    .then(function(res) { return res.json(); })
-    .then(function(data) {
-      var temp = Math.round(data.current.temperature_2m);
-      var code = data.current.weather_code;
-      var desc = weatherCodeToText(code);
-      widget.innerHTML = '<span class="weather-temp">' + temp + '\u00B0F</span><span class="weather-desc">' + desc + '</span>';
-    })
-    .catch(function() {
-      widget.innerHTML = '<span class="weather-desc">Weather unavailable</span>';
-    });
-}
-
-function weatherCodeToText(code) {
-  if (code === 0) return lang === "ko" ? "맑음" : "Clear";
-  if (code <= 3) return lang === "ko" ? "구름 조금" : "Partly cloudy";
-  if (code <= 49) return lang === "ko" ? "안개" : "Foggy";
-  if (code <= 59) return lang === "ko" ? "이슬비" : "Drizzle";
-  if (code <= 69) return lang === "ko" ? "비" : "Rain";
-  if (code <= 79) return lang === "ko" ? "눈" : "Snow";
-  if (code <= 82) return lang === "ko" ? "소나기" : "Rain showers";
-  if (code <= 86) return lang === "ko" ? "눈보라" : "Snow showers";
-  if (code >= 95) return lang === "ko" ? "뇌우" : "Thunderstorm";
-  return lang === "ko" ? "흐림" : "Cloudy";
 }
 
 function renderActivities() {
@@ -420,7 +397,7 @@ function renderActivities() {
 
     var header = document.createElement("div");
     header.className = "category-header";
-    header.innerHTML = '<h3>' + (lang === "ko" ? info.labelKo : info.label) + '</h3>';
+    header.innerHTML = '<h2>' + (lang === "ko" ? info.labelKo : info.label) + '</h2>';
     section.appendChild(header);
 
     var grid = document.createElement("div");
@@ -439,7 +416,7 @@ function renderActivities() {
       }).join("");
 
       var linkHtml = act.url
-        ? '<a href="' + act.url + '" target="_blank" class="activity-link">' + (lang === "ko" ? "웹사이트" : "Website") + '</a>'
+        ? '<a href="' + act.url + '" target="_blank" rel="noopener noreferrer" class="activity-link">' + (lang === "ko" ? "웹사이트" : "Website") + '</a>'
         : '';
 
       var wl = weatherLabels[act.weather] || {};
@@ -451,7 +428,7 @@ function renderActivities() {
       var subName = lang === "ko" ? act.name : act.nameKo;
 
       var imageHtml = act.image
-        ? '<div class="activity-image"><img src="' + act.image + '" alt="' + act.name + '" onerror="this.parentElement.style.display=\'none\'"></div>'
+        ? '<div class="activity-image"><img loading="lazy" decoding="async" src="' + act.image + '" alt="' + act.name + '" onerror="this.parentElement.style.display=\'none\'"></div>'
         : '';
 
       card.innerHTML =
@@ -461,7 +438,7 @@ function renderActivities() {
             '<span class="activity-category-pill" style="background:' + info.color + '">' + (lang === "ko" ? info.labelKo : info.label) + '</span>' +
             '<span class="activity-weather-label">' + weatherText + '</span>' +
           '</div>' +
-          '<h4 class="activity-name">' + displayName + '</h4>' +
+          '<h3 class="activity-name">' + displayName + '</h3>' +
           '<p class="activity-name-ko">' + subName + '</p>' +
           '<p class="activity-description">' + desc + '</p>' +
           '<div class="activity-meta">' +
@@ -485,8 +462,8 @@ function setupFilters() {
   var pills = document.querySelectorAll(".filter-pill");
   pills.forEach(function(pill) {
     pill.addEventListener("click", function() {
-      pills.forEach(function(p) { p.classList.remove("active"); });
-      pill.classList.add("active");
+      pills.forEach(function(p) { p.classList.remove("active"); p.setAttribute("aria-pressed", "false"); });
+      pill.classList.add("active"); pill.setAttribute("aria-pressed", "true");
       activeCategory = pill.dataset.category;
       filterActivities();
     });

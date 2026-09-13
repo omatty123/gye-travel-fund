@@ -1071,7 +1071,7 @@ tr:last-child td {
   margin: 2rem 0 1rem;
 }
 
-.category-header h3 {
+.category-header h2 {
   font-size: 1.3rem;
   font-weight: 700;
   color: var(--black);
@@ -1231,3 +1231,10 @@ tr:last-child td {
 .trip-card:nth-child(2) {
   animation-delay: 0.1s;
 }
+
+/* Accessibility refinements for the retained Madison guide. */
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--forest-dark);outline-offset:4px}
+.filter-pill,.lang-toggle-btn,.activity-link{min-height:44px}
+.archive-context{color:var(--gray-600);font-size:.875rem;margin:24px 0}
+.footer .signature{color:#a82c39}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.activity-card,.trip-card,.image-nav{transition:none}.activity-card:hover,.trip-card:hover{transform:none}}

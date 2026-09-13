@@ -4,105 +4,57 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>우리 가족 여행 계</title>
+  <meta name="description" content="가족 여행 계 회비, 여행 기록, 그리고 2027년 3월 위스콘신 숙소 후보.">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" href="apple-touch-icon.png">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-title" content="여행 계">
-
-  <!-- Open Graph / Link Preview -->
   <meta property="og:title" content="우리 가족 여행 계">
-  <meta property="og:description" content="함께 모아, 함께 떠나요 - Family Travel Fund">
+  <meta property="og:description" content="함께 모아, 함께 떠나요. 2027년 3월 위스콘신 여행을 준비해요.">
   <meta property="og:image" content="https://omatty123.github.io/gye-travel-fund/assets/images/family-hero.jpg">
   <meta property="og:url" content="https://omatty123.github.io/gye-travel-fund/">
   <meta property="og:type" content="website">
-
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://omatty123.github.io/gye-travel-fund/assets/images/family-hero.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260913">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css?v=20260913">
+  <script src="js/fund-data.js?v=20260913" defer></script>
+  <script src="js/stays.js?v=20260913" defer></script>
+  <script src="js/app.js?v=20260913-4" defer></script>
 </head>
 <body>
-  <!-- Hero Header -->
-  <header class="hero-header">
-    <div class="hero-layout">
-      <div class="hero-left">
-        <p class="hero-tag">Family Travel Fund</p>
-        <h1>우리 가족 여행 계</h1>
-        <p class="hero-subtitle">함께 모아, 함께 떠나요</p>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <span class="stat-value" id="balance">$0</span>
-            <span class="stat-label" id="balance-label">잔액</span>
-          </div>
-          <div class="hero-stat">
-            <span class="stat-value" id="countdown">D-0</span>
-            <span class="stat-label" id="destination">다음 여행</span>
-          </div>
-        </div>
-        <p class="receipt-note" id="receipt-note" hidden>
-          <span id="bank-balance"></span><br>
-          <span id="pending-receipt"></span>
-        </p>
-      </div>
-      <div class="hero-ledger">
-        <table id="contribution-table">
-          <thead>
-            <tr>
-              <th>월</th>
-              <th id="party-1"></th>
-              <th id="party-2"></th>
-              <th id="party-3"></th>
-              <th>잔액</th>
-            </tr>
-          </thead>
-          <tbody id="contribution-body">
-          </tbody>
-        </table>
-      </div>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="hero-header"><div class="page-width">
+    <div class="hero-top">
+      <div><h1>우리 가족 여행 계</h1><p class="hero-subtitle">함께 모아, 함께 떠나요</p></div>
+      <nav aria-label="주요 메뉴"><a href="#spring">다음 여행</a><a href="#ledger">회비 내역</a><a href="#memories">여행 기록</a></nav>
     </div>
-  </header>
-
-  <!-- Mobile Ledger Section -->
-  <section class="mobile-ledger-section">
-    <h3>기여 내역</h3>
-    <div class="mobile-ledger-wrapper">
-      <table id="mobile-contribution-table">
-        <thead>
-          <tr>
-            <th>월</th>
-            <th id="mobile-party-1"></th>
-            <th id="mobile-party-2"></th>
-            <th id="mobile-party-3"></th>
-            <th>잔액</th>
-          </tr>
-        </thead>
-        <tbody id="mobile-contribution-body">
-        </tbody>
-      </table>
+    <div class="fund-layout">
+      <div class="fund-total"><p>여행 계 잔액</p><strong id="balance">계산 중</strong><p class="fund-note" id="pending-receipt"></p><a class="spring-link" href="#spring">2027년 3월 · 위스콘신 숙소 살펴보기 <span aria-hidden="true">→</span></a></div>
+      <details class="reconciliation" open><summary>잔액 확인</summary><dl id="bank-reconciliation"></dl><p class="reconciliation-note">은행에 도착한 금액과 가족이 납부를 확인한 금액을 구분해 기록해요.</p></details>
     </div>
-  </section>
-
-  <div class="container">
-    <!-- Featured Trips -->
-    <section class="featured-trips">
-      <div class="section-header">
-        <h2>Our Trips</h2>
-        <p>여행 기록</p>
-      </div>
-      <div class="trip-cards" id="trip-grid">
-      </div>
+  </div></header>
+  <main id="main" class="page-width">
+    <section id="spring" aria-labelledby="spring-heading">
+      <div class="section-heading"><div><h2 id="spring-heading">다음 봄, 함께 떠나요</h2><p>2027년 3월 · 성인 6명 + 아이 1명 · 위스콘신</p></div><span class="research-status">숙소 후보 검토 중</span></div>
+      <p class="section-intro">Appleton과 Chicago에서 함께 모일 곳을 찾고 있어요. 첫 후보는 <strong>Lauderdale Lakes의 통나무집</strong>. 침대 구성이 가장 편하고, 숲길과 호수를 함께 즐길 수 있어요.</p>
+      <p class="booking-note">정확한 날짜·숙박 일수·예산은 아직 미정이에요. 아래는 2026년 9월 13일 확인한 숙소 정보이며, <strong>3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.</strong></p>
+      <div id="stay-list"></div>
+      <p class="season-note">3월 여행은 수영보다 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 골랐어요. 사진은 각 Airbnb 숙소의 호스트가 제공한 사진이에요.</p>
     </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-      <p>사랑으로 함께하는 우리 가족</p>
-      <p class="signature">올림, 양코사위</p>
-    </footer>
-  </div>
-
-  <script src="js/app.js?v=20260913-3"></script>
-</body>
-</html>
+    <section id="ledger" aria-labelledby="ledger-heading">
+      <div class="section-heading"><div><h2 id="ledger-heading">회비 내역</h2><p>가족별 매월 $50 · 2026년 9월 13일 업데이트</p></div><button id="history-toggle" type="button" aria-expanded="false" aria-controls="contribution-body">2025년 내역도 보기</button></div>
+      <p id="ledger-legend" class="ledger-legend">✓ 납부 확인 · — 아직 기록 없음 (미납 확정 아님) · 예정: 다음 달</p>
+      <div class="table-scroll" role="region" aria-label="가족별 월 회비 내역" tabindex="0"><table aria-describedby="ledger-legend">
+        <caption class="sr-only">가족별 월 회비 납부 확인과 누적 회비. 누적 회비는 이자와 여행비를 반영하기 전 금액입니다.</caption>
+        <thead><tr><th scope="col">월</th><th scope="col">부모님</th><th scope="col">Joe / Heejin</th><th scope="col">Dom / Matty</th><th scope="col">누적 회비</th></tr></thead><tbody id="contribution-body"></tbody>
+      </table></div>
+      <dl class="fund-equation" id="fund-equation"></dl>
+    </section>
+    <section id="memories" aria-labelledby="memories-heading"><div class="section-heading"><div><h2 id="memories-heading">함께한 여행</h2><p>우리 가족의 여행 기록</p></div></div><div class="trip-cards" id="trip-grid"></div></section>
+  </main>
+  <footer class="footer page-width"><p>사랑으로 함께하는 우리 가족</p><p class="signature">올림, 양코사위</p><a href="#">맨 위로</a></footer>
+  <noscript><p class="page-width">잔액과 여행 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
+</body></html>

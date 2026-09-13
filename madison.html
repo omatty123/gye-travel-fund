@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=20260913-audit">
 </head>
 <body>
   <!-- Breadcrumb -->
@@ -26,27 +26,26 @@
       </div>
       <div class="madison-hero-right">
         <div class="madison-weather-widget" id="weather-widget">
-          <span class="weather-loading">Loading...</span>
+          <span id="archive-note">지난 여행 · 2026년 3월</span>
         </div>
-        <button class="lang-toggle-btn" id="lang-toggle"><span class="lang-flag">🇺🇸</span> ENG</button>
+        <button class="lang-toggle-btn" id="lang-toggle">English</button>
       </div>
     </div>
   </header>
 
   <!-- Map -->
   <section class="map-section">
-    <iframe src="https://maps.google.com/maps?q=725+Jenifer+St+Madison+WI+53703&z=14&output=embed" loading="lazy"></iframe>
-    <div class="map-address">725 Jenifer St, Madison, WI 53703</div>
+    <div class="map-address"><span>725 Jenifer St, Madison, WI 53703</span> · <a id="map-link" href="https://maps.google.com/?q=725+Jenifer+St+Madison+WI+53703" target="_blank" rel="noopener noreferrer">지도에서 보기 (새 창)</a></div>
   </section>
 
   <!-- Filter Bar -->
   <div class="filter-bar">
     <div class="filter-pills">
-      <button class="filter-pill active" data-category="all">All</button>
-      <button class="filter-pill" data-category="outdoor">Outdoors</button>
-      <button class="filter-pill" data-category="indoor">Indoors</button>
-      <button class="filter-pill" data-category="food">Food</button>
-      <button class="filter-pill" data-category="neighborhood">Neighborhood</button>
+      <button type="button" aria-pressed="true" class="filter-pill active" data-category="all">All</button>
+      <button type="button" aria-pressed="false" class="filter-pill" data-category="outdoor">Outdoors</button>
+      <button type="button" aria-pressed="false" class="filter-pill" data-category="indoor">Indoors</button>
+      <button type="button" aria-pressed="false" class="filter-pill" data-category="food">Food</button>
+      <button type="button" aria-pressed="false" class="filter-pill" data-category="neighborhood">Neighborhood</button>
     </div>
     <label class="weather-toggle">
       <input type="checkbox" id="rainy-toggle">
@@ -55,15 +54,16 @@
   </div>
 
   <!-- Activities -->
-  <div class="container">
+  <main class="container">
+    <p class="archive-context">2026년 3월 여행 때의 안내입니다. 영업시간 등은 방문 전 각 장소의 웹사이트에서 확인해 주세요.</p>
     <div id="activity-container"></div>
 
     <footer class="footer">
       <p>사랑으로 함께하는 우리 가족</p>
       <p class="signature">올림, 양코사위</p>
     </footer>
-  </div>
+  </main>
 
-  <script src="js/madison.js?v=1"></script>
+  <script src="js/madison.js?v=20260913"></script>
 </body>
 </html>
