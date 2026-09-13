@@ -1,46 +1,126 @@
-const money = cents => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(cents / 100);
+const money = cents => new Intl.NumberFormat('en-US', {style: 'currency', currency: 'USD'}).format(cents / 100);
 const cents = value => Math.round(value * 100);
 const escapeHTML = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const optimized = path => 'assets/optimized/' + path.split('/').pop().replace(/\.(jpe?g|png)$/i, '.webp');
+const t = key => I18n.t(key);
+const local = value => value[I18n.language];
+const translated = key => escapeHTML(t(key));
+const external = ' target="_blank" rel="noopener noreferrer"';
+let showHistory = false;
+let selectedArea = 'milwaukee';
+const imgIdx = {};
+const tripCopy = {
+  madison: {en: {title:'Madison family vacation',date:'March 22–24, 2026'},ko:{title:'매디슨 가족 휴가',date:'2026년 3월 22–24일'}},
+  milwaukee: {en:{title:'Milwaukee — where our fund began',date:'March 27–28, 2025',memory:'This is where our family travel fund began.'},ko:{title:'밀워키 — 계의 시작',date:'2025년 3월 27–28일',memory:'이곳에서 우리 가족 여행 계가 시작되었습니다'}}
+};
 function calculateFund(fund) {
-  const contributions = fund.contributions.reduce((sum, row) => sum + row.p.reduce((a,b)=>a+b,0)*5000,0);
-  const interest = fund.interest.reduce((sum,row)=>sum+cents(row.amount),0);
-  const expenses = fund.trips.reduce((sum,trip)=>sum+cents(trip.cost||0),0);
+  const contributions = fund.contributions.reduce((sum,row) => sum + row.p.reduce((a,b)=>a+b,0)*5000,0);
+  const interest = fund.interest.reduce((sum,row) => sum+cents(row.amount),0);
+  const expenses = fund.trips.reduce((sum,trip) => sum+cents(trip.cost||0),0);
   return {contributions,interest,expenses,balance:contributions+interest-expenses};
 }
 function renderFund() {
-  const totals=calculateFund(data);
-  document.getElementById('balance').textContent=money(totals.balance);
-  document.getElementById('pending-receipt').textContent=data.pendingReceipt.label+' '+money(cents(data.pendingReceipt.amount))+' 입금 예정액 포함';
-  const bankRows=[{label:'은행 명세서 · '+data.bankStatement.date,amount:cents(data.bankStatement.balance)},...data.confirmedOutsideStatement.map(row=>({label:row.label,amount:cents(row.amount)})),{label:data.pendingReceipt.label+' · 입금 예정',amount:cents(data.pendingReceipt.amount)}];
-  document.getElementById('bank-reconciliation').innerHTML=bankRows.map((row,i)=>'<div><dt>'+escapeHTML(row.label)+'</dt><dd>'+(i?'+':'')+money(row.amount)+'</dd></div>').join('');
-  if(bankRows.reduce((sum,row)=>sum+row.amount,0)!==totals.balance){const warning=document.createElement('p');warning.className='reconciliation-warning';warning.textContent='회비 기록과 은행 확인 내역의 차이를 확인해 주세요.';document.querySelector('.reconciliation').append(warning);}
-  document.getElementById('fund-equation').innerHTML=[['누적 회비',totals.contributions],['이자',totals.interest],['여행비',-totals.expenses],['계 잔액',totals.balance]].map(([label,amount])=>'<div><dt>'+label+'</dt><dd>'+money(amount)+'</dd></div>').join('');
+  const totals = calculateFund(data);
+  document.getElementById('balance').textContent = money(totals.balance);
+  document.getElementById('pending-receipt').textContent = `${t('pendingParents')} ${money(cents(data.pendingReceipt.amount))} · ${t('pendingIncluded')}`;
+  const bankRows = [
+    {label:t('statement')+' · '+data.bankStatement.date,amount:cents(data.bankStatement.balance)},
+    ...data.confirmedOutsideStatement.map(row=>({label:t('joeJuly'),amount:cents(row.amount)})),
+    {label:t('pendingParents')+' · '+t('incoming'),amount:cents(data.pendingReceipt.amount)}
+  ];
+  document.getElementById('bank-reconciliation').innerHTML = bankRows.map((row,i)=>`<div><dt>${escapeHTML(row.label)}</dt><dd>${i?'+':''}${money(row.amount)}</dd></div>`).join('');
+  document.querySelector('.reconciliation-warning')?.remove();
+  if (bankRows.reduce((sum,row)=>sum+row.amount,0)!==totals.balance) {
+    const warning = document.createElement('p');
+    warning.className = 'reconciliation-warning'; warning.textContent = t('mismatch');
+    document.querySelector('.reconciliation').append(warning);
+  }
+  document.getElementById('fund-equation').innerHTML = [['contributionsTotal',totals.contributions],['interest',totals.interest],['expenses',-totals.expenses],['balance',totals.balance]].map(([key,amount])=>`<div><dt>${translated(key)}</dt><dd>${money(amount)}</dd></div>`).join('');
 }
-let showHistory=false;
-function renderLedger(){
-  let cumulative=0;
-  const rows=data.contributions.map(row=>{cumulative+=row.p.reduce((a,b)=>a+b,0)*5000;return {...row,cumulative};});
-  const currentMonth=new Date().toLocaleDateString('sv-SE',{timeZone:'America/Chicago'}).slice(0,7);
-  document.getElementById('contribution-body').innerHTML=rows.filter(row=>showHistory||row.m>='2026-01').reverse().map(row=>{
-    const [year,month]=row.m.split('-');
-    const payments=row.p.map((paid,i)=>{const future=row.m>currentMonth;const status=paid?'납부 확인':future?'예정':'기록 확인 필요';return '<td><span class="'+(paid?'paid':'unrecorded')+'" aria-label="'+escapeHTML(data.parties[i]+' '+status)+'">'+(paid?'✓':future?'예정':'—')+'</span></td>';}).join('');
-    return '<tr><th scope="row">'+year+'년 '+Number(month)+'월</th>'+payments+'<td class="numeric">'+money(row.cumulative)+'</td></tr>';
+function renderLedger() {
+  let cumulative = 0;
+  const rows = data.contributions.map(row=>{cumulative+=row.p.reduce((a,b)=>a+b,0)*5000;return {...row,cumulative};});
+  const currentMonth = new Date().toLocaleDateString('sv-SE',{timeZone:'America/Chicago'}).slice(0,7);
+  const parties = [t('parents'),'Joe / Heejin / Ben','Dominica / Matty'];
+  document.getElementById('contribution-body').innerHTML = rows.filter(row=>showHistory||row.m>='2026-01').reverse().map(row=>{
+    const [year,month] = row.m.split('-');
+    const label = new Intl.DateTimeFormat(I18n.language==='ko'?'ko-KR':'en-US',{year:'numeric',month:'short',timeZone:'UTC'}).format(new Date(Date.UTC(Number(year),Number(month)-1,1)));
+    const payments = row.p.map((paid,i)=>{
+      const future = row.m>currentMonth;
+      const status = t(paid?'paid':future?'upcoming':'unrecorded');
+      return `<td><span class="${paid?'paid':'unrecorded'}" aria-label="${escapeHTML(parties[i]+' · '+status)}">${paid?'✓':future?translated('upcoming'):'—'}</span></td>`;
+    }).join('');
+    return `<tr><th scope="row">${label}</th>${payments}<td class="numeric">${money(row.cumulative)}</td></tr>`;
   }).join('');
+  const toggle = document.getElementById('history-toggle');
+  toggle.textContent = t(showHistory?'hideHistory':'showHistory');
+  toggle.setAttribute('aria-expanded',String(showHistory));
 }
-function renderStays(){
-  document.getElementById('stay-list').innerHTML=stays.map(stay=>'<article class="stay"><a class="stay-photo" href="'+stay.url+'" target="_blank" rel="noopener noreferrer" aria-label="'+escapeHTML(stay.name)+' 숙소 사진 보기 (새 창)"><img src="'+stay.photo+'" alt="'+escapeHTML(stay.name)+'의 호스트 제공 숙소 사진" width="960" height="640" loading="lazy" decoding="async"></a><div class="stay-content"><h3>'+escapeHTML(stay.name)+'</h3><p class="stay-location">'+escapeHTML(stay.location)+'</p><p class="stay-fit">'+escapeHTML(stay.fit)+'</p><p class="stay-facts">'+escapeHTML(stay.facts)+'</p><p>'+escapeHTML(stay.description)+'</p><dl class="stay-details"><div><dt>잠자리</dt><dd>'+escapeHTML(stay.beds)+'</dd></div><div><dt>확인할 점</dt><dd>'+escapeHTML(stay.check)+'</dd></div></dl><p class="stay-location">'+escapeHTML(stay.setting)+'</p><div class="stay-links"><a class="primary-link" href="'+stay.url+'?adults=6&children=1" target="_blank" rel="noopener noreferrer">사진·예약 날짜 보기<span class="sr-only"> — '+escapeHTML(stay.name)+' (새 창)</span></a><a href="'+stay.natureUrl+'" target="_blank" rel="noopener noreferrer">'+escapeHTML(stay.nature)+'<span class="sr-only"> (새 창)</span></a></div><p class="listing-source">Airbnb · '+escapeHTML(stay.rating)+' · 2026.09.13 확인</p></div></article>').join('');
-  document.querySelectorAll('.stay-photo img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const message=document.createElement('span');message.textContent='Airbnb에서 숙소 사진 보기';img.parentElement.append(message);},{once:true}));
+function renderAreaControls() {
+  const options = [{id:'all',name:{ko:t('allAreas'),en:t('allAreas')}},...regions];
+  const controls = document.getElementById('area-controls');
+  controls.innerHTML = options.map(area=>`<button type="button" data-area="${area.id}" aria-controls="stay-list" aria-pressed="${area.id===selectedArea}">${escapeHTML(local(area.name))}</button>`).join('');
+  controls.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+    selectedArea = button.dataset.area;
+    controls.querySelectorAll('button').forEach(el=>el.setAttribute('aria-pressed',String(el===button)));
+    renderStays();
+  }));
 }
-const imgIdx={};
-const arrow=direction=>'<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="'+(direction<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'"/></svg>';
-function renderTrips(){
-  document.getElementById('trip-grid').innerHTML=data.trips.map(trip=>{
-    imgIdx[trip.id]=0;
-    return '<article class="trip-card"><div class="trip-image-container"><img id="image-'+trip.id+'" src="'+optimized(trip.photos[0])+'" alt="'+escapeHTML(trip.title)+' · 사진 1" width="1000" height="700" loading="lazy" decoding="async"><div class="photo-controls"><button type="button" data-trip="'+trip.id+'" data-direction="-1" aria-label="'+escapeHTML(trip.title)+' 이전 사진">'+arrow(-1)+'</button><span id="count-'+trip.id+'" aria-live="polite">1 / '+trip.photos.length+'</span><button type="button" data-trip="'+trip.id+'" data-direction="1" aria-label="'+escapeHTML(trip.title)+' 다음 사진">'+arrow(1)+'</button></div></div><div class="trip-content"><h3>'+escapeHTML(trip.title)+'</h3><p class="trip-date">'+escapeHTML(trip.date)+'</p>'+(trip.cost?'<p class="trip-cost">숙소 비용 '+money(cents(trip.cost))+'</p>':'')+'<div class="trip-links">'+(trip.id==='madison'?'<a href="madison-photos.html">가족 사진 보기</a><a href="madison.html">매디슨에서 할 거리</a>':'')+(trip.airbnb?'<a href="'+trip.airbnb+'" target="_blank" rel="noopener noreferrer">머물렀던 숙소<span class="sr-only"> (새 창)</span></a>':'')+'</div><details class="trip-details"><summary>장소와 여행 메모</summary><p>'+escapeHTML(trip.address)+'</p><a href="https://maps.google.com/?q='+encodeURIComponent(trip.address)+'" target="_blank" rel="noopener noreferrer">지도에서 보기<span class="sr-only"> (새 창)</span></a>'+(trip.activities?'<p>'+trip.activities.join(' · ')+'</p>':'')+(trip.memory?'<p>'+escapeHTML(trip.memory)+'</p>':'')+'</details></div></article>';
+function renderStay(stay) {
+  const copy = local(stay.text), name = local(stay.name);
+  const facts = I18n.language==='ko' ? `최대 ${stay.capacity}명 · 침실 ${stay.bedrooms} · 욕실 ${stay.baths}` : `Up to ${stay.capacity} guests · ${stay.bedrooms} bedrooms · ${stay.baths} bathrooms`;
+  return `<article class="stay">
+    <a class="stay-photo" href="${stay.url}"${external} aria-label="${escapeHTML(name+' · '+t('photosDates')+' ('+t('newTab')+')')}"><img src="${stay.photo}" alt="${escapeHTML(name+' · '+t('hostPhoto'))}" width="960" height="640" loading="lazy" decoding="async"></a>
+    <div class="stay-content"><h4>${escapeHTML(name)}</h4><p class="stay-location">${escapeHTML(local(stay.location))}</p><p class="stay-fit">${escapeHTML(copy.fit)}</p><p class="stay-facts">${facts}</p><p>${escapeHTML(copy.description)}</p>
+    <dl class="stay-details"><div><dt>${translated('beds')}</dt><dd>${escapeHTML(copy.beds)}</dd></div><div><dt>${translated('check')}</dt><dd>${escapeHTML(copy.check)}</dd></div></dl>
+    <div class="stay-links"><a class="primary-link" href="${stay.url}?adults=6&children=1"${external}>${translated('photosDates')}<span class="sr-only"> — ${escapeHTML(name)} (${translated('newTab')})</span></a></div>
+    <p class="listing-source">Airbnb · ${stay.rating.toFixed(2)} / 5 · ${translated('sourceDate')}</p></div>
+  </article>`;
+}
+function renderStays() {
+  const shownRegions = regions.filter(area=>selectedArea==='all'||area.id===selectedArea);
+  const count = stays.filter(stay=>selectedArea==='all'||stay.region===selectedArea).length;
+  document.getElementById('stay-count').textContent = I18n.language==='ko'?`${count}개 숙소 후보 · 날짜별 요금 미확인`:`${count} possible stays · Date-specific prices unverified`;
+  document.getElementById('stay-list').innerHTML = shownRegions.map(area=>{
+    const query = new URLSearchParams({query:area.query,adults:'6',children:'1',room_types:'Entire home/apt'});
+    const extras = area.id==='smalltown' ? ['Cedarburg, Wisconsin','Port Washington, Wisconsin'] : [area.query];
+    const searches = extras.map(place=>{const q=new URLSearchParams(query);q.set('query',place);return `<a href="https://www.airbnb.com/s/homes?${q.toString()}"${external}>${translated('searchArea')} · ${escapeHTML(place.split(',')[0])}<span class="sr-only"> (${translated('newTab')})</span></a>`;}).join('');
+    return `<div class="stay-area"><div class="area-heading"><h3>${escapeHTML(local(area.name))}</h3><p>${escapeHTML(local(area.description))}</p><div class="area-searches">${searches}</div><p class="search-date-note">${translated('chooseMarch')}</p></div>${stays.filter(stay=>stay.region===area.id).map(renderStay).join('')}</div>`;
+  }).join('');
+  document.querySelectorAll('.stay-photo img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const message=document.createElement('span');message.textContent=t('photoFallback');img.parentElement.append(message);},{once:true}));
+}
+const arrow = direction => '<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="'+(direction<0?'M15 5l-7 7 7 7':'M9 5l7 7-7 7')+'"/></svg>';
+function renderTrips() {
+  const openNotes = [...document.querySelectorAll('.trip-details[open]')].map(el=>el.dataset.tripNotes);
+  document.getElementById('trip-grid').innerHTML = data.trips.map(trip=>{
+    const copy = local(tripCopy[trip.id]);
+    imgIdx[trip.id] ??= 0;
+    const index = imgIdx[trip.id];
+    const activities = trip.activities ? [
+      `<a href="https://milwaukeezoo.org"${external}>${I18n.language==='ko'?'밀워키 동물원':'Milwaukee Zoo'}</a>`,
+      `<a href="https://maps.google.com/?q=Stone+Bowl+Grill+1958+N+Farwell+Ave+Milwaukee+WI"${external}>${I18n.language==='ko'?'스톤볼 그릴':'Stone Bowl Grill'}</a>`,
+      I18n.language==='ko'?'동네 산책':'Neighborhood walks',
+      `<a href="https://www.mitchellparkdomes.com/"${external}>${I18n.language==='ko'?'미첼 파크 돔스':'Mitchell Park Domes'}</a>`
+    ].join(' · ') : '';
+    return `<article class="trip-card"><div class="trip-image-container"><img id="image-${trip.id}" src="${optimized(trip.photos[index])}" alt="${escapeHTML(copy.title+' · '+t('photo')+' '+(index+1))}" width="1000" height="700" loading="lazy" decoding="async"><div class="photo-controls"><button type="button" data-trip="${trip.id}" data-direction="-1" aria-label="${escapeHTML(copy.title+' · '+t('prevPhoto'))}">${arrow(-1)}</button><span id="count-${trip.id}" aria-live="polite">${index+1} / ${trip.photos.length}</span><button type="button" data-trip="${trip.id}" data-direction="1" aria-label="${escapeHTML(copy.title+' · '+t('nextPhoto'))}">${arrow(1)}</button></div></div>
+    <div class="trip-content"><h3>${escapeHTML(copy.title)}</h3><p class="trip-date">${escapeHTML(copy.date)}</p>${trip.cost?`<p class="trip-cost">${translated('lodgingCost')} ${money(cents(trip.cost))}</p>`:''}
+    <div class="trip-links">${trip.id==='madison'?`<a href="madison-photos.html">${translated('galleryLink')}</a><a href="madison.html">${translated('guideLink')}</a>`:''}${trip.airbnb?`<a href="${trip.airbnb}"${external}>${translated('pastStay')}<span class="sr-only"> (${translated('newTab')})</span></a>`:''}</div>
+    <details class="trip-details" data-trip-notes="${trip.id}" ${openNotes.includes(trip.id)?'open':''}><summary>${translated('tripNotes')}</summary><p>${escapeHTML(trip.address)}</p><a href="https://maps.google.com/?q=${encodeURIComponent(trip.address)}"${external}>${translated('map')}<span class="sr-only"> (${translated('newTab')})</span></a>${activities?`<p>${activities}</p>`:''}${copy.memory?`<p>${escapeHTML(copy.memory)}</p>`:''}</details></div></article>`;
   }).join('');
   document.querySelectorAll('[data-direction]').forEach(button=>button.addEventListener('click',()=>cycleImg(button.dataset.trip,Number(button.dataset.direction))));
-  document.querySelectorAll('#trip-grid a[target="_blank"]').forEach(a=>a.rel='noopener noreferrer');
+  I18n.syncLinks();
 }
-function cycleImg(id,direction){const trip=data.trips.find(trip=>trip.id===id);imgIdx[id]=(imgIdx[id]+direction+trip.photos.length)%trip.photos.length;const img=document.getElementById('image-'+id);img.src=optimized(trip.photos[imgIdx[id]]);img.alt=trip.title+' · 사진 '+(imgIdx[id]+1);document.getElementById('count-'+id).textContent=(imgIdx[id]+1)+' / '+trip.photos.length;}
-document.addEventListener('DOMContentLoaded',()=>{renderFund();renderLedger();renderStays();renderTrips();document.getElementById('history-toggle').addEventListener('click',event=>{showHistory=!showHistory;event.currentTarget.setAttribute('aria-expanded',String(showHistory));event.currentTarget.textContent=showHistory?'2026년만 보기':'2025년 내역도 보기';renderLedger();});});
+function cycleImg(id,direction) {
+  const trip = data.trips.find(trip=>trip.id===id);
+  imgIdx[id] = (imgIdx[id]+direction+trip.photos.length)%trip.photos.length;
+  const img = document.getElementById('image-'+id);
+  img.src = optimized(trip.photos[imgIdx[id]]);
+  img.alt = local(tripCopy[id]).title+' · '+t('photo')+' '+(imgIdx[id]+1);
+  document.getElementById('count-'+id).textContent = (imgIdx[id]+1)+' / '+trip.photos.length;
+}
+function renderHome() {renderFund();renderLedger();renderAreaControls();renderStays();renderTrips();}
+document.addEventListener('DOMContentLoaded',()=>{
+  renderHome();
+  document.getElementById('history-toggle').addEventListener('click',()=>{showHistory=!showHistory;renderLedger();});
+});
+document.addEventListener('languagechange',renderHome);

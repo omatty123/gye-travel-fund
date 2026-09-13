@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script src="js/i18n.js?v=20260913-lang1"></script>
+  <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Madison Photos - 매디슨 사진</title>
+  <title data-i18n="galleryPageTitle">매디슨 가족 사진</title>
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" href="apple-touch-icon.png">
   <!-- Open Graph / Link Preview -->
-  <meta property="og:title" content="Madison Photos - 매디슨 사진">
-  <meta property="og:description" content="매디슨 가족 휴가 사진 - March 2026">
+  <meta data-i18n-content="galleryPageTitle" property="og:title" content="Madison Photos - 매디슨 사진">
+  <meta data-i18n-content="gallerySubtitle" property="og:description" content="매디슨 가족 휴가 사진 - March 2026">
   <meta property="og:image" content="https://omatty123.github.io/gye-travel-fund/assets/images/madison-photo-6.jpeg">
   <meta property="og:url" content="https://omatty123.github.io/gye-travel-fund/madison-photos.html">
   <meta property="og:type" content="website">
@@ -243,27 +245,28 @@
 </head>
 <body>
   <nav class="breadcrumb">
-    <a href="index.html">&larr; 여행 계 홈 / Back to Travel Fund</a>
+    <a href="index.html" data-i18n="back">← 여행 계 홈</a>
+    <div class="language-switch" data-language-switch role="group" aria-label="언어 선택"><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">ENG</button><button type="button" data-language="ko" lang="ko" aria-label="한국어" aria-pressed="true">KOR</button></div>
   </nav>
 
   <div class="page-header">
-    <h1>Madison, March 2026</h1>
-    <p>매디슨 가족 휴가 사진</p>
+    <h1 data-i18n="galleryTitle">매디슨, 2026년 3월</h1>
+    <p data-i18n="gallerySubtitle">매디슨 가족 휴가 사진</p>
   </div>
 
   <main><div class="photo-grid" id="photo-grid"></div></main>
 
   <footer class="footer">
-    <p>사랑으로 함께하는 우리 가족</p>
-    <p class="signature">올림, 양코사위</p>
+    <p data-i18n="footer">사랑으로 함께하는 우리 가족</p>
+    <p class="signature" data-i18n="signature">올림, 양코사위</p>
   </footer>
 
   <!-- Lightbox -->
-  <dialog class="lightbox" id="lightbox" aria-label="매디슨 가족 여행 사진">
-    <button type="button" aria-label="사진 닫기" class="lightbox-close" onclick="closeLightbox()">&times;</button>
-    <button type="button" aria-label="이전 사진" class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&lsaquo;</button>
+  <dialog class="lightbox" id="lightbox" aria-label="매디슨 가족 여행 사진" data-i18n-aria-label="galleryDialog">
+    <button type="button" aria-label="사진 닫기" data-i18n-aria-label="closePhoto" class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <button type="button" aria-label="이전 사진" data-i18n-aria-label="prevPhoto" class="lightbox-nav lightbox-prev" onclick="navLightbox(-1)">&lsaquo;</button>
     <div id="lightbox-media"></div>
-    <button type="button" aria-label="다음 사진" class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rsaquo;</button>
+    <button type="button" aria-label="다음 사진" data-i18n-aria-label="nextPhoto" class="lightbox-nav lightbox-next" onclick="navLightbox(1)">&rsaquo;</button>
     <div class="lightbox-counter" id="lightbox-counter" aria-live="polite"></div>
   </dialog>
 
@@ -366,18 +369,29 @@
     var currentIdx = 0;
     var previousFocus = null;
 
+    function galleryLabel(item, i) {
+      var label = I18n.t(typeof item === "string" ? "photo" : "video") + " " + (i + 1);
+      return I18n.language === "ko" ? "매디슨 여행 " + label + " 크게 보기" : "Open Madison " + label.toLowerCase();
+    }
+    document.addEventListener("languagechange", function() {
+      document.querySelectorAll(".photo-item").forEach(function(button, i) {
+        button.setAttribute("aria-label", galleryLabel(photos[i], i));
+        var img = button.querySelector("img");
+        if (img) img.alt = I18n.t("galleryTitle") + " · " + I18n.t("photo") + " " + (i + 1);
+      });
+    });
     // Build grid
     var grid = document.getElementById("photo-grid");
     photos.forEach(function(item, i) {
       var div = document.createElement("button");
       div.type = "button";
-      div.setAttribute("aria-label", "매디슨 여행 " + (typeof item === "string" ? "사진 " : "영상 ") + (i + 1) + " 크게 보기");
+      div.setAttribute("aria-label", galleryLabel(item, i));
       div.className = "photo-item";
       div.onclick = function() { openLightbox(i); };
       if (typeof item === "string") {
         var img = document.createElement("img");
         img.src = "assets/optimized/" + item.split("/").pop().replace(/\.(jpe?g|png)$/i, ".webp");
-        img.alt = "매디슨 가족 여행 · 사진 " + (i + 1);
+        img.alt = I18n.t("galleryTitle") + " · " + I18n.t("photo") + " " + (i + 1);
         img.width = photoDimensions[item][0];
         img.height = photoDimensions[item][1];
         img.decoding = "async";
@@ -425,7 +439,7 @@
       } else {
         var img = document.createElement("img");
         img.src = item;
-        img.alt = "매디슨 가족 여행 · 사진 " + (i + 1);
+        img.alt = I18n.t("galleryTitle") + " · " + I18n.t("photo") + " " + (i + 1);
         container.appendChild(img);
       }
       document.getElementById("lightbox-counter").textContent = (i + 1) + " / " + photos.length;

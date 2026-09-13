@@ -1,5 +1,5 @@
 // Madison Activities Data
-var lang = "ko"; // default to Korean
+var lang = I18n.language;
 
 const activities = [
   // OUTDOOR
@@ -13,7 +13,8 @@ const activities = [
     url: "https://www.henryvilaszoo.gov/",
     image: "assets/images/activities/henry-vilas-zoo.jpg",
     tags: ["free", "kid-friendly"],
-    hours: "매일 9:30am - 5pm"
+    hours: "매일 9:30am - 5pm",
+    hoursEn: "Daily 9:30am\u20135pm"
   },
   {
     name: "Olbrich Botanical Gardens", nameKo: "올브리치 식물원",
@@ -25,7 +26,8 @@ const activities = [
     url: "https://www.olbrich.org/",
     image: "assets/images/activities/olbrich-gardens.jpg",
     tags: ["kid-friendly"],
-    hours: "매일 10am - 4pm"
+    hours: "매일 10am - 4pm",
+    hoursEn: "Daily 10am\u20134pm"
   },
   {
     name: "Tenney Park", nameKo: "테니 공원",
@@ -37,7 +39,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/tenney-park.jpg",
     tags: ["free", "kid-friendly"],
-    hours: "일출~일몰"
+    hours: "일출~일몰",
+    hoursEn: "Sunrise to sunset"
   },
   {
     name: "Lake Monona Shoreline Walk", nameKo: "모노나 호수 산책",
@@ -49,7 +52,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/lake-monona.jpg",
     tags: ["free", "walkable"],
-    hours: "항상 개방"
+    hours: "항상 개방",
+    hoursEn: "Always open"
   },
   {
     name: "Picnic Point", nameKo: "피크닉 포인트",
@@ -61,7 +65,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/picnic-point.jpg",
     tags: ["free", "kid-friendly"],
-    hours: "매일 6am - 10pm"
+    hours: "매일 6am - 10pm",
+    hoursEn: "Daily 6am\u201310pm"
   },
   {
     name: "UW-Madison Campus Walk", nameKo: "위스콘신 대학교 캠퍼스 투어",
@@ -73,7 +78,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/uw-campus.jpg",
     tags: ["free"],
-    hours: "항상 개방"
+    hours: "항상 개방",
+    hoursEn: "Always open"
   },
   {
     name: "Union South", nameKo: "유니온 사우스",
@@ -85,7 +91,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/union-south.jpg",
     tags: ["kid-friendly"],
-    hours: "매일 7am-midnight"
+    hours: "매일 7am-midnight",
+    hoursEn: "Daily 7am\u2013midnight"
   },
 
   // INDOOR
@@ -99,7 +106,8 @@ const activities = [
     url: "https://geologymuseum.wisc.edu/",
     image: "assets/images/activities/geology-museum.jpg",
     tags: ["free", "kid-friendly"],
-    hours: "월-금 8:30am-4:30pm, 토 9am-1pm"
+    hours: "월-금 8:30am-4:30pm, 토 9am-1pm",
+    hoursEn: "Mon\u2013Fri 8:30am\u20134:30pm; Sat 9am\u20131pm"
   },
   {
     name: "Wisconsin State Capitol Tour", nameKo: "위스콘신 주청사 투어",
@@ -111,7 +119,8 @@ const activities = [
     url: "https://tours.wisconsin.gov/",
     image: "assets/images/activities/state-capitol.jpg",
     tags: ["free", "kid-friendly"],
-    hours: "월-토 매시 9am-3pm, 일 1-3pm"
+    hours: "월-토 매시 9am-3pm, 일 1-3pm",
+    hoursEn: "Mon\u2013Sat hourly 9am\u20133pm; Sun 1\u20133pm"
   },
   {
     name: "Chazen Museum of Art", nameKo: "차젠 미술관",
@@ -123,7 +132,8 @@ const activities = [
     url: "https://chazen.wisc.edu/",
     image: "assets/images/activities/chazen-museum.jpg",
     tags: ["free"],
-    hours: "월-금 10am-7pm, 토-일 11am-5pm"
+    hours: "월-금 10am-7pm, 토-일 11am-5pm",
+    hoursEn: "Mon\u2013Fri 10am\u20137pm; Sat\u2013Sun 11am\u20135pm"
   },
 
   // FOOD - KOREAN
@@ -137,7 +147,8 @@ const activities = [
     url: "https://newseoulmadison.com/",
     image: "assets/images/activities/new-seoul.jpg",
     tags: ["kid-friendly", "korean"],
-    hours: "월 11am-1:30pm & 5-8pm, 수-토 동일, 화 저녁만, 일 휴무"
+    hours: "월 11am-1:30pm & 5-8pm, 수-토 동일, 화 저녁만, 일 휴무",
+    hoursEn: "Mon & Wed\u2013Sat 11am\u20131:30pm and 5\u20138pm; Tue dinner only; Sun closed"
   },
   {
     name: "SGD Dubu Tofu & Korean BBQ", nameKo: "소공동 순두부",
@@ -149,7 +160,8 @@ const activities = [
     url: "https://www.sgdrestaurant.com/",
     image: "assets/images/activities/sgd-dubu.jpg",
     tags: ["korean"],
-    hours: "월, 수-일 11am-9pm (화 휴무)"
+    hours: "월, 수-일 11am-9pm (화 휴무)",
+    hoursEn: "Mon & Wed\u2013Sun 11am\u20139pm; Tue closed"
   },
   {
     name: "Sol's On the Square", nameKo: "솔스 온 더 스퀘어",
@@ -161,7 +173,8 @@ const activities = [
     url: "https://sols-on-the-square.restaurants-world.net/menu",
     image: "assets/images/activities/sols-square.jpg",
     tags: ["kid-friendly", "korean"],
-    hours: "점심 월-토 11am-2:30pm, 저녁 월-토 4:30pm+"
+    hours: "점심 월-토 11am-2:30pm, 저녁 월-토 4:30pm+",
+    hoursEn: "Lunch Mon\u2013Sat 11am\u20132:30pm; dinner Mon\u2013Sat 4:30pm onward"
   },
   {
     name: "Korill Hut Korean BBQ & Hot Pot", nameKo: "코릴 헛 한식뷔페",
@@ -173,7 +186,8 @@ const activities = [
     url: "https://www.korillhut.com/",
     image: "assets/images/activities/korill-hut.jpg",
     tags: ["kid-friendly", "korean"],
-    hours: "매일 11:30am-10pm, 금-토 11pm까지"
+    hours: "매일 11:30am-10pm, 금-토 11pm까지",
+    hoursEn: "Daily 11:30am\u201310pm; Fri\u2013Sat until 11pm"
   },
   {
     name: "K-Peppers", nameKo: "케이페퍼스",
@@ -185,7 +199,8 @@ const activities = [
     url: "http://www.k-peppers.com/",
     image: "assets/images/activities/kpeppers.jpg",
     tags: ["kid-friendly", "korean"],
-    hours: "화-금 11am-1:30pm & 5-8:30pm, 토 5-8:30pm (일·월 휴무)"
+    hours: "화-금 11am-1:30pm & 5-8:30pm, 토 5-8:30pm (일·월 휴무)",
+    hoursEn: "Tue\u2013Fri 11am\u20131:30pm and 5\u20138:30pm; Sat 5\u20138:30pm; Sun\u2013Mon closed"
   },
   {
     name: "5 Star Korean BBQ", nameKo: "5스타 코리안 바베큐",
@@ -197,7 +212,8 @@ const activities = [
     url: "https://5starkoreanbbq.com/",
     image: "assets/images/activities/five-star-bbq.jpg",
     tags: ["korean"],
-    hours: "화-목 3:30-9pm, 금-토 11am-9pm, 일 11am-8:30pm (월 휴무)"
+    hours: "화-목 3:30-9pm, 금-토 11am-9pm, 일 11am-8:30pm (월 휴무)",
+    hoursEn: "Tue\u2013Thu 3:30\u20139pm; Fri\u2013Sat 11am\u20139pm; Sun 11am\u20138:30pm; Mon closed"
   },
 
   // FOOD - OTHER
@@ -211,7 +227,8 @@ const activities = [
     url: "https://www.lazyjanes.com/",
     image: "assets/images/activities/lazy-janes.jpg",
     tags: ["walkable", "kid-friendly"],
-    hours: "월-금 7am-2pm, 토-일 8am-2pm"
+    hours: "월-금 7am-2pm, 토-일 8am-2pm",
+    hoursEn: "Mon\u2013Fri 7am\u20132pm; Sat\u2013Sun 8am\u20132pm"
   },
   {
     name: "Tex Tubb's Taco Palace", nameKo: "텍스 텁스 타코",
@@ -223,7 +240,8 @@ const activities = [
     url: "https://www.textubbstacos.com/",
     image: "assets/images/activities/tex-tubbs.jpg",
     tags: ["kid-friendly"],
-    hours: "일-목 11:30am-8:30pm, 금-토 11:30am-10pm"
+    hours: "일-목 11:30am-8:30pm, 금-토 11:30am-10pm",
+    hoursEn: "Sun\u2013Thu 11:30am\u20138:30pm; Fri\u2013Sat 11:30am\u201310pm"
   },
   {
     name: "Ian's Pizza", nameKo: "이안스 피자",
@@ -235,7 +253,8 @@ const activities = [
     url: "https://ianspizza.com/",
     image: "assets/images/activities/ians-pizza.jpg",
     tags: ["kid-friendly"],
-    hours: "월-수 11am-10pm, 목-토 11am-2am, 일 11am-10pm"
+    hours: "월-수 11am-10pm, 목-토 11am-2am, 일 11am-10pm",
+    hoursEn: "Mon\u2013Wed 11am\u201310pm; Thu\u2013Sat 11am\u20132am; Sun 11am\u201310pm"
   },
 
   // NEIGHBORHOOD
@@ -249,7 +268,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/willy-street.jpg",
     tags: ["free", "walkable"],
-    hours: "상점마다 다름"
+    hours: "상점마다 다름",
+    hoursEn: "Varies by shop"
   },
   {
     name: "State Street", nameKo: "스테이트 스트릿",
@@ -261,7 +281,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/state-street.jpg",
     tags: ["free"],
-    hours: "항상 개방"
+    hours: "항상 개방",
+    hoursEn: "Always open"
   },
   {
     name: "West High School", nameKo: "웨스트 고등학교",
@@ -273,7 +294,8 @@ const activities = [
     url: null,
     image: "assets/images/activities/west-high.jpg",
     tags: ["free"],
-    hours: "드라이브"
+    hours: "드라이브",
+    hoursEn: "Drive-by visit"
   },
   {
     name: "Willy Street Co-op", nameKo: "윌리 스트릿 협동조합",
@@ -285,7 +307,8 @@ const activities = [
     url: "https://www.willystreet.coop/",
     image: "assets/images/activities/willy-coop.jpg",
     tags: ["walkable", "kid-friendly"],
-    hours: "매일 7:30am - 9pm"
+    hours: "매일 7:30am - 9pm",
+    hoursEn: "Daily 7:30am\u20139pm"
   }
 ];
 
@@ -332,25 +355,16 @@ var rainyOnly = false;
 document.addEventListener("DOMContentLoaded", function() {
   renderActivities();
   setupFilters();
-  setupLangToggle();
+
   updateLangUI();
 });
 
-// Language toggle
-function setupLangToggle() {
-  var btn = document.getElementById("lang-toggle");
-  if (btn) {
-    btn.addEventListener("click", function() {
-      lang = lang === "ko" ? "en" : "ko";
-      btn.innerHTML = lang === "ko"
-        ? 'English'
-        : '한국어';
-      renderActivities();
-      filterActivities();
-      updateLangUI();
-    });
-  }
-}
+document.addEventListener('languagechange', function() {
+  lang = I18n.language;
+  renderActivities();
+  filterActivities();
+  updateLangUI();
+});
 
 function updateLangUI() {
   document.documentElement.lang = lang;
@@ -439,13 +453,13 @@ function renderActivities() {
             '<span class="activity-weather-label">' + weatherText + '</span>' +
           '</div>' +
           '<h3 class="activity-name">' + displayName + '</h3>' +
-          '<p class="activity-name-ko">' + subName + '</p>' +
+          (lang === 'ko' ? '<p class="activity-name-ko" lang="en">' + subName + '</p>' : '') +
           '<p class="activity-description">' + desc + '</p>' +
           '<div class="activity-meta">' +
             '<span class="activity-address">' + act.address + '</span>' +
             '<span class="activity-distance">' + dist + '</span>' +
           '</div>' +
-          '<p class="activity-hours">' + act.hours + '</p>' +
+          '<p class="activity-hours">' + (lang === 'ko' ? act.hours : act.hoursEn) + '</p>' +
           '<div class="activity-tags">' + tagsHtml + '</div>' +
           linkHtml +
         '</div>';
