@@ -34,10 +34,15 @@ assert.equal(new Set(catalogue.stays.map(stay=>stay.id)).size,15);
 for (const area of catalogue.regions) assert(catalogue.stays.filter(s=>s.region===area.id).length>=2,area.id);
 for (const stay of catalogue.stays) {
   assert(stay.capacity>=7,stay.id);
+  assert(['allowed','not_allowed','unknown'].includes(stay.petPolicy?.status),stay.id);
+  assert(stay.petPolicy.detail.en && stay.petPolicy.detail.ko,stay.id);
+  assert.equal(stay.petPolicy.source,stay.url);
+  assert.equal(stay.petPolicy.checked,'2026-09-13');
   assert.equal(new URL(stay.url).hostname,'www.airbnb.com');
   for(const lang of ['en','ko']) for(const key of ['fit','description','beds','check']) assert(stay.text[lang][key],`${stay.id} ${lang} ${key}`);
   assert(!/[가-힣]/.test(JSON.stringify(stay.text.en)),stay.id);
 }
+assert.deepEqual(catalogue.stays.filter(s=>s.petPolicy.status==='allowed').map(s=>s.id).sort(),['632787861244278518','45351720','30311883','52426262'].sort());
 const fundSource=read('js/fund-data.js');
 const financial = JSON.parse(vm.runInNewContext(fundSource+'\n'+read('js/app.js')+';JSON.stringify({data,totals:calculateFund(data)})',{document:{addEventListener(){}}}));
 assert.equal(financial.totals.balance,170407);

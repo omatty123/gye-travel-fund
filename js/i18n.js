@@ -225,6 +225,42 @@
     "ko": "전체 지역",
     "en": "All areas"
   },
+  "dogsOnly": {
+    "ko": "반려견 동반이 가능한 숙소만 보기",
+    "en": "Only stays that allow pet dogs"
+  },
+  "petFilterNote": {
+    "ko": "반려견 동반 가능 여부가 확인된 숙소만 표시해요. 마릿수·크기 제한과 추가 요금은 예약 전에 확인해 주세요.",
+    "en": "This filter includes only stays confirmed to allow pet dogs. Check the number and size limits, and any extra fees, before booking."
+  },
+  "petAllowed": {
+    "ko": "반려견 동반 가능",
+    "en": "Pet dogs allowed"
+  },
+  "petNotAllowed": {
+    "ko": "반려견 동반 불가",
+    "en": "Pet dogs not allowed"
+  },
+  "petUnknown": {
+    "ko": "반려견 동반 여부 미확인",
+    "en": "Pet-dog policy unconfirmed"
+  },
+  "petUnknownDetail": {
+    "ko": "예약 전에 호스트에게 반려견 동반 가능 여부를 확인해 주세요.",
+    "en": "Ask the host whether pet dogs are allowed before booking."
+  },
+  "noDogStays": {
+    "ko": "이 지역에는 반려견 동반이 확인된 숙소가 없어요. 전체 지역에서 찾아보세요.",
+    "en": "No confirmed dog-friendly stays in this area. Try All areas."
+  },
+  "noDogStaysAll": {
+    "ko": "반려견 동반 가능 여부가 확인된 숙소가 아직 없어요. 필터를 해제하면 전체 후보를 볼 수 있어요.",
+    "en": "No stays are yet confirmed to allow pet dogs. Turn off this filter to see all candidates."
+  },
+  "showAllAreas": {
+    "ko": "전체 지역에서 보기",
+    "en": "Show all areas"
+  },
   "areaFilter": {
     "ko": "숙소 지역 선택",
     "en": "Choose a lodging area"
@@ -328,6 +364,10 @@
   "siteDescription": {
     "ko": "가족 여행 회비, 여행 기록, 2027년 3월 위스콘신의 도시·마을·호숫가 숙소 후보.",
     "en": "Family travel contributions, memories, and city, small-town, and lakeside stays for March 2027 in Wisconsin."
+  },
+  "petSearchCount": {
+    "ko": "반려동물 1마리로 검색을 시작하니 실제 마릿수로 바꿔 주세요.",
+    "en": "Pet-friendly searches start with one pet; adjust to your actual number."
   }
 };
   const valid = value => value === 'en' || value === 'ko';

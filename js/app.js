@@ -8,6 +8,7 @@ const translated = key => escapeHTML(t(key));
 const external = ' target="_blank" rel="noopener noreferrer"';
 let showHistory = false;
 let selectedArea = 'milwaukee';
+let dogsOnly = false;
 const imgIdx = {};
 const tripCopy = {
   madison: {en: {title:'Madison family vacation',date:'March 22–24, 2026'},ko:{title:'매디슨 가족 휴가',date:'2026년 3월 22–24일'}},
@@ -69,23 +70,39 @@ function renderAreaControls() {
 function renderStay(stay) {
   const copy = local(stay.text), name = local(stay.name);
   const facts = I18n.language==='ko' ? `최대 ${stay.capacity}명 · 침실 ${stay.bedrooms} · 욕실 ${stay.baths}` : `Up to ${stay.capacity} guests · ${stay.bedrooms} bedrooms · ${stay.baths} bathrooms`;
+  const policy = stay.petPolicy || {status:'unknown',detail:{en:t('petUnknownDetail'),ko:t('petUnknownDetail')}};
+  const policyKey = {allowed:'petAllowed',not_allowed:'petNotAllowed',unknown:'petUnknown'}[policy.status] || 'petUnknown';
   return `<article class="stay">
     <a class="stay-photo" href="${stay.url}"${external} aria-label="${escapeHTML(name+' · '+t('photosDates')+' ('+t('newTab')+')')}"><img src="${stay.photo}" alt="${escapeHTML(name+' · '+t('hostPhoto'))}" width="960" height="640" loading="lazy" decoding="async"></a>
-    <div class="stay-content"><h4>${escapeHTML(name)}</h4><p class="stay-location">${escapeHTML(local(stay.location))}</p><p class="stay-fit">${escapeHTML(copy.fit)}</p><p class="stay-facts">${facts}</p><p>${escapeHTML(copy.description)}</p>
+    <div class="stay-content"><h4>${escapeHTML(name)}</h4><p class="stay-location">${escapeHTML(local(stay.location))}</p><p class="stay-fit">${escapeHTML(copy.fit)}</p><p class="stay-facts">${facts}</p>
+    <div class="pet-policy pet-policy-${escapeHTML(policy.status)}"><strong>${translated(policyKey)}</strong><p>${escapeHTML(local(policy.detail))}</p></div><p>${escapeHTML(copy.description)}</p>
     <dl class="stay-details"><div><dt>${translated('beds')}</dt><dd>${escapeHTML(copy.beds)}</dd></div><div><dt>${translated('check')}</dt><dd>${escapeHTML(copy.check)}</dd></div></dl>
     <div class="stay-links"><a class="primary-link" href="${stay.url}?adults=6&children=1"${external}>${translated('photosDates')}<span class="sr-only"> — ${escapeHTML(name)} (${translated('newTab')})</span></a></div>
     <p class="listing-source">Airbnb · ${stay.rating.toFixed(2)} / 5 · ${translated('sourceDate')}</p></div>
   </article>`;
 }
 function renderStays() {
-  const shownRegions = regions.filter(area=>selectedArea==='all'||area.id===selectedArea);
-  const count = stays.filter(stay=>selectedArea==='all'||stay.region===selectedArea).length;
+  document.getElementById('dogs-only').checked = dogsOnly;
+  const filteredStays = stays.filter(stay=>(selectedArea==='all'||stay.region===selectedArea)&&(!dogsOnly||stay.petPolicy?.status==='allowed'));
+  const shownRegions = regions.filter(area=>(selectedArea==='all'||area.id===selectedArea)&&filteredStays.some(stay=>stay.region===area.id));
+  const count = filteredStays.length;
   document.getElementById('stay-count').textContent = I18n.language==='ko'?`${count}개 숙소 후보 · 날짜별 요금 미확인`:`${count} possible stays · Date-specific prices unverified`;
+  if (!count) {
+    document.getElementById('stay-list').innerHTML = `<div class="stay-empty"><p>${translated(selectedArea==='all'?'noDogStaysAll':'noDogStays')}</p>${selectedArea!=='all'?`<button id="show-all-areas" type="button" aria-controls="stay-list">${translated('showAllAreas')}</button>`:''}</div>`;
+    document.getElementById('show-all-areas')?.addEventListener('click',()=>{
+      selectedArea = 'all';
+      renderAreaControls();
+      renderStays();
+      document.querySelector('[data-area="all"]').focus();
+    });
+    return;
+  }
   document.getElementById('stay-list').innerHTML = shownRegions.map(area=>{
     const query = new URLSearchParams({query:area.query,adults:'6',children:'1',room_types:'Entire home/apt'});
+    if (dogsOnly) query.set('pets','1');
     const extras = area.id==='smalltown' ? ['Cedarburg, Wisconsin','Port Washington, Wisconsin'] : [area.query];
     const searches = extras.map(place=>{const q=new URLSearchParams(query);q.set('query',place);return `<a href="https://www.airbnb.com/s/homes?${q.toString()}"${external}>${translated('searchArea')} · ${escapeHTML(place.split(',')[0])}<span class="sr-only"> (${translated('newTab')})</span></a>`;}).join('');
-    return `<div class="stay-area"><div class="area-heading"><h3>${escapeHTML(local(area.name))}</h3><p>${escapeHTML(local(area.description))}</p><div class="area-searches">${searches}</div><p class="search-date-note">${translated('chooseMarch')}</p></div>${stays.filter(stay=>stay.region===area.id).map(renderStay).join('')}</div>`;
+    return `<div class="stay-area"><div class="area-heading"><h3>${escapeHTML(local(area.name))}</h3><p>${escapeHTML(local(area.description))}</p><div class="area-searches">${searches}</div><p class="search-date-note">${translated('chooseMarch')}${dogsOnly?' '+translated('petSearchCount'):''}</p></div>${filteredStays.filter(stay=>stay.region===area.id).map(renderStay).join('')}</div>`;
   }).join('');
   document.querySelectorAll('.stay-photo img').forEach(img=>img.addEventListener('error',()=>{img.hidden=true;const message=document.createElement('span');message.textContent=t('photoFallback');img.parentElement.append(message);},{once:true}));
 }
@@ -121,6 +138,7 @@ function cycleImg(id,direction) {
 function renderHome() {renderFund();renderLedger();renderAreaControls();renderStays();renderTrips();}
 document.addEventListener('DOMContentLoaded',()=>{
   renderHome();
+  document.getElementById('dogs-only').addEventListener('change',event=>{dogsOnly=event.target.checked;renderStays();});
   document.getElementById('history-toggle').addEventListener('click',()=>{showHistory=!showHistory;renderLedger();});
 });
 document.addEventListener('languagechange',renderHome);

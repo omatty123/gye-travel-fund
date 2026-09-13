@@ -104,6 +104,15 @@ const stays = [
         "beds": "2 queens + 2 twins; check the pullout chair for the seventh guest.",
         "check": "Check stairs, extra parking, and dining layout. Host lists a separate rental agreement and $500 security hold."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/569027432195208903",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -136,6 +145,15 @@ const stays = [
         "beds": "1 king + 2 queens + queen sofa bed; child would use the sofa bed.",
         "check": "Stairs at the entrance and up to every bedroom. Check nighttime noise and parking arrangements."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/1395673693479252768",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -168,6 +186,15 @@ const stays = [
         "beds": "4 queen beds accommodate seven across four bedrooms.",
         "check": "Compare the full quote for this large manor. Confirm bedroom floors and fireplace use."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/49572965",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -200,6 +227,15 @@ const stays = [
         "beds": "2 kings + 1 queen + 2 Twin XL beds; no sofa bed needed.",
         "check": "Plan for walks in March. Check the total quote and bathroom locations by floor."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/1102526909065242585",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -232,6 +268,15 @@ const stays = [
         "beds": "3 queens plus ordinary couches are listed. Confirm the child’s sleeping arrangement.",
         "check": "Capacity is seven, but beds cover six. A conditional option until the seventh sleeping spot is resolved."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/41060231",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -264,6 +309,15 @@ const stays = [
         "beds": "3 larger beds + 2 twins; queen/full sizes differ between listing sections.",
         "check": "Entry and internal stairs; one driveway space. Another household occupies the building."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "반려동물 금지. 숙소의 다른 개가 다른 반려견에게 우호적이지 않다고 명시돼 있어요.",
+        "en": "Strict no-pets rule; host reports a resident dog that is unfriendly toward other dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/1115482145177109031",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -296,6 +350,15 @@ const stays = [
         "beds": "3 queens + 2 twins; seven can sleep without a sofa bed.",
         "check": "Bedrooms span three floors. Check child placement, loft privacy, and lake access."
       }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "ko": "숙소에서 반려견 동반을 명시해요. 마릿수·체중 제한과 추가 요금은 확인이 필요해요.",
+        "en": "Listing explicitly welcomes dogs. Number/weight limits and any pet fee still need confirmation."
+      },
+      "source": "https://www.airbnb.com/rooms/632787861244278518",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -328,6 +391,15 @@ const stays = [
         "beds": "1 king + 1 queen + 2 twins. Check sofa bed or crib for the child.",
         "check": "Confirm spring hot-tub operation, club/pool fees, and sofa-bed size."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/736213061316661642",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -360,6 +432,15 @@ const stays = [
         "beds": "4 queens in three bedrooms; one family can use the two-queen room.",
         "check": "Reconfirm beds against photo captions. This is a countryside stay, not lakefront."
       }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "ko": "최대 2마리, 각각 40lb(약 18kg) 이하. 견종 사전 승인 필요. 기본 반려견 요금은 없지만 침대·가구 사용 금지, 과도한 털 청소는 최대 $100. 배변패드 금지, 어린 강아지는 사전 문의.",
+        "en": "Maximum 2 dogs, each 40 lb or less; breed approval required. No standard pet fee. No dogs on beds/furniture; up to $100 for excessive hair. No pee pads; host prefers no puppies."
+      },
+      "source": "https://www.airbnb.com/rooms/45351720",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -392,6 +473,15 @@ const stays = [
         "beds": "1 king + 1 queen + 3 twins; beds for all seven.",
         "check": "Two adults and the child would share the twin room. Check spring beach conditions."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/22672718",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -416,14 +506,23 @@ const stays = [
         "fit": "집 안에서도 넓은 호수 전망",
         "description": "호수 전망의 위층 라운지, 전용 마당과 데크.",
         "beds": "퀸 1개 + 더블 1개 + 싱글 3개가 표시돼 있어요.",
-        "check": "요약은 침실 4개지만 잠자리 표에는 3개만 나와요. 최신 배치를 확인해요."
+        "check": "요약은 침실 4개, 잠자리 표는 3개예요. 배치 확인 필요. 현재 규정상 위층 데크 출입은 금지돼 있어요."
       },
       "en": {
         "fit": "Big lake views from indoors",
         "description": "Upper lounge overlooking the lake, with private yard and decks.",
         "beds": "Listed sleeping rooms show 1 queen + 1 double + 3 twins.",
-        "check": "Summary says four bedrooms; sleeping cards show three. Confirm the current layout."
+        "check": "Summary lists four bedrooms; sleeping cards show three. Confirm layout. Current rules prohibit access to the upper-floor deck."
       }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "ko": "하우스 규칙에서 반려동물 동반을 허용해요. 마릿수·체중 제한과 요금은 별도 확인해요.",
+        "en": "House rules allow pets. Confirm dog count, weight restrictions, and fees."
+      },
+      "source": "https://www.airbnb.com/rooms/30311883",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -456,6 +555,15 @@ const stays = [
         "beds": "2 queens + 2 twins, plus pullouts. Check the child’s sleeping spot.",
         "check": "Confirm walking distance and access to the beach, plus pullout-bed size."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/24282648",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -480,14 +588,23 @@ const stays = [
         "fit": "숲속 분위기 · 침대는 조건부",
         "description": "주립 숲에 접한 부지, 벽난로 두 개와 게임룸.",
         "beds": "킹 1개 + 퀸 1개 + 2층 침대 두 세트. 성인 2명도 벙크룸 사용.",
-        "check": "침실은 모두 위층이고 벙크룸 천장이 낮아요. 성인에게 편한지 확인."
+        "check": "호스트는 성인 4명이 편하게 머무는 집이라고 해요. 성인 6명은 벙크룸 사용 필요. 침실은 모두 위층이며 계단은 아동 안전 처리가 안 돼 있어요."
       },
       "en": {
         "fit": "Woodland atmosphere; conditional bed fit",
         "description": "Grounds bordering state forest, with two fireplaces and a game room.",
         "beds": "1 king + 1 queen + two bunk sets. Two adults also use the bunk room.",
-        "check": "All bedrooms upstairs; low bunk-room ceiling. Confirm comfort for adults."
+        "check": "Host says the cabin fits four adults comfortably. Our six adults would need the bunk room. All bedrooms upstairs; open stairs are not childproofed."
       }
+    },
+    "petPolicy": {
+      "status": "allowed",
+      "detail": {
+        "ko": "반려동물 최대 2마리, 추가 요금 없음. 예약 후 반려동물 정보 확인 필요. 배변 훈련·중성화·예방접종·기생충 예방 필수. 과도한 청소·손상은 실비 청구.",
+        "en": "Maximum 2 pets; no additional pet fee. Verify pet details after booking. House-trained, spayed/neutered, vaccinated, on parasite prevention. Excess cleaning/damage charged at cost."
+      },
+      "source": "https://www.airbnb.com/rooms/52426262",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -520,6 +637,15 @@ const stays = [
         "beds": "1 king room + 2 queen rooms, plus bunks and loft beds.",
         "check": "Compare the quote for this larger house. Ladder-access loft needs careful child placement."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 규정은 반려동물 동반을 허용하지 않아요.",
+        "en": "Current Airbnb rules do not allow pet dogs."
+      },
+      "source": "https://www.airbnb.com/rooms/19294134",
+      "checked": "2026-09-13"
     }
   },
   {
@@ -552,6 +678,15 @@ const stays = [
         "beds": "2 queens + 2 doubles, plus single and bunk beds.",
         "check": "Confirm shared areas and spring access. Listing does not report a CO alarm; verify with the host."
       }
+    },
+    "petPolicy": {
+      "status": "not_allowed",
+      "detail": {
+        "ko": "현재 Airbnb 하우스 규칙에서 반려동물 동반을 금지해요.",
+        "en": "Current Airbnb house rules explicitly prohibit pets."
+      },
+      "source": "https://www.airbnb.com/rooms/1196675674918172644",
+      "checked": "2026-09-13"
     }
   }
 ];
