@@ -109,17 +109,161 @@
     "ko": "2026년 10월 20일 Vrbo 숙소 정보 확인. 해당 날짜의 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
     "en": "Vrbo listing checked October 20, 2026. Availability and the total for these dates have not been verified."
   },
+  "houseLiving": {
+    "ko": "거실",
+    "en": "Living room"
+  },
+  "houseBasement": {
+    "ko": "지하 게임룸",
+    "en": "Basement game room"
+  },
+  "houseDeck": {
+    "ko": "숲이 보이는 데크",
+    "en": "Deck overlooking the woods"
+  },
+  "houseLivingAlt": {
+    "ko": "소파와 큰 창문이 있고 데크 쪽이 보이는 거실",
+    "en": "Living room with sofas, large windows, and a view toward the deck"
+  },
+  "houseBasementAlt": {
+    "ko": "당구대, 좌석, 테이블형 아케이드 게임기와 싱크대가 있는 바를 갖춘 지하 게임룸",
+    "en": "Basement game room with a pool table, seating, arcade table, and wet bar"
+  },
+  "houseDeckAlt": {
+    "ko": "빨간 쿠션이 놓인 좌석과 숲 전망이 있는 데크",
+    "en": "Deck with red-cushioned seating and woodland views"
+  },
+  "housePhotoSource": {
+    "ko": "Vrbo 숙소 사진 · 사진을 선택하면 크게 볼 수 있어요",
+    "en": "Vrbo listing photos · Select a photo to enlarge"
+  },
+  "itineraryTitle": {
+    "ko": "여유로운 3월 21–23일 일정",
+    "en": "A relaxed March 21–23 itinerary"
+  },
+  "itineraryStatus": {
+    "ko": "2027년 · 제안 일정",
+    "en": "2027 · Suggested plan"
+  },
+  "itineraryIntro": {
+    "ko": "짧게 나들이하고, 숙소에서 함께 보내는 시간을 넉넉히 두어요. 아래 시간은 모두 조정할 수 있어요.",
+    "en": "Short outings, with plenty of time together at the house. All times below are flexible."
+  },
+  "sundayTitle": {
+    "ko": "3월 21일 일요일",
+    "en": "Sunday, March 21"
+  },
+  "sundayTheme": {
+    "ko": "도착해서 편히 쉬기",
+    "en": "Arrive and settle in"
+  },
+  "sundayArrivalLabel": {
+    "ko": "오후 · 숙소 도착",
+    "en": "Afternoon · Arrive at the house"
+  },
+  "sundayArrival": {
+    "ko": "호스트가 정한 체크인 시간에 맞춰 도착해 짐을 풀고, 간식을 먹으며 집을 둘러봐요. 오후에는 다른 일정을 넣지 않아요.",
+    "en": "Arrive at the host’s confirmed check-in time, unpack, have a snack, and explore the house. Keep the rest of the afternoon open."
+  },
+  "sundayDinnerLabel": {
+    "ko": "오후 5시 30분쯤 · Fox & Hounds",
+    "en": "Around 5:30 p.m. · Fox & Hounds"
+  },
+  "sundayDinner": {
+    "ko": "함께하는 첫 저녁 식사. 도착 시간에 맞춰 조정하고, 7명 자리는 미리 예약해요. 아직 예약하지 않았어요.",
+    "en": "Our first dinner together. Adjust the time to suit our arrival and reserve a table for seven in advance. No reservation has been made."
+  },
+  "sundayHomeLabel": {
+    "ko": "저녁 · 다시 숙소로",
+    "en": "Evening · Back to the house"
+  },
+  "sundayHome": {
+    "ko": "편한 옷으로 갈아입고, 게임이나 이야기를 나누며 쉬어요. 저녁에는 더 나가지 않아요.",
+    "en": "Get comfortable, play games, or catch up. No more outings this evening."
+  },
+  "mondayTitle": {
+    "ko": "3월 22일 월요일",
+    "en": "Monday, March 22"
+  },
+  "mondayTheme": {
+    "ko": "아침 식사와 천문 산책",
+    "en": "Breakfast and the Astronomy Trail"
+  },
+  "mondayBreakfastLabel": {
+    "ko": "오전 9시쯤 · Java Dancer",
+    "en": "Around 9 a.m. · Java Dancer"
+  },
+  "mondayBreakfast": {
+    "ko": "Hubertus에서 커피와 가벼운 아침을 먹어요. 서두르지 않고 천천히 출발해요.",
+    "en": "Coffee and a light breakfast in Hubertus, with no rush to get going."
+  },
+  "mondayWalkLabel": {
+    "ko": "오전 늦게 · Astronomy Trail",
+    "en": "Late morning · Astronomy Trail"
+  },
+  "mondayWalk": {
+    "ko": "Pike Lake에서 태양계 산책을 해요. 주차장부터 오가는 길을 포함해 1–2시간을 넉넉히 잡고, 짧게 걸어도 좋아요.",
+    "en": "Take a solar-system walk at Pike Lake. Allow a relaxed 1–2 hours, including the walk from and back to parking. A shorter walk is fine, too."
+  },
+  "mondayHomeLabel": {
+    "ko": "점심부터 밤까지 · 숙소에서",
+    "en": "Lunch through evening · At the house"
+  },
+  "mondayHome": {
+    "ko": "간단한 점심, 낮잠, 독서, 지하 게임룸, 함께하는 저녁 식사. 날씨가 좋으면 데크에서도 쉬어요. 오후와 저녁에는 외출 일정을 넣지 않아요.",
+    "en": "An easy lunch, naps, reading, the basement game room, and dinner together. Relax on the deck if the weather allows. Keep the whole afternoon and evening free of outings."
+  },
+  "tuesdayTitle": {
+    "ko": "3월 23일 화요일",
+    "en": "Tuesday, March 23"
+  },
+  "tuesdayTheme": {
+    "ko": "천천히 아침을 먹고 귀가하기",
+    "en": "An easy breakfast, then head home"
+  },
+  "tuesdayHomeLabel": {
+    "ko": "아침 · 숙소에서 커피와 짐 정리",
+    "en": "Morning · Coffee and packing at the house"
+  },
+  "tuesdayHome": {
+    "ko": "조금 더 함께 시간을 보내고, 호스트가 정한 체크아웃 시간에 맞춰 출발해요.",
+    "en": "Enjoy a little more time together, then leave by the host’s confirmed checkout time."
+  },
+  "tuesdayBreakfastLabel": {
+    "ko": "체크아웃 후 · Perc Place",
+    "en": "After checkout · Perc Place"
+  },
+  "tuesdayBreakfast": {
+    "ko": "Hartford에서 늦은 아침을 먹어요. 현재 화요일에는 오후 2시에 닫아요. 이동을 줄이고 싶으면 Hubertus의 Java Dancer로 바꿔도 좋아요.",
+    "en": "Have a late breakfast in Hartford. Current Tuesday closing time is 2 p.m. Choose Java Dancer in Hubertus instead if we want less driving."
+  },
+  "tuesdayHolyLabel": {
+    "ko": "귀가 전 · Holy Hill",
+    "en": "Before heading home · Holy Hill"
+  },
+  "tuesdayHoly": {
+    "ko": "성당과 야외 공간을 30–45분 정도 둘러본 뒤 집으로 향해요. 전망탑은 3월에 닫혀 있어요.",
+    "en": "Allow about 30–45 minutes for a look around the basilica and grounds, then head home. The scenic tower is closed in March."
+  },
+  "itineraryFlex": {
+    "ko": "아직 확정·예약된 일정이 아니에요. 숙소 체크인·체크아웃 시간을 확인한 뒤 조정하고, 식당 영업시간도 방문 전에 다시 확인해 주세요.",
+    "en": "This is a suggested plan; arrangements have not been booked. Adjust it once rental check-in and checkout times are confirmed, and recheck restaurant hours before visiting."
+  },
+  "itineraryWeather": {
+    "ko": "월요일 산책은 도보 이용이 가능할 때만 해요. 눈이 쌓여 스키 코스로 사용 중이거나 길 상태가 좋지 않으면, 그 시간도 숙소에서 편히 쉬어요.",
+    "en": "Take Monday’s walk only if hiking access is available. If the trail is in use for skiing or conditions are poor, enjoy more time at the house instead."
+  },
   "dinnerStatus": {
     "ko": "저녁 식사 후보 · 미정",
     "en": "Dinner idea · Tentative"
   },
   "dinnerDates": {
-    "ko": "2027년 3월 21일 일요일 또는 3월 22일 월요일 저녁",
-    "en": "Sunday, March 21 or Monday, March 22, 2027"
+    "ko": "제안: 2027년 3월 21일 일요일 오후 5시 30분쯤 · 월요일은 예비 선택지",
+    "en": "Suggested: Sunday, March 21, 2027, around 5:30 p.m. · Monday is the backup"
   },
   "dinnerPending": {
-    "ko": "요일은 아직 정하지 않았고, 예약도 하지 않았어요.",
-    "en": "Evening undecided. No reservation made."
+    "ko": "위 일정에서는 일요일을 제안해요. 도착 시간에 맞춰 바꿀 수 있으며, 아직 예약하지 않았어요.",
+    "en": "The itinerary above suggests Sunday. We can adjust it to suit our arrival. No reservation has been made."
   },
   "dinnerHours": {
     "ko": "현재 안내된 저녁 영업시간: 일요일 오후 3–9시 · 월요일 오후 4–9시 (미국 중부시간). 일–목요일에는 손님 수에 따라 일찍 닫을 수 있어요.",

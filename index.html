@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script src="js/i18n.js?v=20261020-area-map"></script>
+  <script src="js/i18n.js?v=20261020-itinerary"></script>
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
   <meta charset="UTF-8">
@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css?v=20261020-area-map">
+  <link rel="stylesheet" href="css/home.css?v=20261020-itinerary">
   <script src="js/fund-data.js?v=20260913" defer></script>
   <script src="js/stays.js?v=20260913-research2" defer></script>
   <script src="js/app.js?v=20260913-research2" defer></script>
@@ -53,6 +53,27 @@
         <p class="leading-stay-dates" data-i18n="leadingDates">2027년 3월 21–23일 · 2박</p>
         <p class="leading-stay-guests" data-i18n="leadingGuests">성인 6명 + 아이 1명</p>
         <p class="leading-stay-facts" data-i18n="leadingFacts">침실 3개 + 로프트 · 욕실 3.5개 · 최대 12명</p>
+        <div class="house-photo-grid">
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/2b9e72e4.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/2b9e72e4.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseLivingAlt" alt="소파와 큰 창문이 있고 데크가 보이는 거실">
+            </a>
+            <figcaption data-i18n="houseLiving">거실</figcaption>
+          </figure>
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/99709226.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/99709226.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseBasementAlt" alt="당구대, 소파, 아케이드 게임 테이블과 바가 있는 지하 게임룸">
+            </a>
+            <figcaption data-i18n="houseBasement">지하 게임룸</figcaption>
+          </figure>
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/9e5faba0.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/9e5faba0.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseDeckAlt" alt="빨간 쿠션 의자와 숲 전망이 있는 데크">
+            </a>
+            <figcaption data-i18n="houseDeck">숲이 보이는 데크</figcaption>
+          </figure>
+        </div>
+        <p class="house-photo-source"><a href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer" data-i18n="housePhotoSource">Vrbo 숙소 사진 · 사진을 선택하면 크게 볼 수 있어요</a></p>
         <details class="leading-stay-details">
           <summary data-i18n="leadingBedsLabel">침대 구성과 실내 이동</summary>
           <p data-i18n="leadingBeds">침실 1: 퀸 침대. 침실 2·3: 각각 퀸 침대 + 싱글 2층 침대. 로프트: 킹 침대. 실내에 계단이 있어요.</p>
@@ -63,13 +84,53 @@
           <p data-i18n="leadingSource">2026년 10월 20일 Vrbo 숙소 정보 확인. 해당 날짜의 예약 가능 여부와 총요금은 아직 확인하지 않았어요.</p>
         </div>
       </article>
+      <article id="itinerary" class="trip-itinerary" aria-labelledby="itinerary-heading">
+        <div class="itinerary-heading">
+          <h3 id="itinerary-heading" data-i18n="itineraryTitle">여유로운 3월 21–23일 일정</h3>
+          <p class="plan-eyebrow" data-i18n="itineraryStatus">2027년 · 제안 일정</p>
+        </div>
+        <p class="itinerary-intro" data-i18n="itineraryIntro">짧게 나들이하고, 숙소에서 함께 보내는 시간을 넉넉히 두어요. 아래 시간은 모두 조정할 수 있어요.</p>
+        <div class="itinerary-days">
+          <article class="itinerary-day" aria-labelledby="sunday-heading">
+            <h4 id="sunday-heading" data-i18n="sundayTitle">3월 21일 일요일</h4>
+            <p class="itinerary-theme" data-i18n="sundayTheme">도착해서 편히 쉬기</p>
+            <dl>
+              <div><dt data-i18n="sundayArrivalLabel">오후 · 숙소 도착</dt><dd data-i18n="sundayArrival">호스트가 정한 체크인 시간에 맞춰 도착해 짐을 풀고, 간식을 먹으며 집을 둘러봐요. 오후에는 다른 일정을 넣지 않아요.</dd></div>
+              <div><dt><a href="#fox-and-hounds" data-i18n="sundayDinnerLabel">오후 5시 30분쯤 · Fox & Hounds</a></dt><dd data-i18n="sundayDinner">함께하는 첫 저녁 식사. 도착 시간에 맞춰 조정하고, 7명 자리는 미리 예약해요. 아직 예약하지 않았어요.</dd></div>
+              <div class="itinerary-home"><dt data-i18n="sundayHomeLabel">저녁 · 다시 숙소로</dt><dd data-i18n="sundayHome">편한 옷으로 갈아입고, 게임이나 이야기를 나누며 쉬어요. 저녁에는 더 나가지 않아요.</dd></div>
+            </dl>
+          </article>
+          <article class="itinerary-day" aria-labelledby="monday-heading">
+            <h4 id="monday-heading" data-i18n="mondayTitle">3월 22일 월요일</h4>
+            <p class="itinerary-theme" data-i18n="mondayTheme">아침 식사와 천문 산책</p>
+            <dl>
+              <div><dt><a href="#breakfast-heading" data-i18n="mondayBreakfastLabel">오전 9시쯤 · Java Dancer</a></dt><dd data-i18n="mondayBreakfast">Hubertus에서 커피와 가벼운 아침을 먹어요. 서두르지 않고 천천히 출발해요.</dd></div>
+              <div><dt><a href="#astronomy-trail" data-i18n="mondayWalkLabel">오전 늦게 · Astronomy Trail</a></dt><dd data-i18n="mondayWalk">Pike Lake에서 태양계 산책을 해요. 주차장부터 오가는 길을 포함해 1–2시간을 넉넉히 잡고, 짧게 걸어도 좋아요.</dd></div>
+              <div class="itinerary-home"><dt data-i18n="mondayHomeLabel">점심부터 밤까지 · 숙소에서</dt><dd data-i18n="mondayHome">간단한 점심, 낮잠, 독서, 지하 게임룸, 함께하는 저녁 식사. 날씨가 좋으면 데크에서도 쉬어요. 오후와 저녁에는 외출 일정을 넣지 않아요.</dd></div>
+            </dl>
+          </article>
+          <article class="itinerary-day" aria-labelledby="tuesday-heading">
+            <h4 id="tuesday-heading" data-i18n="tuesdayTitle">3월 23일 화요일</h4>
+            <p class="itinerary-theme" data-i18n="tuesdayTheme">천천히 아침을 먹고 귀가하기</p>
+            <dl>
+              <div class="itinerary-home"><dt data-i18n="tuesdayHomeLabel">아침 · 숙소에서 커피와 짐 정리</dt><dd data-i18n="tuesdayHome">조금 더 함께 시간을 보내고, 호스트가 정한 체크아웃 시간에 맞춰 출발해요.</dd></div>
+              <div><dt><a href="#breakfast-heading" data-i18n="tuesdayBreakfastLabel">체크아웃 후 · Perc Place</a></dt><dd data-i18n="tuesdayBreakfast">Hartford에서 늦은 아침을 먹어요. 현재 화요일에는 오후 2시에 닫아요. 이동을 줄이고 싶으면 Hubertus의 Java Dancer로 바꿔도 좋아요.</dd></div>
+              <div><dt><a href="#area-map-heading" data-i18n="tuesdayHolyLabel">귀가 전 · Holy Hill</a></dt><dd data-i18n="tuesdayHoly">성당과 야외 공간을 30–45분 정도 둘러본 뒤 집으로 향해요. 전망탑은 3월에 닫혀 있어요.</dd></div>
+            </dl>
+          </article>
+        </div>
+        <div class="itinerary-notes">
+          <p data-i18n="itineraryFlex">아직 확정·예약된 일정이 아니에요. 숙소 체크인·체크아웃 시간을 확인한 뒤 조정하고, 식당 영업시간도 방문 전에 다시 확인해 주세요.</p>
+          <p data-i18n="itineraryWeather">월요일 산책은 도보 이용이 가능할 때만 해요. 눈이 쌓여 스키 코스로 사용 중이거나 길 상태가 좋지 않으면, 그 시간도 숙소에서 편히 쉬어요.</p>
+        </div>
+      </article>
       <article id="fox-and-hounds" class="dinner-plan" aria-labelledby="dinner-plan-heading">
         <div class="dinner-plan-heading">
           <h3 id="dinner-plan-heading" lang="en">Fox &amp; Hounds</h3>
           <p class="dinner-plan-status" data-i18n="dinnerStatus">저녁 식사 후보 · 미정</p>
         </div>
-        <p class="dinner-plan-dates" data-i18n="dinnerDates">2027년 3월 21일 일요일 또는 3월 22일 월요일 저녁</p>
-        <p data-i18n="dinnerPending">요일은 아직 정하지 않았고, 예약도 하지 않았어요.</p>
+        <p class="dinner-plan-dates" data-i18n="dinnerDates">제안: 2027년 3월 21일 일요일 오후 5시 30분쯤 · 월요일은 예비 선택지</p>
+        <p data-i18n="dinnerPending">위 일정에서는 일요일을 제안해요. 도착 시간에 맞춰 바꿀 수 있으며, 아직 예약하지 않았어요.</p>
         <p data-i18n="dinnerHours">현재 안내된 저녁 영업시간: 일요일 오후 3–9시 · 월요일 오후 4–9시 (미국 중부시간). 일–목요일에는 손님 수에 따라 일찍 닫을 수 있어요.</p>
         <div class="dinner-plan-links">
           <a href="https://foxandhoundsrestaurant.com/" target="_blank" rel="noopener noreferrer" data-i18n="dinnerWebsite">식당 웹사이트</a>

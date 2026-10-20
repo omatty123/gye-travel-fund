@@ -25,3 +25,26 @@ section{padding-block:48px;border-bottom:1px solid var(--line)}.section-heading{
 .astronomy-plan{grid-area:trail;border-left:4px solid var(--green);padding:4px 0 4px 20px}.plan-eyebrow{color:var(--green);font-size:.75rem;font-weight:700;letter-spacing:.04em;margin-bottom:8px}.area-plan-grid h3{text-wrap:wrap;font-size:1.35rem}.astronomy-plan>p:not(.plan-eyebrow){margin-top:10px;font-size:.9375rem}.plan-facts{color:var(--green);font-weight:600}.plan-note{color:var(--muted);font-size:.8rem!important;line-height:1.65}.plan-links{display:flex;flex-wrap:wrap;gap:0 18px;margin-top:10px}.plan-links a{display:inline-flex;align-items:center;min-height:44px;font-size:.825rem}
 .area-map-panel{grid-area:map;min-width:0;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px;position:sticky;top:18px}.area-map-panel>p{margin-top:8px}.area-map{height:330px;margin-top:14px;background:#edf1e9;border:1px solid #ced6cc;border-radius:6px;overflow:hidden;isolation:isolate}.leaflet-container,.leaflet-control,.leaflet-popup-content,.leaflet-tooltip{font-family:'Noto Sans KR',sans-serif}.leaflet-control-attribution{font-size:10px}.leaflet-control-zoom a{min-width:44px;min-height:44px;line-height:44px}.map-marker{display:grid;place-items:center}.map-number{display:grid;place-items:center;width:30px;height:30px;border:2px solid #fff;border-radius:50%;background:#086359;color:#fff;font:700 14px/1 'Noto Sans KR',sans-serif;box-shadow:0 1px 5px #0004}.map-place-label{border:0;box-shadow:0 1px 5px #0002;background:#fffffff2;color:var(--ink);font-size:11px;font-weight:600;padding:3px 6px}.map-popup-title{font-weight:700}.map-popup-link{display:inline-flex;align-items:center;min-height:44px}.map-destinations{padding:0;list-style:none;counter-reset:places;margin:16px 0}.map-destinations li{counter-increment:places;position:relative;padding:10px 0 10px 30px;border-bottom:1px solid var(--line)}.map-destinations li:before{content:counter(places);position:absolute;left:0;top:13px;font-size:.8rem;font-weight:700;color:var(--green)}.map-destinations a{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:0 10px;min-height:44px;font-size:.875rem;font-weight:600}.map-destinations a span:last-child{font-size:.75rem;font-weight:500}.map-destinations small{display:block;color:var(--muted);font-size:.7rem;line-height:1.5}.map-source-link{display:inline-flex;align-items:center;min-height:44px;font-size:.8rem}#map-reset{border:1px solid var(--line);border-radius:6px;background:#fff;font-size:.75rem;padding:6px 12px;margin-top:10px}.breakfast-plan{grid-area:breakfast;min-width:0}.breakfast-list{list-style:none;padding:0;margin:12px 0}.breakfast-list li{padding:16px 0;border-top:1px solid var(--line)}.breakfast-list h4{font-size:1rem;line-height:1.5;margin:0 0 5px}.breakfast-list p{font-size:.875rem;margin-top:6px}.breakfast-list .breakfast-hours{color:var(--green);font-size:.8rem}
 @media(max-width:900px){.area-plan-grid{grid-template-columns:1fr;grid-template-areas:"trail" "map" "breakfast";gap:24px}.area-map-panel{position:static}.area-map{height:300px}.astronomy-plan{padding-left:16px}}
+/* The suggested schedule gives house time the same prominence as outings. */
+.trip-itinerary{margin-top:30px;padding:24px 0;border-block:1px solid var(--line)}
+.itinerary-heading{display:flex;align-items:baseline;justify-content:space-between;gap:10px 24px;flex-wrap:wrap}
+.itinerary-heading h3{text-wrap:wrap;font-size:1.5rem}.itinerary-heading .plan-eyebrow{margin:0}
+.itinerary-intro{font-size:.9375rem;color:var(--muted);margin-top:8px}
+.itinerary-days{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:22px}
+.itinerary-day{min-width:0;padding-top:14px;border-top:3px solid var(--green)}
+.itinerary-day h4{font-size:1.15rem;line-height:1.4;margin:0;text-wrap:wrap}
+.itinerary-theme{font-size:.875rem;color:var(--green);margin-top:5px}
+.itinerary-day dl{margin:14px 0 0}.itinerary-day dl>div{padding:12px 0}
+.itinerary-day dt{font-size:.825rem;font-weight:700;line-height:1.6}
+.itinerary-day dt a{display:inline-block;padding:4px 0}
+.itinerary-day dd{margin:5px 0 0;font-size:.825rem;line-height:1.75}
+.itinerary-day dl>.itinerary-home{background:#eef4ee;border-radius:8px;padding:12px 14px;margin:5px 0}
+.itinerary-notes{margin-top:20px;padding-top:14px;border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;color:var(--muted);font-size:.775rem}
+@media(max-width:850px){.itinerary-days{grid-template-columns:1fr;gap:24px}.itinerary-notes{grid-template-columns:1fr}.itinerary-day dl{display:grid;grid-template-columns:1fr;gap:2px}.itinerary-day dl>div{padding-block:8px}}
+.house-photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:20px 0 0}
+.house-photo-grid figure{min-width:0;margin:0}.house-photo-grid a{display:block}
+.house-photo-grid img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:contain;background:#e0e6df;border-radius:8px}
+.house-photo-grid figcaption{font-size:.8rem;font-weight:600;margin-top:6px}
+.house-photo-source{font-size:.75rem;color:#4a5d51;margin-top:8px}
+.house-photo-source a{display:inline-block;padding:5px 0}
+@media(max-width:650px){.house-photo-grid{grid-template-columns:1fr;gap:16px}.house-photo-grid img{max-height:320px}}
