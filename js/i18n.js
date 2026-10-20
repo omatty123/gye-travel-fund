@@ -105,6 +105,38 @@
     "ko": "2026년 10월 20일 Vrbo 숙소 정보 확인. 해당 날짜의 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
     "en": "Vrbo listing checked October 20, 2026. Availability and the total for these dates have not been verified."
   },
+  "dinnerStatus": {
+    "ko": "저녁 식사 후보 · 미정",
+    "en": "Dinner idea · Tentative"
+  },
+  "dinnerDates": {
+    "ko": "2027년 3월 21일 일요일 또는 3월 22일 월요일 저녁",
+    "en": "Sunday, March 21 or Monday, March 22, 2027"
+  },
+  "dinnerPending": {
+    "ko": "요일은 아직 정하지 않았고, 예약도 하지 않았어요.",
+    "en": "Evening undecided. No reservation made."
+  },
+  "dinnerHours": {
+    "ko": "현재 안내된 저녁 영업시간: 일요일 오후 3–9시 · 월요일 오후 4–9시 (미국 중부시간). 일–목요일에는 손님 수에 따라 일찍 닫을 수 있어요.",
+    "en": "Posted dinner hours: Sunday 3–9 p.m. · Monday 4–9 p.m. (Central). Sunday–Thursday closing may be earlier depending on customer volume."
+  },
+  "dinnerMenu": {
+    "ko": "공식 메뉴",
+    "en": "Official menu"
+  },
+  "dinnerWebsite": {
+    "ko": "식당 웹사이트",
+    "en": "Restaurant website"
+  },
+  "dinnerPhone": {
+    "ko": "예약 문의: 262-628-1111",
+    "en": "Reservations: 262-628-1111"
+  },
+  "dinnerSource": {
+    "ko": "예약을 권장하는 식당이에요. 2026년 10월 20일 공식 웹사이트 확인. 2027년 3월 방문 전에 영업시간을 다시 확인해 주세요.",
+    "en": "Reservations recommended. Official website checked October 20, 2026. Recheck hours before the March 2027 visit."
+  },
   "otherOptions": {
     "ko": "기존에 조사한 다른 숙소",
     "en": "Other researched stays"
