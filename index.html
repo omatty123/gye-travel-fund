@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script src="js/i18n.js?v=20261020-house-hq"></script>
+  <script src="js/i18n.js?v=20261020-house-address"></script>
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
   <meta charset="UTF-8">
@@ -22,12 +22,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css?v=20261020-house-hq">
+  <link rel="stylesheet" href="css/home.css?v=20261020-house-address">
   <script src="js/fund-data.js?v=20260913" defer></script>
   <script src="js/stays.js?v=20260913-research2" defer></script>
   <script src="js/app.js?v=20260913-research2" defer></script>
   <script src="assets/vendor/leaflet/leaflet.js" defer></script>
-  <script src="js/area-map.js?v=20261020-house-hq2" defer></script>
+  <script src="js/area-map.js?v=20261020-house-address" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
@@ -49,7 +49,7 @@
           <h3 id="leading-stay-heading" lang="en">Eclectic Hubertus Home w/ Game Room &amp; Fire Pit!</h3>
           <p class="leading-stay-status" data-i18n="leadingStatus">우선 검토 숙소 · 제안 단계</p>
         </div>
-        <p class="leading-stay-location" data-i18n="leadingLocation">위스콘신주 Hubertus</p>
+        <p class="leading-stay-location" data-i18n="leadingLocation">4768 Sonseeahray Dr, Hubertus, WI 53033</p>
         <p class="leading-stay-dates" data-i18n="leadingDates">2027년 3월 21–23일 · 2박</p>
         <p class="leading-stay-guests" data-i18n="leadingGuests">성인 6명 + 아이 1명</p>
         <p class="leading-stay-facts" data-i18n="leadingFacts">침실 3개 + 로프트 · 욕실 3.5개 · 최대 12명</p>
@@ -162,15 +162,17 @@
           <p id="map-fallback" class="plan-note" role="status" data-i18n="areaMapFallback">지도 표시가 안 되면 아래 길찾기 링크를 이용해 주세요.</p>
           <button id="map-reset" type="button" hidden data-i18n="areaMapReset">숙소와 모든 방문지 보기</button>
           <div class="map-house-key">
-            <a data-map-destination="house" href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> <span data-i18n="mapHouseShort">HOUSE HQ</span></a>
-            <p data-i18n="mapHouseApprox">등록 페이지의 대략적인 숙소 위치예요. 도착할 때는 예약 확인서의 주소를 이용해 주세요.</p>
+            <a href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> <span data-i18n="mapHouseShort">HOUSE HQ</span></a>
+            <p class="map-house-address" data-i18n="mapHouseAddress">4768 Sonseeahray Dr, Hubertus, WI 53033</p>
+            <a class="map-house-directions" data-map-destination="house" href="https://www.google.com/maps/dir/?api=1&amp;destination=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer" data-i18n="mapHouseDirections">숙소로 길찾기 ↗</a>
+            <p data-i18n="mapHouseApprox">지도 표시는 숙소 등록 페이지를 기준으로 하며, 길찾기는 위 주소를 이용해요.</p>
           </div>
           <ol class="map-destinations">
-            <li><a data-map-destination="pike" href="https://www.google.com/maps/dir/?api=1&amp;destination=450+Powder+Hill+Road+Hartford+WI+53027&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span data-i18n="mapPike">Pike Lake · Nature Trail 주차장</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>450 Powder Hill Road, Hartford</small></li>
-            <li><a data-map-destination="fox" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fox+and+Hounds+1298+Friess+Lake+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Fox &amp; Hounds</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1298 Friess Lake Road, Hubertus</small></li>
-            <li><a data-map-destination="holy" href="https://www.google.com/maps/dir/?api=1&amp;destination=Holy+Hill+1525+Carmel+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Holy Hill</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1525 Carmel Road, Hubertus</small></li>
+            <li><a data-map-destination="pike" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=450+Powder+Hill+Road+Hartford+WI+53027&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span data-i18n="mapPike">Pike Lake · Nature Trail 주차장</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>450 Powder Hill Road, Hartford</small></li>
+            <li><a data-map-destination="fox" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=Fox+and+Hounds+1298+Friess+Lake+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Fox &amp; Hounds</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1298 Friess Lake Road, Hubertus</small></li>
+            <li><a data-map-destination="holy" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=Holy+Hill+1525+Carmel+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Holy Hill</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1525 Carmel Road, Hubertus</small></li>
           </ol>
-          <p class="plan-note" data-i18n="mapOriginNote">Google Maps에서 출발지를 선택해 길찾기를 시작하세요. Pike Lake 표시는 천문 산책로 접근에 사용할 주차장이에요.</p>
+          <p class="plan-note" data-i18n="mapOriginNote">세 방문지의 길찾기는 HOUSE HQ에서 출발해요. Google Maps에서 출발지를 바꿀 수 있어요. Pike Lake 도착지는 Nature Trail 주차장이에요.</p>
           <p class="plan-note" data-i18n="holyHillMarch">Holy Hill 전망탑은 3월에 닫혀 있어요. 성당과 야외 공간은 방문할 수 있어요.</p>
           <a class="map-source-link" href="https://www.holyhill.com/visit" target="_blank" rel="noopener noreferrer" data-i18n="holyHillVisit">Holy Hill 방문 안내</a>
         </aside>

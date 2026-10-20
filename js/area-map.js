@@ -9,9 +9,10 @@
       {id: 'pike', latlng: [43.318606, -88.308451], name: 'mapPikeShort', detail: 'mapPopupPike', direction: 'right'},
       {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'bottom'},
       {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'top'},
-      {id: 'house', latlng: [43.23951, -88.27414], name: 'mapHouseShort', detail: 'mapHouseApprox', direction: 'top', isHouse: true}
+      {id: 'house', latlng: [43.23951, -88.27414], name: 'mapHouseShort', detail: 'mapHouseAddress', direction: 'top', isHouse: true}
     ];
     const t = key => window.I18n.t(key);
+    const popupWidth = () => Math.max(140, Math.min(300, container.clientWidth - 64));
     let initialized = false;
     function initialize() {
       if (initialized) return;
@@ -87,10 +88,16 @@
           link.href = document.querySelector('[data-map-destination="' + place.id + '"]').href;
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
-          link.textContent = t(place.isHouse ? 'mapHouseListing' : 'mapDirections');
+          link.textContent = t(place.isHouse ? 'mapHouseDirections' : 'mapDirections');
           content.append(name, detail, link);
+          if (place.isHouse) {
+            const note = document.createElement('p');
+            note.className = 'plan-note';
+            note.textContent = t('mapHouseApprox');
+            content.append(note);
+          }
           if (marker.getPopup()) marker.setPopupContent(content);
-          else marker.bindPopup(content);
+          else marker.bindPopup(content, {maxWidth: popupWidth()});
         });
         const close = container.querySelector('.leaflet-popup-close-button');
         if (close) close.setAttribute('aria-label', t('mapClosePopup'));
@@ -111,6 +118,7 @@
           if (lastWidth === container.clientWidth) return;
           lastWidth = container.clientWidth;
           map.invalidateSize();
+          markers.forEach(({marker}) => { marker.getPopup().options.maxWidth = popupWidth(); });
           fit();
         }).observe(container);
       }

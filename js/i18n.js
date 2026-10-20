@@ -74,8 +74,8 @@
     "en": "Leading option · Proposed"
   },
   "leadingLocation": {
-    "ko": "위스콘신주 Hubertus",
-    "en": "Hubertus, Wisconsin"
+    "ko": "4768 Sonseeahray Dr, Hubertus, WI 53033",
+    "en": "4768 Sonseeahray Dr, Hubertus, WI 53033"
   },
   "leadingDates": {
     "ko": "2027년 3월 21–23일 · 2박",
@@ -354,8 +354,8 @@
     "en": "Directions ↗"
   },
   "mapOriginNote": {
-    "ko": "Google Maps에서 출발지를 선택해 주세요. Pike Lake 표시는 천문 구간에 접근할 때 이용하는 Nature Trail 주차장이에요.",
-    "en": "Choose your starting point in Google Maps. The Pike Lake pin marks the Nature Trail parking lot for access to the astronomy section."
+    "ko": "세 방문지의 길찾기는 HOUSE HQ에서 출발해요. Google Maps에서 출발지를 바꿀 수 있어요. Pike Lake 도착지는 Nature Trail 주차장이에요.",
+    "en": "Directions to the three stops start at HOUSE HQ. You can change the starting point in Google Maps. Pike Lake directions lead to the Nature Trail parking lot."
   },
   "mapZoomIn": {
     "ko": "지도 확대",
@@ -762,12 +762,20 @@
     "en": "HOUSE HQ"
   },
   "mapHouseApprox": {
-    "ko": "등록 페이지의 대략적인 숙소 위치예요. 도착할 때는 예약 확인서의 주소를 이용해 주세요.",
-    "en": "Approximate listing location. Use the address in your booking for arrival."
+    "ko": "지도 표시는 숙소 등록 페이지를 기준으로 하며, 길찾기는 위 주소를 이용해요.",
+    "en": "Map pin from the rental listing. Directions use the address above."
   },
   "mapHouseListing": {
     "ko": "Vrbo 숙소 보기",
     "en": "View house on Vrbo"
+  },
+  "mapHouseAddress": {
+    "ko": "4768 Sonseeahray Dr, Hubertus, WI 53033",
+    "en": "4768 Sonseeahray Dr, Hubertus, WI 53033"
+  },
+  "mapHouseDirections": {
+    "ko": "숙소로 길찾기 ↗",
+    "en": "Directions to the house ↗"
   }
 };
   const valid = value => value === 'en' || value === 'ko';

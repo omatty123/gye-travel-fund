@@ -56,3 +56,6 @@ section{padding-block:48px;border-bottom:1px solid var(--line)}.section-heading{
 .map-house-key{margin-top:14px;padding:10px 12px;border:1px solid #dac18a;border-radius:8px;background:#fff7df}
 .map-house-key a{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:#654800;font-size:.875rem;font-weight:700}
 .map-house-key a>span:first-child{font-size:1.2rem}.map-house-key p{font-size:.75rem;line-height:1.65;color:#665638}
+
+.map-house-key .map-house-address{color:var(--ink);font-size:.825rem;line-height:1.65}.map-house-key .map-house-directions{font-size:.8rem}
+.area-map:has(.leaflet-popup) .leaflet-control-zoom{visibility:hidden}
