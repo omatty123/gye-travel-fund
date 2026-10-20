@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <script src="js/i18n.js?v=20261020-basics"></script>
+  <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="archiveTitle">여행 계와 여행 기록</title>
+  <meta data-i18n-content="archiveIntro" name="description" content="여행 계, 지난 여행과 이전에 조사한 계획을 모아 두었어요.">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png" href="apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="여행 계">
+  <meta data-i18n-content="archiveTitle" property="og:title" content="여행 계와 여행 기록">
+  <meta data-i18n-content="archiveIntro" property="og:description" content="여행 계, 지난 여행과 이전에 조사한 계획을 모아 두었어요.">
+  <meta property="og:image" content="https://omatty123.github.io/gye-travel-fund/assets/images/family-hero.jpg">
+  <meta property="og:url" content="https://omatty123.github.io/gye-travel-fund/trip-archive.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://omatty123.github.io/gye-travel-fund/assets/images/family-hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/home.css?v=20261020-house-address">
+  <script src="js/fund-data.js?v=20260913" defer></script>
+  <script src="js/stays.js?v=20260913-research2" defer></script>
+  <script src="js/app.js?v=20260913-research2" defer></script>
+  <script src="assets/vendor/leaflet/leaflet.js" defer></script>
+  <script src="js/area-map.js?v=20261020-house-address" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
+  <header class="hero-header"><div class="page-width">
+    <div class="hero-top">
+      <div><h1 data-i18n="archiveTitle">여행 계와 여행 기록</h1><p class="hero-subtitle" data-i18n="archiveIntro">여행 계, 지난 여행과 이전에 조사한 계획을 모아 두었어요.</p></div>
+      <div class="hero-actions"><div class="language-switch" data-language-switch role="group" aria-label="언어 선택"><button type="button" data-language="en" lang="en" aria-label="English" aria-pressed="false">ENG</button><button type="button" data-language="ko" lang="ko" aria-label="한국어" aria-pressed="true">KOR</button></div><nav aria-label="주요 메뉴" data-i18n-aria-label="mainNav"><a href="index.html" data-i18n="currentTrip">이번 여행 →</a><a href="#ledger" data-i18n="ledger">회비 내역</a><a href="#memories" data-i18n="memories">여행 기록</a></nav></div>
+    </div>
+    <div class="fund-layout">
+      <div class="fund-total"><p data-i18n="fundBalance">여행 계 잔액</p><strong id="balance">계산 중</strong><p class="fund-note" id="pending-receipt"></p><a class="spring-link" href="index.html" data-i18n="currentTrip">이번 여행 →</a></div>
+      <details class="reconciliation" open><summary data-i18n="reconcile">잔액 확인</summary><dl id="bank-reconciliation"></dl><p class="reconciliation-note" data-i18n="reconcileNote">은행에 도착한 금액과 가족이 납부를 확인한 금액을 구분해 기록해요.</p></details>
+    </div>
+  </div></header>
+  <main id="main" class="page-width">
+    <section id="spring" aria-labelledby="spring-heading">
+      <div class="section-heading"><div><h2 id="spring-heading" data-i18n="springTitle">다음 봄, 어디로 갈까요?</h2><p data-i18n="springGroup">2027년 3월 · 성인 6명 + 아이 1명 · 위스콘신</p></div></div>
+      <article class="leading-stay" aria-labelledby="leading-stay-heading">
+        <div class="leading-stay-heading">
+          <h3 id="leading-stay-heading" lang="en">Eclectic Hubertus Home w/ Game Room &amp; Fire Pit!</h3>
+          <p class="leading-stay-status" data-i18n="leadingStatus">숙소 예약 완료</p>
+        </div>
+        <p class="leading-stay-location" data-i18n="leadingLocation">4768 Sonseeahray Dr, Hubertus, WI 53033</p>
+        <p class="leading-stay-dates" data-i18n="leadingDates">2027년 3월 21–23일 · 2박</p>
+        <p class="leading-stay-guests" data-i18n="leadingGuests">성인 6명 + 아이 1명</p>
+        <p class="leading-stay-facts" data-i18n="leadingFacts">침실 3개 + 로프트 · 욕실 3.5개 · 최대 12명</p>
+        <div class="house-photo-grid">
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/2b9e72e4.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/2b9e72e4.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseLivingAlt" alt="소파와 큰 창문이 있고 데크가 보이는 거실">
+            </a>
+            <figcaption data-i18n="houseLiving">거실</figcaption>
+          </figure>
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/99709226.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/99709226.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseBasementAlt" alt="당구대, 소파, 아케이드 게임 테이블과 바가 있는 지하 게임룸">
+            </a>
+            <figcaption data-i18n="houseBasement">지하 게임룸</figcaption>
+          </figure>
+          <figure>
+            <a href="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/9e5faba0.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" target="_blank" rel="noopener noreferrer">
+              <img src="https://media.vrbo.com/lodging/101000000/100930000/100926300/100926244/9e5faba0.jpg?impolicy=resizecrop&amp;rw=1200&amp;ra=fit" width="1200" height="800" loading="lazy" decoding="async" data-i18n-alt="houseDeckAlt" alt="빨간 쿠션 의자와 숲 전망이 있는 데크">
+            </a>
+            <figcaption data-i18n="houseDeck">숲이 보이는 데크</figcaption>
+          </figure>
+        </div>
+        <p class="house-photo-source"><a href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer" data-i18n="housePhotoSource">Vrbo 숙소 사진 · 사진을 선택하면 크게 볼 수 있어요</a></p>
+        <details class="leading-stay-details">
+          <summary data-i18n="leadingBedsLabel">침대 구성과 실내 이동</summary>
+          <p data-i18n="leadingBeds">침실 1: 퀸 침대. 침실 2·3: 각각 퀸 침대 + 싱글 2층 침대. 로프트: 킹 침대. 실내에 계단이 있어요.</p>
+        </details>
+        <p class="leading-stay-pets" data-i18n="leadingPets">반려동물 동반 가능. 등록 페이지에 반려동물 요금 $50가 표시되어 있으며, 추가 수수료와 세금이 적용돼요. 마릿수·크기 제한은 아직 확인하지 않았어요.</p>
+        <div class="leading-stay-actions">
+          <a class="primary-link" href="https://www.vrbo.com/9906021ha?chkin=2027-03-21&amp;chkout=2027-03-23&amp;startDate=2027-03-21&amp;endDate=2027-03-23&amp;adults=6&amp;children=1_17" target="_blank" rel="noopener noreferrer" data-i18n="leadingLink">Vrbo에서 날짜·요금 확인</a>
+          <p data-i18n="leadingSource">2026년 10월 20일 가족이 숙소 예약을 확인했어요.</p>
+        </div>
+      </article>
+      <article id="itinerary" class="trip-itinerary" aria-labelledby="itinerary-heading">
+        <div class="itinerary-heading">
+          <h3 id="itinerary-heading" data-i18n="itineraryTitle">여유로운 3월 21–23일 일정</h3>
+          <p class="plan-eyebrow" data-i18n="itineraryStatus">2027년 · 제안 일정</p>
+        </div>
+        <p class="itinerary-intro" data-i18n="itineraryIntro">짧게 나들이하고, 숙소에서 함께 보내는 시간을 넉넉히 두어요. 아래 시간은 모두 조정할 수 있어요.</p>
+        <div class="itinerary-days">
+          <article class="itinerary-day" aria-labelledby="sunday-heading">
+            <h4 id="sunday-heading" data-i18n="sundayTitle">3월 21일 일요일</h4>
+            <p class="itinerary-theme" data-i18n="sundayTheme">도착해서 편히 쉬기</p>
+            <dl>
+              <div><dt data-i18n="sundayArrivalLabel">오후 · 숙소 도착</dt><dd data-i18n="sundayArrival">호스트가 정한 체크인 시간에 맞춰 도착해 짐을 풀고, 간식을 먹으며 집을 둘러봐요. 오후에는 다른 일정을 넣지 않아요.</dd></div>
+              <div><dt><a href="#fox-and-hounds" data-i18n="sundayDinnerLabel">오후 5시 30분쯤 · Fox & Hounds</a></dt><dd data-i18n="sundayDinner">함께하는 첫 저녁 식사. 도착 시간에 맞춰 조정하고, 7명 자리는 미리 예약해요. 아직 예약하지 않았어요.</dd></div>
+              <div class="itinerary-home"><dt data-i18n="sundayHomeLabel">저녁 · 다시 숙소로</dt><dd data-i18n="sundayHome">편한 옷으로 갈아입고, 게임이나 이야기를 나누며 쉬어요. 저녁에는 더 나가지 않아요.</dd></div>
+            </dl>
+          </article>
+          <article class="itinerary-day" aria-labelledby="monday-heading">
+            <h4 id="monday-heading" data-i18n="mondayTitle">3월 22일 월요일</h4>
+            <p class="itinerary-theme" data-i18n="mondayTheme">아침 식사와 천문 산책</p>
+            <dl>
+              <div><dt><a href="#breakfast-heading" data-i18n="mondayBreakfastLabel">오전 9시쯤 · Java Dancer</a></dt><dd data-i18n="mondayBreakfast">Hubertus에서 커피와 가벼운 아침을 먹어요. 서두르지 않고 천천히 출발해요.</dd></div>
+              <div><dt><a href="#astronomy-trail" data-i18n="mondayWalkLabel">오전 늦게 · Astronomy Trail</a></dt><dd data-i18n="mondayWalk">Pike Lake에서 태양계 산책을 해요. 주차장부터 오가는 길을 포함해 1–2시간을 넉넉히 잡고, 짧게 걸어도 좋아요.</dd></div>
+              <div class="itinerary-home"><dt data-i18n="mondayHomeLabel">점심부터 밤까지 · 숙소에서</dt><dd data-i18n="mondayHome">간단한 점심, 낮잠, 독서, 지하 게임룸, 함께하는 저녁 식사. 날씨가 좋으면 데크에서도 쉬어요. 오후와 저녁에는 외출 일정을 넣지 않아요.</dd></div>
+            </dl>
+          </article>
+          <article class="itinerary-day" aria-labelledby="tuesday-heading">
+            <h4 id="tuesday-heading" data-i18n="tuesdayTitle">3월 23일 화요일</h4>
+            <p class="itinerary-theme" data-i18n="tuesdayTheme">천천히 아침을 먹고 귀가하기</p>
+            <dl>
+              <div class="itinerary-home"><dt data-i18n="tuesdayHomeLabel">아침 · 숙소에서 커피와 짐 정리</dt><dd data-i18n="tuesdayHome">조금 더 함께 시간을 보내고, 호스트가 정한 체크아웃 시간에 맞춰 출발해요.</dd></div>
+              <div><dt><a href="#breakfast-heading" data-i18n="tuesdayBreakfastLabel">체크아웃 후 · Perc Place</a></dt><dd data-i18n="tuesdayBreakfast">Hartford에서 늦은 아침을 먹어요. 현재 화요일에는 오후 2시에 닫아요. 이동을 줄이고 싶으면 Hubertus의 Java Dancer로 바꿔도 좋아요.</dd></div>
+              <div><dt><a href="#area-map-heading" data-i18n="tuesdayHolyLabel">귀가 전 · Holy Hill</a></dt><dd data-i18n="tuesdayHoly">성당과 야외 공간을 30–45분 정도 둘러본 뒤 집으로 향해요. 전망탑은 3월에 닫혀 있어요.</dd></div>
+            </dl>
+          </article>
+        </div>
+        <div class="itinerary-notes">
+          <p data-i18n="itineraryFlex">숙소는 예약했어요. 식사와 나들이는 자유롭게 조정할 수 있으며, 식당은 아직 예약하지 않았어요. 호스트의 체크인·체크아웃 시간과 방문 전 영업시간을 확인해 주세요.</p>
+          <p data-i18n="itineraryWeather">월요일 산책은 도보 이용이 가능할 때만 해요. 눈이 쌓여 스키 코스로 사용 중이거나 길 상태가 좋지 않으면, 그 시간도 숙소에서 편히 쉬어요.</p>
+        </div>
+      </article>
+      <article id="fox-and-hounds" class="dinner-plan" aria-labelledby="dinner-plan-heading">
+        <div class="dinner-plan-heading">
+          <h3 id="dinner-plan-heading" lang="en">Fox &amp; Hounds</h3>
+          <p class="dinner-plan-status" data-i18n="dinnerStatus">저녁 식사 후보 · 미정</p>
+        </div>
+        <p class="dinner-plan-dates" data-i18n="dinnerDates">제안: 2027년 3월 21일 일요일 오후 5시 30분쯤 · 월요일은 예비 선택지</p>
+        <p data-i18n="dinnerPending">위 일정에서는 일요일을 제안해요. 도착 시간에 맞춰 바꿀 수 있으며, 아직 예약하지 않았어요.</p>
+        <p data-i18n="dinnerHours">현재 안내된 저녁 영업시간: 일요일 오후 3–9시 · 월요일 오후 4–9시 (미국 중부시간). 일–목요일에는 손님 수에 따라 일찍 닫을 수 있어요.</p>
+        <div class="dinner-plan-links">
+          <a href="https://foxandhoundsrestaurant.com/" target="_blank" rel="noopener noreferrer" data-i18n="dinnerWebsite">식당 웹사이트</a>
+          <a href="https://foxandhoundsrestaurant.com/menu/" target="_blank" rel="noopener noreferrer" data-i18n="dinnerMenu">공식 메뉴</a>
+          <a href="tel:+12626281111" data-i18n="dinnerPhone">예약 문의: 262-628-1111</a>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Fox+%26+Hounds+1298+Friess+Lake+Road+Hubertus+WI+53033" target="_blank" rel="noopener noreferrer" lang="en">1298 Friess Lake Road, Hubertus, WI 53033</a>
+        </div>
+        <p class="dinner-plan-source" data-i18n="dinnerSource">예약을 권장하는 식당이에요. 2026년 10월 20일 공식 웹사이트 확인. 2027년 3월 방문 전에 영업시간을 다시 확인해 주세요.</p>
+      </article>
+      <div id="nearby" class="area-plan-grid">
+        <article id="astronomy-trail" class="astronomy-plan" aria-labelledby="astronomy-heading">
+          <p class="plan-eyebrow" data-i18n="astronomyPriority">가족이 고른 산책</p>
+          <h3 id="astronomy-heading" data-i18n="astronomyTitle">Pike Lake Astronomy Trail</h3>
+          <p class="plan-facts" data-i18n="astronomyFacts">천문 구간 약 0.5마일 · Blue Trail의 일부</p>
+          <p data-i18n="astronomyDescription">숲길을 걸으며 태양계의 규모를 알아보는 낮 산책 코스예요. 전체 Blue Loop는 3.8마일이며, 천문 구간까지 오가는 길은 별도로 계산해야 해요.</p>
+          <p data-i18n="astronomyAccess">Nature Trail 주차장(450 Powder Hill Road)에서 출발해 공식 지도에 표시된 천문 구간으로 가세요. 주차장 바로 남쪽에는 가족 캠핑장이 있어요.</p>
+          <p class="plan-note" data-i18n="astronomyMarch">눈이 있을 때는 이 구간을 크로스컨트리 스키 코스로 정비하므로, 3월 방문 전에 보행 가능 여부와 진흙·얼음 상태를 확인해 주세요. 차량 입장권이 필요해요.</p>
+          <div class="plan-links">
+            <a href="https://widnr.widen.net/s/nhbdpgfhj9/kmsf-pike-lake_trail-map" target="_blank" rel="noopener noreferrer" data-i18n="astronomyMap">공식 산책로 지도</a>
+            <a href="https://dnr.wisconsin.gov/topic/parks/pikelake/recreation/hiking" target="_blank" rel="noopener noreferrer" data-i18n="astronomyDnr">DNR 산책로 안내</a>
+            <a href="https://dnr.wisconsin.gov/topic/parks/pikelake/recreation/winter" target="_blank" rel="noopener noreferrer" data-i18n="astronomyWinter">눈이 있을 때 이용 안내</a>
+            <a href="https://www.iceagetrail.org/event/2025-optoutside-hike-washington-oz-co-chapter/" target="_blank" rel="noopener noreferrer" data-i18n="astronomyScaleSource">태양계 산책 설명</a>
+          </div>
+        </article>
+        <aside class="area-map-panel" aria-labelledby="area-map-heading">
+          <h3 id="area-map-heading" data-i18n="areaMapTitle">주변 지도와 길찾기</h3>
+          <p class="plan-note" data-i18n="areaMapIntro">HOUSE HQ와 주변 세 곳의 위치를 확인하세요.</p>
+          <div id="area-map" class="area-map" role="region" data-i18n-aria-label="areaMapLabel" aria-label="HOUSE HQ, Pike Lake, Fox & Hounds, Holy Hill 지도"></div>
+          <p id="map-fallback" class="plan-note" role="status" data-i18n="areaMapFallback">지도 표시가 안 되면 아래 길찾기 링크를 이용해 주세요.</p>
+          <button id="map-reset" type="button" hidden data-i18n="areaMapReset">숙소와 모든 방문지 보기</button>
+          <div class="map-house-key">
+            <a href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> <span data-i18n="mapHouseShort">HOUSE HQ</span></a>
+            <p class="map-house-address" data-i18n="mapHouseAddress">4768 Sonseeahray Dr, Hubertus, WI 53033</p>
+            <a class="map-house-directions" data-map-destination="house" href="https://www.google.com/maps/dir/?api=1&amp;destination=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer" data-i18n="mapHouseDirections">숙소로 길찾기 ↗</a>
+            <p data-i18n="mapHouseApprox">지도 표시는 숙소 등록 페이지를 기준으로 하며, 길찾기는 위 주소를 이용해요.</p>
+          </div>
+          <ol class="map-destinations">
+            <li><a data-map-destination="pike" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=450+Powder+Hill+Road+Hartford+WI+53027&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span data-i18n="mapPike">Pike Lake · Nature Trail 주차장</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>450 Powder Hill Road, Hartford</small></li>
+            <li><a data-map-destination="fox" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=Fox+and+Hounds+1298+Friess+Lake+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Fox &amp; Hounds</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1298 Friess Lake Road, Hubertus</small></li>
+            <li><a data-map-destination="holy" href="https://www.google.com/maps/dir/?api=1&amp;origin=4768+Sonseeahray+Dr%2C+Hubertus%2C+WI+53033&amp;destination=Holy+Hill+1525+Carmel+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Holy Hill</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1525 Carmel Road, Hubertus</small></li>
+          </ol>
+          <p class="plan-note" data-i18n="mapOriginNote">세 방문지의 길찾기는 HOUSE HQ에서 출발해요. Google Maps에서 출발지를 바꿀 수 있어요. Pike Lake 도착지는 Nature Trail 주차장이에요.</p>
+          <p class="plan-note" data-i18n="holyHillMarch">Holy Hill 전망탑은 3월에 닫혀 있어요. 성당과 야외 공간은 방문할 수 있어요.</p>
+          <a class="map-source-link" href="https://www.holyhill.com/visit" target="_blank" rel="noopener noreferrer" data-i18n="holyHillVisit">Holy Hill 방문 안내</a>
+        </aside>
+        <article class="breakfast-plan" aria-labelledby="breakfast-heading">
+          <h3 id="breakfast-heading" data-i18n="breakfastTitle">다른 아침 식사 선택지</h3>
+          <ul class="breakfast-list">
+            <li><h4><a href="https://nutman.com/javadancercafe/" target="_blank" rel="noopener noreferrer">Java Dancer · Hubertus</a></h4><p data-i18n="javaDescription">Nutman 매장 안의 카페. 키시, 아사이 볼, 아침 랩과 에그 샌드위치가 있어요.</p><p class="breakfast-hours" data-i18n="javaHours">일요일 8시–15시 · 월·화요일 7시–18시 (카페 운영시간)</p></li>
+            <li><h4><a href="https://perc-place.com/menu/" target="_blank" rel="noopener noreferrer">Perc Place · Hartford</a></h4><p data-i18n="percDescription">감자 팬케이크 위 훈제 연어 베네딕트, 구운 오트밀과 키시. 6명 이상은 20% 서비스 요금이 붙어요.</p><p class="breakfast-hours" data-i18n="percHours">일·화요일 7시–14시 · 월요일 커피숍 7시–12시; 월요일 전체 아침 메뉴 제공은 확인이 필요해요.</p></li>
+            <li><h4><a href="https://www.allysbistro.com/copy-of-menus" target="_blank" rel="noopener noreferrer">Ally’s Bistro · Menomonee Falls</a></h4><p data-i18n="allyDescription">콘비프 해시, 베리를 곁들인 프렌치토스트, 오믈렛과 채소 메뉴. 월요일 아침 식사에 좋은 선택이에요.</p><p class="breakfast-hours" data-i18n="allyHours">일요일 휴무 · 월·화요일 아침 메뉴 7시–11시</p></li>
+          </ul>
+          <p class="plan-note" data-i18n="areaChecked">2026년 10월 20일 공식 정보 확인. 시간은 미국 중부시간이며, 2027년 3월 방문 전에 다시 확인해 주세요.</p>
+        </article>
+      </div>
+      <div class="section-heading researched-heading"><h3 data-i18n="otherOptions">기존에 조사한 다른 숙소</h3><span class="research-status" id="research-status"></span></div>
+      <p class="section-intro" data-i18n="springIntro">도시, 작은 마을, 호숫가와 숲속 숙소를 함께 비교해요. 숙소·관리업체의 공식 웹사이트와 Vrbo 등 여러 출처에서 성인 6명과 아이 1명의 잠자리, 반려견 동반 규정을 확인했어요. 각 후보의 근거 링크도 함께 볼 수 있어요.</p>
+      <p class="booking-note" data-i18n="bookingNote">아래 8개 후보는 2026년 9월 13일 확인한 숙소 정보예요. 2027년 3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.</p>
+      <div id="area-controls" class="area-controls" role="group" data-i18n-aria-label="areaFilter"></div>
+      <label class="pet-filter"><input id="dogs-only" type="checkbox" checked aria-controls="stay-list" aria-describedby="pet-filter-note"><span data-i18n="dogsOnly">반려견 동반이 가능한 숙소만 보기</span></label>
+      <p id="pet-filter-note" class="pet-filter-note" data-i18n="petFilterNote">반려견 동반 가능 여부가 확인된 숙소만 표시해요. 마릿수·크기 제한과 추가 요금은 예약 전에 확인해 주세요.</p>
+      <p id="stay-count" class="stay-count" role="status"></p>
+      <div id="stay-list"></div>
+      <p class="season-note" data-i18n="seasonNote">3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 숙소 사진은 각 소유주·관리업체의 등록 페이지에서 제공해요.</p>
+    </section>
+    <section id="ledger" aria-labelledby="ledger-heading">
+      <div class="section-heading"><div><h2 id="ledger-heading" data-i18n="ledger">회비 내역</h2><p data-i18n="ledgerDate">가족별 매월 $50 · 2026년 9월 13일 업데이트</p></div><button id="history-toggle" type="button" aria-expanded="false" aria-controls="contribution-body">2025년 내역도 보기</button></div>
+      <p id="ledger-legend" class="ledger-legend" data-i18n="legend">✓ 납부 확인 · — 아직 기록 없음 (미납 확정 아님) · 예정: 다음 달</p>
+      <div class="table-scroll" role="region" aria-label="가족별 월 회비 내역" data-i18n-aria-label="tableLabel" tabindex="0"><table aria-describedby="ledger-legend">
+        <caption class="sr-only" data-i18n="tableCaption">가족별 월 회비 납부 확인과 누적 회비. 누적 회비는 이자와 여행비를 반영하기 전 금액입니다.</caption>
+        <thead><tr><th scope="col" data-i18n="month">월</th><th scope="col" data-i18n="parents">부모님</th><th scope="col">Joe / Heejin</th><th scope="col">Dom / Matty</th><th scope="col" data-i18n="contributionsTotal">누적 회비</th></tr></thead><tbody id="contribution-body"></tbody>
+      </table></div>
+      <dl class="fund-equation" id="fund-equation"></dl>
+    </section>
+    <section id="memories" aria-labelledby="memories-heading"><div class="section-heading"><div><h2 id="memories-heading" data-i18n="pastTitle">함께한 여행</h2><p data-i18n="pastIntro">우리 가족의 여행 기록</p></div></div><div class="trip-cards" id="trip-grid"></div></section>
+  </main>
+  <footer class="footer page-width"><p data-i18n="footer">사랑으로 함께하는 우리 가족</p><p class="signature" data-i18n="signature">올림, 양코사위</p><a href="#" data-i18n="top">맨 위로</a></footer>
+  <noscript><p class="page-width" data-i18n="noscript">잔액과 여행 목록을 보려면 JavaScript를 켜 주세요. / Enable JavaScript to view the fund and stays.</p></noscript>
+</body></html>

@@ -42,8 +42,8 @@
     "en": "Calculating"
   },
   "springLink": {
-    "ko": "2027년 3월 21–23일 · Hubertus 숙소 제안 →",
-    "en": "March 21–23, 2027 · Proposed Hubertus stay →"
+    "ko": "2027년 3월 21–23일 · Hubertus 숙소 예약 완료 →",
+    "en": "March 21–23, 2027 · Booked Hubertus stay →"
   },
   "reconcile": {
     "ko": "잔액 확인",
@@ -70,8 +70,8 @@
     "en": "The eight alternatives below were researched September 13, 2026. March 2027 availability and total prices have not been checked."
   },
   "leadingStatus": {
-    "ko": "우선 검토 숙소 · 제안 단계",
-    "en": "Leading option · Proposed"
+    "ko": "숙소 예약 완료",
+    "en": "House booked"
   },
   "leadingLocation": {
     "ko": "4768 Sonseeahray Dr, Hubertus, WI 53033",
@@ -102,12 +102,12 @@
     "en": "Pets allowed. The listing shows a $50 pet fee; additional fees and taxes apply. Pet count and size limits have not been verified."
   },
   "leadingLink": {
-    "ko": "Vrbo에서 날짜·요금 확인",
-    "en": "Check dates and price on Vrbo"
+    "ko": "숙소 등록 페이지 보기",
+    "en": "View house listing"
   },
   "leadingSource": {
-    "ko": "2026년 10월 20일 Vrbo 숙소 정보 확인. 해당 날짜의 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
-    "en": "Vrbo listing checked October 20, 2026. Availability and the total for these dates have not been verified."
+    "ko": "2026년 10월 20일 가족이 예약 완료를 알려주었어요. 숙소 시설은 공개 등록 페이지에서 확인했어요.",
+    "en": "Booking confirmed by the family on October 20, 2026. House features checked against the public listing."
   },
   "houseLiving": {
     "ko": "거실",
@@ -246,8 +246,8 @@
     "en": "Allow about 30–45 minutes for a look around the basilica and grounds, then head home. The scenic tower is closed in March."
   },
   "itineraryFlex": {
-    "ko": "아직 확정·예약된 일정이 아니에요. 숙소 체크인·체크아웃 시간을 확인한 뒤 조정하고, 식당 영업시간도 방문 전에 다시 확인해 주세요.",
-    "en": "This is a suggested plan; arrangements have not been booked. Adjust it once rental check-in and checkout times are confirmed, and recheck restaurant hours before visiting."
+    "ko": "숙소는 예약했으며, 나들이 시간은 조정할 수 있어요. 식당은 아직 예약하지 않았어요. 호스트의 체크인·체크아웃 시간을 따르고 식당 영업시간은 방문 전에 다시 확인해 주세요.",
+    "en": "The house is booked; outings are flexible and dinner is not reserved. Follow the host’s check-in and checkout times, and recheck restaurant hours before visiting."
   },
   "itineraryWeather": {
     "ko": "월요일 산책은 도보 이용이 가능할 때만 해요. 눈이 쌓여 스키 코스로 사용 중이거나 길 상태가 좋지 않으면, 그 시간도 숙소에서 편히 쉬어요.",
@@ -776,6 +776,142 @@
   "mapHouseDirections": {
     "ko": "숙소로 길찾기 ↗",
     "en": "Directions to the house ↗"
+  },
+  "compactTitle": {
+    "ko": "Hubertus · 2027년 3월 21–23일",
+    "en": "Hubertus · March 21–23, 2027"
+  },
+  "compactDescription": {
+    "ko": "예약한 가족 숙소, 여유로운 3일 일정, 숙소 사진과 주변 길찾기.",
+    "en": "Our booked family stay, relaxed three-day plan, house photos, and nearby directions."
+  },
+  "compactBooked": {
+    "ko": "숙소 예약 완료",
+    "en": "House booked"
+  },
+  "compactGroup": {
+    "ko": "일–화요일 · 2박 · 성인 6명 + 아이 1명",
+    "en": "Sunday–Tuesday · 2 nights · 6 adults + 1 child"
+  },
+  "compactPlanLink": {
+    "ko": "일정",
+    "en": "The plan"
+  },
+  "compactMapLink": {
+    "ko": "지도와 길찾기",
+    "en": "Map & directions"
+  },
+  "compactArchiveLink": {
+    "ko": "여행 계 · 지난 여행",
+    "en": "Fund & past trips"
+  },
+  "compactPlanTitle": {
+    "ko": "여유로운 3일",
+    "en": "A relaxed three days"
+  },
+  "compactPlanIntro": {
+    "ko": "하루에 짧은 나들이 하나씩. 숙소에서 보내는 시간은 넉넉하게.",
+    "en": "One short outing a day. Plenty of time at the house."
+  },
+  "compactSunday": {
+    "ko": "3월 21일 일요일",
+    "en": "Sun · March 21"
+  },
+  "compactSundayArrival": {
+    "ko": "체크인 시간에 맞춰 도착해 짐을 풀고 쉬어요.",
+    "en": "Arrive after check-in, unpack, and settle in."
+  },
+  "compactSundayDinner": {
+    "ko": "5시 30분쯤 Fox & Hounds에서 저녁을 먹고 숙소에서 게임을 해요. 월요일로 바꿔도 좋아요. 식당은 아직 예약하지 않았어요.",
+    "en": "Fox & Hounds around 5:30 pm, then games at home. Monday is the backup; dinner is not reserved."
+  },
+  "compactDinnerCall": {
+    "ko": "식당 예약: 262-628-1111",
+    "en": "Reserve: 262-628-1111"
+  },
+  "compactMonday": {
+    "ko": "3월 22일 월요일",
+    "en": "Mon · March 22"
+  },
+  "compactMondayBreakfast": {
+    "ko": "Java Dancer에서 천천히 아침을 먹어요.",
+    "en": "Slow breakfast at Java Dancer."
+  },
+  "compactMondayTrail": {
+    "ko": "Pike Lake Astronomy Trail",
+    "en": "Pike Lake Astronomy Trail"
+  },
+  "compactTrailDetail": {
+    "ko": "Blue Trail의 태양계 산책 구간은 약 0.5마일이고, 주차장에서 오가는 길은 별도예요. 1–2시간을 여유롭게 잡아요.",
+    "en": "A half-mile solar-system walk on the Blue Trail, plus the walk from parking. Allow 1–2 easy hours."
+  },
+  "compactMondayHome": {
+    "ko": "점심부터 오후와 저녁까지 숙소에서 편히 쉬어요.",
+    "en": "Lunch, the whole afternoon, and dinner at the house."
+  },
+  "compactTuesday": {
+    "ko": "3월 23일 화요일",
+    "en": "Tue · March 23"
+  },
+  "compactTuesdayMorning": {
+    "ko": "커피를 마시고 짐을 정리한 뒤 체크아웃해요. Perc Place에서 늦은 아침을 먹거나, 이동이 적은 Java Dancer로 가요.",
+    "en": "Coffee, pack up, and check out. Late breakfast at Perc Place, or Java Dancer for less driving."
+  },
+  "compactTuesdayHoly": {
+    "ko": "Holy Hill 성당과 야외 공간을 30–45분 둘러본 뒤 귀가해요. 전망탑은 3월에 닫혀 있어요.",
+    "en": "Holy Hill: 30–45 minutes for the basilica and grounds, then home. The tower is closed in March."
+  },
+  "compactBreakfastTitle": {
+    "ko": "아침 식사",
+    "en": "Breakfast stops"
+  },
+  "compactJava": {
+    "ko": "Hubertus · 커피, 키시, 에그 샌드위치.",
+    "en": "Hubertus · Coffee, quiche, egg sandwiches."
+  },
+  "compactPerc": {
+    "ko": "Hartford · 화요일 오후 2시까지. 6명 이상은 20% 서비스 요금이 붙어요.",
+    "en": "Hartford · Tuesday breakfast until 2 pm. Groups of 6+ add 20% gratuity."
+  },
+  "compactAlly": {
+    "ko": "Menomonee Falls · 월·화요일 아침 7–11시. 일요일 휴무.",
+    "en": "Menomonee Falls · Monday/Tuesday breakfast 7–11 am; closed Sunday."
+  },
+  "compactMapNote": {
+    "ko": "길찾기는 HOUSE HQ에서 출발해요. Pike Lake 도착지는 Nature Trail 주차장이에요.",
+    "en": "These directions start at HOUSE HQ. Pike Lake goes to the Nature Trail parking lot."
+  },
+  "compactDetails": {
+    "ko": "숙소와 산책로 안내",
+    "en": "House & trail details"
+  },
+  "compactCheckIn": {
+    "ko": "호스트가 안내한 체크인·체크아웃 시간을 따라 주세요. 실내 벽난로 두 곳은 장식용이에요.",
+    "en": "Use the host’s confirmed check-in and checkout times. Both indoor fireplaces are decorative only."
+  },
+  "compactTrailWeather": {
+    "ko": "Pike Lake는 출발 전에 보행 가능 여부를 확인하세요. 눈이 있으면 Blue Trail을 스키 코스로 사용해요. 진흙이나 얼음이 있으면 숙소에서 쉬어도 좋아요. 차량 입장권이 필요해요.",
+    "en": "For Pike Lake, check walking access before going: snow can turn the Blue Trail into a ski trail. Mud or ice may change the plan. Vehicle admission is required."
+  },
+  "compactSources": {
+    "ko": "영업시간과 이용 안내는 2026년 10월 20일 확인했어요. 여행 전에 다시 확인해 주세요.",
+    "en": "Hours and access checked October 20, 2026. Recheck before the trip."
+  },
+  "compactNotesLink": {
+    "ko": "자세한 여행 메모",
+    "en": "Full planning notes"
+  },
+  "archiveTitle": {
+    "ko": "여행 계와 여행 기록",
+    "en": "Travel fund & trip archive"
+  },
+  "archiveIntro": {
+    "ko": "여행 계 내역, 지난 여행과 이전 계획 메모.",
+    "en": "The fund, past trips, and earlier planning notes."
+  },
+  "currentTrip": {
+    "ko": "이번 여행 →",
+    "en": "Current trip →"
   }
 };
   const valid = value => value === 'en' || value === 'ko';

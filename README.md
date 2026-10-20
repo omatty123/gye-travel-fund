@@ -4,8 +4,9 @@ LIVE website: https://omatty123.github.io/gye-travel-fund/
 
 GitHub repository: https://github.com/omatty123/gye-travel-fund
 
-This is the existing English/Korean family travel site, including the travel
-fund, past trips and photographs, and plans for March 2027.
+This is the existing English/Korean family travel site. The home page gives
+the essentials for the booked March 21–23, 2027 Hubertus stay. The travel fund,
+past trips and photographs, and expanded planning notes remain in the archive.
 
 ## Work on the site
 
@@ -24,7 +25,10 @@ Pages deployment and the live page after pushing.
 
 ## Source files
 
-- `index.html`: home page and proposed next trip.
+- `index.html`: compact current-trip page with the booked house, photographs, relaxed itinerary, map, and food stops.
+- `css/trip.css`: styles for the compact current-trip page.
+- `trip-archive.html`: travel fund, past trips, and expanded planning notes, including the eight earlier lodging alternatives.
+- `css/home.css`: retained styles for the archive.
 - `js/i18n.js`: English/Korean text and saved language preference.
 - `js/area-map.js`: nearby map, with coordinate and source notes in `docs/map-sources.md`.
 - `assets/vendor/leaflet/`: locally bundled Leaflet 1.9.4 and license; street tiles load from OpenStreetMap.
@@ -37,3 +41,7 @@ and existing trip records. Use sans-serif fonts and natural heading wraps.
 Keep proposed dates separate from confirmed bookings, and record the date and
 source of listing checks. A dated booking link does not verify availability
 or price.
+
+The family confirmed the house booking on October 20, 2026. Private booking
+confirmation links and access details must stay out of this public repository.
+The confirmation does not change the fund ledger without confirmed financial data.

@@ -1,6 +1,6 @@
 # Family Trip area map: sources and coordinates
 
-Research checked on **2026-10-20** for the tentative March 21–23, 2027 trip.
+Research checked on **2026-10-20** for the March 21–23, 2027 trip. The family confirmed the house booking on October 20, 2026; the outings remain flexible.
 
 The map helps the family locate HOUSE HQ, Pike Lake, Fox & Hounds, and Holy Hill. It uses an actual street basemap. It does not draw route lines or provide travel-time estimates.
 

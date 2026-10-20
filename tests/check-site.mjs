@@ -18,7 +18,7 @@ const messages = JSON.parse(i18nSource.match(/const messages = (\{[\s\S]*?\n\});
 for (const [key,value] of Object.entries(messages)) {
   assert(value.en?.trim() && value.ko?.trim(),`Incomplete translation: ${key}`);
 }
-for (const file of ['index.html','madison.html','madison-photos.html']) {
+for (const file of ['index.html','trip-archive.html','madison.html','madison-photos.html']) {
   const html = read(file);
   assert.equal((html.match(/data-language="en"/g)||[]).length,1,file);
   assert.equal((html.match(/data-language="ko"/g)||[]).length,1,file);
@@ -68,4 +68,4 @@ assert.equal(fundSource,previous,'Financial data changed during localization');
 const activities=JSON.parse(vm.runInNewContext(read('js/madison.js')+';JSON.stringify(activities)',{I18n:{language:'en'},document:{addEventListener(){}}}));
 assert.equal(activities.length,23);
 assert(activities.every(a=>a.hoursEn&&!/[가-힣]/.test(a.hoursEn)));
-console.log('PASS: all 3 pages bilingual, 8 dog-friendly stays in 4 areas with multiple primary sources, exact property links, 23 translated schedules, unchanged $1,704.07 fund, and JavaScript syntax.');
+console.log('PASS: all 4 pages bilingual, 8 dog-friendly stays in 4 areas with multiple primary sources, exact property links, 23 translated schedules, unchanged $1,704.07 fund, and JavaScript syntax.');
