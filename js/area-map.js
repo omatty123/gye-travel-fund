@@ -7,8 +7,9 @@
     const reset = document.getElementById('map-reset');
     const places = [
       {id: 'pike', latlng: [43.318606, -88.308451], name: 'mapPikeShort', detail: 'mapPopupPike', direction: 'right'},
-      {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'top'},
-      {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'left'}
+      {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'bottom'},
+      {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'left'},
+      {id: 'house', latlng: [43.23951, -88.27414], name: 'mapHouseShort', detail: 'mapHouseApprox', direction: 'top', isHouse: true}
     ];
     const t = key => window.I18n.t(key);
     let initialized = false;
@@ -20,6 +21,8 @@
         dragging: !L.Browser.mobile,
         touchZoom: false,
         doubleClickZoom: false,
+        zoomSnap: 0.25,
+        zoomDelta: 0.5,
         zoomControl: false
       });
       const bounds = L.latLngBounds(places.map(place => place.latlng));
@@ -41,16 +44,24 @@
       const markers = places.map((place, index) => {
         const marker = L.marker(place.latlng, {
           icon: L.divIcon({
-            className: 'map-marker',
-            html: '<span class="map-number" aria-hidden="true">' + (index + 1) + '</span>',
+            className: 'map-marker' + (place.isHouse ? ' map-house-marker' : ''),
+            html: place.isHouse
+              ? '<span class="map-house-star" aria-hidden="true">★</span>'
+              : '<span class="map-number" aria-hidden="true">' + (index + 1) + '</span>',
             iconSize: [44, 44],
             iconAnchor: [22, 22]
           }),
           title: t(place.name),
           alt: t(place.name),
-          riseOnHover: true
+          riseOnHover: true,
+          zIndexOffset: place.isHouse ? 1000 : 0
         }).addTo(map);
-        marker.bindTooltip(t(place.name), {permanent: true, direction: place.direction, className: 'map-place-label', offset: [0, 0]});
+        marker.bindTooltip(t(place.name), {
+          permanent: true,
+          direction: place.direction,
+          className: 'map-place-label' + (place.isHouse ? ' map-house-label' : ''),
+          offset: {right: [12, 0], left: [-12, 0], top: [0, -12], bottom: [0, 12]}[place.direction]
+        });
         return {marker, place};
       });
       function localize() {
@@ -63,7 +74,7 @@
         markers.forEach(({marker, place}) => {
           const icon = marker.getElement();
           icon.title = t(place.name);
-          icon.setAttribute('aria-label', t(place.name));
+          icon.setAttribute('aria-label', place.isHouse ? t(place.name) + '. ' + t(place.detail) : t(place.name));
           marker.setTooltipContent(t(place.name));
           const content = document.createElement('div');
           const name = document.createElement('p');
@@ -76,7 +87,7 @@
           link.href = document.querySelector('[data-map-destination="' + place.id + '"]').href;
           link.target = '_blank';
           link.rel = 'noopener noreferrer';
-          link.textContent = t('mapDirections');
+          link.textContent = t(place.isHouse ? 'mapHouseListing' : 'mapDirections');
           content.append(name, detail, link);
           if (marker.getPopup()) marker.setPopupContent(content);
           else marker.bindPopup(content);

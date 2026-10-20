@@ -330,20 +330,20 @@
     "en": "Area map and directions"
   },
   "areaMapIntro": {
-    "ko": "Pike Lake, Fox & Hounds, Holy Hill의 위치를 보고 길찾기를 시작하세요.",
-    "en": "Locate Pike Lake, Fox & Hounds, and Holy Hill, then get directions."
+    "ko": "HOUSE HQ와 주변 세 곳의 위치를 확인하세요.",
+    "en": "HOUSE HQ and our three nearby stops."
   },
   "areaMapLabel": {
-    "ko": "Pike Lake, Fox & Hounds, Holy Hill 지도",
-    "en": "Map of Pike Lake, Fox & Hounds, and Holy Hill"
+    "ko": "HOUSE HQ, Pike Lake, Fox & Hounds, Holy Hill 지도",
+    "en": "Map of HOUSE HQ, Pike Lake, Fox & Hounds, and Holy Hill"
   },
   "areaMapFallback": {
     "ko": "지도 표시가 안 되면 아래 길찾기 링크를 이용해 주세요.",
     "en": "If the map does not load, use the directions links below."
   },
   "areaMapReset": {
-    "ko": "세 장소 모두 보기",
-    "en": "Show all three places"
+    "ko": "숙소와 모든 방문지 보기",
+    "en": "Show house and all stops"
   },
   "mapPike": {
     "ko": "Pike Lake · Nature Trail 주차장",
@@ -756,6 +756,18 @@
   "managerWebsite": {
     "ko": "관리업체 웹사이트",
     "en": "Manager website"
+  },
+  "mapHouseShort": {
+    "ko": "HOUSE HQ",
+    "en": "HOUSE HQ"
+  },
+  "mapHouseApprox": {
+    "ko": "등록 페이지의 대략적인 숙소 위치예요. 도착할 때는 예약 확인서의 주소를 이용해 주세요.",
+    "en": "Approximate listing location. Use the address in your booking for arrival."
+  },
+  "mapHouseListing": {
+    "ko": "Vrbo 숙소 보기",
+    "en": "View house on Vrbo"
   }
 };
   const valid = value => value === 'en' || value === 'ko';

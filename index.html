@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <script src="js/i18n.js?v=20261020-itinerary"></script>
+  <script src="js/i18n.js?v=20261020-house-hq"></script>
   <link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="css/shared.css?v=20260913-lang1">
   <meta charset="UTF-8">
@@ -22,12 +22,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/home.css?v=20261020-itinerary">
+  <link rel="stylesheet" href="css/home.css?v=20261020-house-hq">
   <script src="js/fund-data.js?v=20260913" defer></script>
   <script src="js/stays.js?v=20260913-research2" defer></script>
   <script src="js/app.js?v=20260913-research2" defer></script>
   <script src="assets/vendor/leaflet/leaflet.js" defer></script>
-  <script src="js/area-map.js?v=20261020-area-map" defer></script>
+  <script src="js/area-map.js?v=20261020-house-hq" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">본문으로 건너뛰기</a>
@@ -157,10 +157,14 @@
         </article>
         <aside class="area-map-panel" aria-labelledby="area-map-heading">
           <h3 id="area-map-heading" data-i18n="areaMapTitle">주변 지도와 길찾기</h3>
-          <p class="plan-note" data-i18n="areaMapIntro">Pike Lake · Hubertus, Wisconsin</p>
-          <div id="area-map" class="area-map" role="region" data-i18n-aria-label="areaMapLabel" aria-label="Pike Lake, Fox & Hounds, Holy Hill 지도"></div>
+          <p class="plan-note" data-i18n="areaMapIntro">HOUSE HQ와 주변 세 곳의 위치를 확인하세요.</p>
+          <div id="area-map" class="area-map" role="region" data-i18n-aria-label="areaMapLabel" aria-label="HOUSE HQ, Pike Lake, Fox & Hounds, Holy Hill 지도"></div>
           <p id="map-fallback" class="plan-note" role="status" data-i18n="areaMapFallback">지도 표시가 안 되면 아래 길찾기 링크를 이용해 주세요.</p>
-          <button id="map-reset" type="button" hidden data-i18n="areaMapReset">세 장소 모두 보기</button>
+          <button id="map-reset" type="button" hidden data-i18n="areaMapReset">숙소와 모든 방문지 보기</button>
+          <div class="map-house-key">
+            <a data-map-destination="house" href="https://www.vrbo.com/9906021ha" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">★</span> <span data-i18n="mapHouseShort">HOUSE HQ</span></a>
+            <p data-i18n="mapHouseApprox">등록 페이지의 대략적인 숙소 위치예요. 도착할 때는 예약 확인서의 주소를 이용해 주세요.</p>
+          </div>
           <ol class="map-destinations">
             <li><a data-map-destination="pike" href="https://www.google.com/maps/dir/?api=1&amp;destination=450+Powder+Hill+Road+Hartford+WI+53027&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span data-i18n="mapPike">Pike Lake · Nature Trail 주차장</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>450 Powder Hill Road, Hartford</small></li>
             <li><a data-map-destination="fox" href="https://www.google.com/maps/dir/?api=1&amp;destination=Fox+and+Hounds+1298+Friess+Lake+Road+Hubertus+WI+53033&amp;travelmode=driving" target="_blank" rel="noopener noreferrer"><span>Fox &amp; Hounds</span><span data-i18n="mapDirections">길찾기 ↗</span></a><small>1298 Friess Lake Road, Hubertus</small></li>
