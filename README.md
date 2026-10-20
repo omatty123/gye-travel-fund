@@ -26,6 +26,8 @@ Pages deployment and the live page after pushing.
 
 - `index.html`: home page and proposed next trip.
 - `js/i18n.js`: English/Korean text and saved language preference.
+- `js/area-map.js`: nearby map, with coordinate and source notes in `docs/map-sources.md`.
+- `assets/vendor/leaflet/`: locally bundled Leaflet 1.9.4 and license; street tiles load from OpenStreetMap.
 - `js/stays.js`: the eight alternative stays researched in September 2026.
 - `js/fund-data.js`: financial source records; only change with confirmed data.
 - `madison.html` and `madison-photos.html`: the past trip guide and gallery.

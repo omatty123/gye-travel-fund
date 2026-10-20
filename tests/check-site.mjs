@@ -26,7 +26,7 @@ for (const file of ['index.html','madison.html','madison-photos.html']) {
   for(const [,key] of html.matchAll(/data-i18n(?:-[\w-]+)?="([\w]+)"/g)) assert(messages[key],`Missing ${key} in ${file}`);
   for(const [,script] of html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)) new vm.Script(script,{filename:file});
 }
-for(const file of ['js/app.js','js/madison.js','js/stays.js','js/fund-data.js']) new vm.Script(read(file),{filename:file});
+for(const file of ['js/app.js','js/madison.js','js/stays.js','js/fund-data.js','js/area-map.js']) new vm.Script(read(file),{filename:file});
 const catalogue = JSON.parse(vm.runInNewContext(read('js/stays.js')+';JSON.stringify({regions,stays})'));
 assert.equal(catalogue.regions.length,4);
 assert.equal(catalogue.stays.length,8);

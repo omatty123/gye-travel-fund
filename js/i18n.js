@@ -5,6 +5,10 @@
     "ko": "우리 가족 여행 계",
     "en": "Our Family Travel Fund"
   },
+  "mapClosePopup": {
+    "ko": "장소 설명 닫기",
+    "en": "Close popup"
+  },
   "subtitle": {
     "ko": "함께 모아, 함께 떠나요",
     "en": "Save together. Travel together."
@@ -136,6 +140,154 @@
   "dinnerSource": {
     "ko": "예약을 권장하는 식당이에요. 2026년 10월 20일 공식 웹사이트 확인. 2027년 3월 방문 전에 영업시간을 다시 확인해 주세요.",
     "en": "Reservations recommended. Official website checked October 20, 2026. Recheck hours before the March 2027 visit."
+  },
+  "astronomyPriority": {
+    "ko": "가족이 고른 산책",
+    "en": "Our chosen walk"
+  },
+  "astronomyTitle": {
+    "ko": "Pike Lake Astronomy Trail",
+    "en": "Pike Lake Astronomy Trail"
+  },
+  "astronomyFacts": {
+    "ko": "천문 구간 약 0.5마일 · Blue Trail의 일부",
+    "en": "Astronomy section: about 0.5 mile · Part of the Blue Trail"
+  },
+  "astronomyDescription": {
+    "ko": "숲길을 걸으며 태양계의 규모를 알아보는 낮 산책 코스예요. 전체 Blue Loop는 3.8마일이며, 천문 구간까지 오가는 거리는 별도로 계산해야 해요.",
+    "en": "A daytime woodland walk that illustrates the scale of the solar system. The full Blue Loop is 3.8 miles; allow extra distance to reach and return from the astronomy section."
+  },
+  "astronomyAccess": {
+    "ko": "Nature Trail 주차장(450 Powder Hill Road)에서 출발해 공식 지도에 표시된 천문 구간으로 가세요. 주차장 바로 남쪽에는 가족 캠핑장이 있어요.",
+    "en": "Start at the Nature Trail parking lot, 450 Powder Hill Road, and follow the official map to the astronomy section. The family campground is immediately south of the parking lot."
+  },
+  "astronomyMarch": {
+    "ko": "Powder Hill Road 동쪽 길은 적설 상태가 좋으면 정비된 스키 코스로 사용돼요. 3월 방문 전에 도보 이용 가능 여부와 진흙·얼음 상태를 확인해 주세요. 차량 입장권이 필요해요.",
+    "en": "The trail east of Powder Hill Road is groomed for skiing when snow conditions permit. Check hiking access and mud or ice before the March visit. Vehicle admission is required."
+  },
+  "astronomyMap": {
+    "ko": "공식 산책로 지도",
+    "en": "Official trail map"
+  },
+  "astronomyDnr": {
+    "ko": "DNR 산책로 안내",
+    "en": "DNR hiking information"
+  },
+  "astronomyWinter": {
+    "ko": "눈이 있을 때 이용 안내",
+    "en": "Snow-season access"
+  },
+  "astronomyScaleSource": {
+    "ko": "태양계 산책 설명",
+    "en": "About the solar-system walk"
+  },
+  "areaMapTitle": {
+    "ko": "주변 지도와 길찾기",
+    "en": "Area map and directions"
+  },
+  "areaMapIntro": {
+    "ko": "Pike Lake, Fox & Hounds, Holy Hill의 위치를 보고 길찾기를 시작하세요.",
+    "en": "Locate Pike Lake, Fox & Hounds, and Holy Hill, then get directions."
+  },
+  "areaMapLabel": {
+    "ko": "Pike Lake, Fox & Hounds, Holy Hill 지도",
+    "en": "Map of Pike Lake, Fox & Hounds, and Holy Hill"
+  },
+  "areaMapFallback": {
+    "ko": "지도 표시가 안 되면 아래 길찾기 링크를 이용해 주세요.",
+    "en": "If the map does not load, use the directions links below."
+  },
+  "areaMapReset": {
+    "ko": "세 장소 모두 보기",
+    "en": "Show all three places"
+  },
+  "mapPike": {
+    "ko": "Pike Lake · Nature Trail 주차장",
+    "en": "Pike Lake · Nature Trail parking"
+  },
+  "mapDirections": {
+    "ko": "길찾기 ↗",
+    "en": "Directions ↗"
+  },
+  "mapOriginNote": {
+    "ko": "Google Maps에서 출발지를 선택해 주세요. Pike Lake 표시는 천문 구간에 접근할 때 이용하는 Nature Trail 주차장이에요.",
+    "en": "Choose your starting point in Google Maps. The Pike Lake pin marks the Nature Trail parking lot for access to the astronomy section."
+  },
+  "mapZoomIn": {
+    "ko": "지도 확대",
+    "en": "Zoom in"
+  },
+  "mapZoomOut": {
+    "ko": "지도 축소",
+    "en": "Zoom out"
+  },
+  "mapPikeShort": {
+    "ko": "Pike Lake",
+    "en": "Pike Lake"
+  },
+  "mapHolyShort": {
+    "ko": "Holy Hill",
+    "en": "Holy Hill"
+  },
+  "mapFoxShort": {
+    "ko": "Fox & Hounds",
+    "en": "Fox & Hounds"
+  },
+  "mapPopupPike": {
+    "ko": "Nature Trail 주차장 · 450 Powder Hill Road",
+    "en": "Nature Trail parking · 450 Powder Hill Road"
+  },
+  "mapPopupFox": {
+    "ko": "1298 Friess Lake Road",
+    "en": "1298 Friess Lake Road"
+  },
+  "mapPopupHoly": {
+    "ko": "1525 Carmel Road",
+    "en": "1525 Carmel Road"
+  },
+  "mapLoading": {
+    "ko": "지도를 불러오는 중…",
+    "en": "Loading map…"
+  },
+  "holyHillMarch": {
+    "ko": "Holy Hill 전망탑은 3월에 닫혀 있어요. 성당과 야외 공간은 방문할 수 있어요.",
+    "en": "Holy Hill’s scenic tower is closed in March. The basilica and grounds can be visited."
+  },
+  "holyHillVisit": {
+    "ko": "Holy Hill 방문 안내",
+    "en": "Holy Hill visitor information"
+  },
+  "breakfastTitle": {
+    "ko": "다른 아침 식사 선택지",
+    "en": "More breakfast options"
+  },
+  "javaDescription": {
+    "ko": "Nutman 매장 안의 카페. 키시, 아사이 볼, 아침 랩과 에그 샌드위치가 있어요.",
+    "en": "A café inside the Nutman shop, with quiche, açaí bowls, breakfast wraps, and egg sandwiches."
+  },
+  "javaHours": {
+    "ko": "일요일 오전 8시–오후 3시 · 월·화요일 오전 7시–오후 6시 (카페 운영시간)",
+    "en": "Sunday 8 a.m.–3 p.m. · Monday/Tuesday 7 a.m.–6 p.m. (café hours)"
+  },
+  "percDescription": {
+    "ko": "감자 팬케이크 위 훈제 연어 베네딕트, 구운 오트밀과 키시. 6명 이상은 팁 20%가 자동으로 추가돼요.",
+    "en": "Smoked salmon Benedict on potato pancakes, baked oatmeal, and quiche. A 20% gratuity applies to groups of six or more."
+  },
+  "percHours": {
+    "ko": "일·화요일 오전 7시–오후 2시 · 월요일 커피숍 오전 7시–정오. 월요일 전체 아침 메뉴 제공 여부는 확인이 필요해요.",
+    "en": "Sunday/Tuesday 7 a.m.–2 p.m. · Monday coffee shop 7 a.m.–noon; full Monday breakfast service needs confirmation."
+  },
+  "allyDescription": {
+    "ko": "콘비프 해시, 베리를 곁들인 프렌치토스트, 오믈렛과 채소 메뉴. 월요일 아침 식사에 좋은 선택이에요.",
+    "en": "Corned beef hash, French toast with berries, omelets, and vegetable dishes. A good option for Monday breakfast."
+  },
+  "allyHours": {
+    "ko": "일요일 휴무 · 월·화요일 아침 메뉴 오전 7–11시",
+    "en": "Closed Sunday · Monday/Tuesday breakfast 7–11 a.m."
+  },
+  "areaChecked": {
+    "ko": "2026년 10월 20일 공식 정보 확인. 시간은 미국 중부시간이며, 2027년 3월 방문 전에 다시 확인해 주세요.",
+    "en": "Official information checked October 20, 2026. Times are Central; recheck before the March 2027 visit."
   },
   "otherOptions": {
     "ko": "기존에 조사한 다른 숙소",
