@@ -38,8 +38,8 @@
     "en": "Calculating"
   },
   "springLink": {
-    "ko": "2027년 3월 · 위스콘신 숙소 살펴보기 →",
-    "en": "March 2027 · Explore Wisconsin stays →"
+    "ko": "2027년 3월 21–23일 · Hubertus 숙소 제안 →",
+    "en": "March 21–23, 2027 · Proposed Hubertus stay →"
   },
   "reconcile": {
     "ko": "잔액 확인",
@@ -62,8 +62,52 @@
     "en": "Compare cities, small towns, lakes, and cabins. We researched owner and rental-agency websites, Vrbo, and other sources for sleeping space for six adults and one child, with an explicit check of pet-dog policies. Each candidate links to the sources behind it."
   },
   "bookingNote": {
-    "ko": "정확한 날짜·숙박 일수·예산은 아직 미정이에요. 2026년 9월 13일 확인한 숙소 정보이며, 2027년 3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
-    "en": "Exact dates, number of nights, and budget are still undecided. Listing details were checked September 13, 2026; March 2027 availability and total prices have not been checked."
+    "ko": "아래 8개 후보는 2026년 9월 13일 확인한 숙소 정보예요. 2027년 3월 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
+    "en": "The eight alternatives below were researched September 13, 2026. March 2027 availability and total prices have not been checked."
+  },
+  "leadingStatus": {
+    "ko": "우선 검토 숙소 · 제안 단계",
+    "en": "Leading option · Proposed"
+  },
+  "leadingLocation": {
+    "ko": "위스콘신주 Hubertus",
+    "en": "Hubertus, Wisconsin"
+  },
+  "leadingDates": {
+    "ko": "2027년 3월 21–23일 · 2박",
+    "en": "March 21–23, 2027 · 2 nights"
+  },
+  "leadingGuests": {
+    "ko": "성인 6명 + 아이 1명",
+    "en": "6 adults + 1 child"
+  },
+  "leadingFacts": {
+    "ko": "침실 3개 + 로프트 · 욕실 3.5개 · 최대 12명",
+    "en": "3 bedrooms + loft · 3.5 bathrooms · Sleeps 12"
+  },
+  "leadingBedsLabel": {
+    "ko": "침대 구성과 실내 이동",
+    "en": "Beds and indoor access"
+  },
+  "leadingBeds": {
+    "ko": "침실 1: 퀸 침대. 침실 2·3: 각각 퀸 침대 + 싱글 2층 침대. 로프트: 킹 침대. 실내에 계단이 있어요.",
+    "en": "Bedroom 1: queen. Bedrooms 2 and 3: each has a queen and a twin bunk bed. Loft: king. Stairs are required indoors."
+  },
+  "leadingPets": {
+    "ko": "반려동물 동반 가능. 등록 페이지에 반려동물 요금 $50가 표시되어 있으며, 추가 수수료와 세금이 적용돼요. 마릿수·크기 제한은 아직 확인하지 않았어요.",
+    "en": "Pets allowed. The listing shows a $50 pet fee; additional fees and taxes apply. Pet count and size limits have not been verified."
+  },
+  "leadingLink": {
+    "ko": "Vrbo에서 날짜·요금 확인",
+    "en": "Check dates and price on Vrbo"
+  },
+  "leadingSource": {
+    "ko": "2026년 10월 20일 Vrbo 숙소 정보 확인. 해당 날짜의 예약 가능 여부와 총요금은 아직 확인하지 않았어요.",
+    "en": "Vrbo listing checked October 20, 2026. Availability and the total for these dates have not been verified."
+  },
+  "otherOptions": {
+    "ko": "기존에 조사한 다른 숙소",
+    "en": "Other researched stays"
   },
   "seasonNote": {
     "ko": "3월에는 호숫가 산책과 실내에서 함께 보내는 시간을 중심으로 생각해요. 수영·보트·야외 시설 운영은 별도 확인이 필요해요. 숙소 사진은 각 소유주·관리업체의 등록 페이지에서 제공해요.",
