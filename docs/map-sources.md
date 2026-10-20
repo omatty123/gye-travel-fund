@@ -1,6 +1,6 @@
 # Family Trip area map: sources and coordinates
 
-Research checked on **2026-10-20** for the March 21–23, 2027 trip. The family confirmed the house booking on October 20, 2026; the outings remain flexible.
+Research checked on **2026-10-20** for the March 21–23, 2027 trip. The family confirmed the house booking on October 20, 2026; Holy Hill is the main outing on Monday, March 22. Fox & Hounds is for Sunday or Monday, with the night undecided. Pike Lake is optional.
 
 The map helps the family locate HOUSE HQ, Pike Lake, Fox & Hounds, and Holy Hill. It uses an actual street basemap. It does not draw route lines or provide travel-time estimates.
 
@@ -14,6 +14,8 @@ Coordinates below use **WGS84 (EPSG:4326), latitude, longitude**, in decimal deg
 | Pike Lake — Nature Trail parking | 43.318606 | -88.308451 | Representative point within the parking area used to access the Astronomy Trail; 450 Powder Hill Road, Hartford, Wisconsin | [OpenStreetMap way 24247567](https://www.openstreetmap.org/way/24247567) |
 | Fox & Hounds | 43.236006 | -88.287809 | Representative point within the restaurant building; 1298 Friess Lake Road, Hubertus, WI 53033 | [OpenStreetMap way 879134496](https://www.openstreetmap.org/way/879134496) |
 | Holy Hill | 43.244404 | -88.327742 | Representative point within the basilica building; 1525 Carmel Road, Hubertus, WI 53033 | [OpenStreetMap way 979371872](https://www.openstreetmap.org/way/979371872) |
+
+Numbered stops are **1 Holy Hill, 2 Fox & Hounds, 3 Pike Lake**, matching the direction lists on both pages. HOUSE HQ retains its star.
 
 The three outing points were derived from each OpenStreetMap way's node coordinates. They provide useful orientation at this map's scale without implying entrance-level precision.
 
@@ -54,3 +56,7 @@ The [DNR hiking page](https://dnr.wisconsin.gov/topic/parks/pikelake/recreation/
 The trail is east of Powder Hill Road, as shown by the [official trail map](https://widnr.widen.net/s/nhbdpgfhj9/kmsf-pike-lake_trail-map) and the [mapped Astronomy Trail geometry](https://www.openstreetmap.org/way/1182103327).
 
 The [DNR winter recreation page](https://dnr.wisconsin.gov/topic/parks/pikelake/recreation/winter) identifies groomed ski trails east of Powder Hill Road and permits winter hiking and snowshoeing on trails west of that road and on the Ice Age Trail. March walking access to the Astronomy Trail therefore depends on snow, grooming, and posted conditions. Check current park conditions before treating it as a confirmed walking activity.
+
+## Holy Hill visit constraint
+
+The [official visitor information](https://www.holyhill.com/basilica/general-information) lists the scenic tower as closed November 1–April 30. The site keeps the March visit focused on the basilica and grounds. Ordinary hours include Mondays; no exact 2027 service schedule or visit time is promised. Checked October 20, 2026.

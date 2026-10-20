@@ -6,9 +6,9 @@
     const fallback = document.getElementById('map-fallback');
     const reset = document.getElementById('map-reset');
     const places = [
-      {id: 'pike', latlng: [43.318606, -88.308451], name: 'mapPikeShort', detail: 'mapPopupPike', direction: 'right'},
-      {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'bottom'},
       {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'top'},
+      {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'bottom'},
+      {id: 'pike', latlng: [43.318606, -88.308451], name: 'mapPikeShort', detail: 'mapPopupPike', direction: 'right'},
       {id: 'house', latlng: [43.23951, -88.27414], name: 'mapHouseShort', detail: 'mapHouseAddress', direction: 'top', isHouse: true}
     ];
     const t = key => window.I18n.t(key);

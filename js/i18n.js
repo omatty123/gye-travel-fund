@@ -782,8 +782,8 @@
     "en": "Hubertus · March 21–23, 2027"
   },
   "compactDescription": {
-    "ko": "예약한 가족 숙소, 여유로운 3일 일정, 숙소 사진과 주변 길찾기.",
-    "en": "Our booked family stay, relaxed three-day plan, house photos, and nearby directions."
+    "ko": "예약한 가족 여행: 월요일 Holy Hill 방문, 넉넉한 숙소 시간, 그리고 하루 저녁은 Fox & Hounds.",
+    "en": "Our booked family trip: Holy Hill on Monday, time at the house, and Fox & Hounds one evening."
   },
   "compactBooked": {
     "ko": "숙소 예약 완료",
@@ -806,12 +806,12 @@
     "en": "Fund & past trips"
   },
   "compactPlanTitle": {
-    "ko": "여유로운 3일",
-    "en": "A relaxed three days"
+    "ko": "이번 여행의 중심은 Holy Hill",
+    "en": "Holy Hill is the main event"
   },
   "compactPlanIntro": {
-    "ko": "하루에 짧은 나들이 하나씩. 숙소에서 보내는 시간은 넉넉하게.",
-    "en": "One short outing a day. Plenty of time at the house."
+    "ko": "월요일은 Holy Hill을 위한 날이에요. 나머지 시간은 여유롭게 보내요.",
+    "en": "Monday is for Holy Hill. Keep the rest of the trip relaxed."
   },
   "compactSunday": {
     "ko": "3월 21일 일요일",
@@ -830,8 +830,8 @@
     "en": "Reserve: 262-628-1111"
   },
   "compactMonday": {
-    "ko": "3월 22일 월요일",
-    "en": "Mon · March 22"
+    "ko": "3월 22일 월요일 · Holy Hill",
+    "en": "Mon · March 22 · Holy Hill"
   },
   "compactMondayBreakfast": {
     "ko": "Java Dancer에서 천천히 아침을 먹어요.",
@@ -854,8 +854,8 @@
     "en": "Tue · March 23"
   },
   "compactTuesdayMorning": {
-    "ko": "커피를 마시고 짐을 정리한 뒤 체크아웃해요. Perc Place에서 늦은 아침을 먹거나, 이동이 적은 Java Dancer로 가요.",
-    "en": "Coffee, pack up, and check out. Late breakfast at Perc Place, or Java Dancer for less driving."
+    "ko": "천천히 하루를 시작하고, 짐을 정리한 뒤 귀가해요. 호스트가 정한 체크아웃 시간에 맞춰 숙소를 나서요.",
+    "en": "A slow start, packing up, and heading home. Leave the house by the host’s checkout time."
   },
   "compactTuesdayHoly": {
     "ko": "Holy Hill 성당과 야외 공간을 30–45분 둘러본 뒤 귀가해요. 전망탑은 3월에 닫혀 있어요.",
@@ -912,6 +912,42 @@
   "currentTrip": {
     "ko": "이번 여행 →",
     "en": "Current trip →"
+  },
+  "compactFocus": {
+    "ko": "Holy Hill · 3월 22일 월요일",
+    "en": "Holy Hill · Monday, March 22"
+  },
+  "compactMondayHoly": {
+    "ko": "성당과 야외 공간을 천천히 둘러봐요. 이날은 Holy Hill에 충분히 시간을 두고, 돌아와서 숙소에서 쉬어요.",
+    "en": "Take our time at the basilica and grounds. Keep the day open for Holy Hill, then return to the house."
+  },
+  "compactTower": {
+    "ko": "전망탑은 3월에 닫혀 있어요.",
+    "en": "The scenic tower is closed in March."
+  },
+  "compactDinnerFlexible": {
+    "ko": "일요일이나 월요일에 저녁을 먹어요. 어느 날 갈지는 아직 정하지 않았고, 식당 예약도 아직이에요.",
+    "en": "Dinner on Sunday or Monday—we’ll choose the night. No reservation yet."
+  },
+  "compactOptionalWalk": {
+    "ko": "선택 산책 · Pike Lake Astronomy Trail",
+    "en": "Optional walk · Pike Lake Astronomy Trail"
+  },
+  "compactOptionalNote": {
+    "ko": "추가로 산책하고 싶을 때만 가요. 날짜는 정하지 않아요.",
+    "en": "Only if we feel like an extra walk; no day set."
+  },
+  "compactMapHoly": {
+    "ko": "Holy Hill · 월요일",
+    "en": "Holy Hill · Monday"
+  },
+  "compactMapPike": {
+    "ko": "Pike Lake · 선택 산책",
+    "en": "Pike Lake · Optional walk"
+  },
+  "compactDinnerMenu": {
+    "ko": "메뉴",
+    "en": "Menu"
   }
 };
   const valid = value => value === 'en' || value === 'ko';
