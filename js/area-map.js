@@ -8,7 +8,7 @@
     const places = [
       {id: 'pike', latlng: [43.318606, -88.308451], name: 'mapPikeShort', detail: 'mapPopupPike', direction: 'right'},
       {id: 'fox', latlng: [43.236006, -88.287809], name: 'mapFoxShort', detail: 'mapPopupFox', direction: 'bottom'},
-      {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'left'},
+      {id: 'holy', latlng: [43.244404, -88.327742], name: 'mapHolyShort', detail: 'mapPopupHoly', direction: 'top'},
       {id: 'house', latlng: [43.23951, -88.27414], name: 'mapHouseShort', detail: 'mapHouseApprox', direction: 'top', isHouse: true}
     ];
     const t = key => window.I18n.t(key);
