@@ -45,3 +45,13 @@ or price.
 The family confirmed the house booking on October 20, 2026. Private booking
 confirmation links and access details must stay out of this public repository.
 The confirmation does not change the fund ledger without confirmed financial data.
+
+## Door County shortlist
+
+`door-county/index.html` is a separate English/Korean shortlist for a possible
+October 31–November 1, 2026 trip. LIVE address after deployment:
+https://omatty123.github.io/gye-travel-fund/door-county/
+
+The five properties are candidates, not confirmed available rooms. Preserve the
+availability caveats and source dates. Property photographs are documented in
+`door-county/assets/SOURCES.md`. This page does not change the booked March trip.

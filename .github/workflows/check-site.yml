@@ -22,3 +22,5 @@ jobs:
           node-version: '22'
       - name: Check translations, property sources, and financial records
         run: node tests/check-site.mjs
+      - name: Check Door County page JavaScript
+        run: node --check door-county/page.js
