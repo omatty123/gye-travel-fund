@@ -9,6 +9,7 @@
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom:19, attribution:'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'}).addTo(map);
   L.control.scale({imperial:true,metric:true}).addTo(map);
   const markers = new Map();
+  let activeView="overview";
   const esc = value => String(value).replace(/[&<>"']/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function popup(p) {
    const ko=document.documentElement.lang==='ko';
@@ -20,13 +21,16 @@
    markers.set(p.id,marker);
   }
   function showNearby() {
-   places.filter(p=>!p.hotel).forEach(p=>{const marker=markers.get(p.id);if(map.getZoom()>=14){if(!map.hasLayer(marker))marker.addTo(map);}else if(map.hasLayer(marker))map.removeLayer(marker);});
+   places.filter(p=>!p.hotel).forEach(p=>{const marker=markers.get(p.id);if(map.getZoom()>=14 || (activeView==="hikes" && p.hike)){if(!map.hasLayer(marker))marker.addTo(map);}else if(map.hasLayer(marker))map.removeLayer(marker);});
   }
   map.on('zoomend',showNearby);
   function view(which) {
    map.closePopup();
+   activeView=which;
    if(which==='overview') map.fitBounds(places.filter(p=>p.hotel).map(p=>[p.lat,p.lon]),{padding:[55,55],maxZoom:12});
+   else if(which==='hikes') map.fitBounds(places.filter(p=>p.hike||p.hotel).map(p=>[p.lat,p.lon]),{padding:[40,40],maxZoom:12});
    else {const p=places.find(p=>p.hotel&&p.town===which);map.setView([p.lat,p.lon],15);}
+   showNearby();
    document.querySelectorAll('[data-map-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mapView===which)));
   }
   document.querySelectorAll('[data-map-view]').forEach(b=>b.addEventListener('click',()=>view(b.dataset.mapView)));

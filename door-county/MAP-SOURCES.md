@@ -16,3 +16,10 @@ Coordinates geocoded through https://nominatim.openstreetmap.org/search on Octob
 - **Captain Baileys Dog Park**: 45.0548051, -87.135619. 2567 Summit Road, Baileys Harbor. Source: https://baileysharbor.com/parks-and-beaches/. Address-geocoded approximate location.
 
 Dog access sources: https://ridgessanctuary.org/contact/ (leashed dogs at Cave Point; no pet dogs at The Ridges); https://www.doorcountybrewingco.com/taproom (beer garden only); https://baileysharbor.com/parks-and-beaches/ (dog park address; no dogs at Anclam beach/water). Restaurant dog seating and October 31 hours are not assumed.
+
+## Hiking additions — October 26, 2026
+- Heins Creek pin 45.0168, -87.148316: destination coordinates in the preserve's official Get Directions link at https://doorcountylandtrust.org/properties/heins-creek/. Official page confirms 0.75-mile easy loop, leashed dogs, free dawn–dusk access, no restrooms.
+- Kangaroo Lake pin 45.054924, -87.172977: destination coordinates in official Get Directions link at https://doorcountylandtrust.org/properties/kangaroo-lake/. Official page confirms 1.5-mile loop, 130-ft descent, rocky inclines and leashed dogs.
+- Whitefish Dunes pin 44.924572, -87.1981238: OpenStreetMap/Nominatim relation 10353322 park-area centroid, NOT parking or a trailhead. Driving links use park name and official 3275 Clark Lake Road address. Trail lengths from https://dnr.wisconsin.gov/topic/parks/whitefish/recreation/hiking; official maps https://dnr.wisconsin.gov/topic/parks/whitefish/maps; date-specific beach rules https://dnr.wisconsin.gov/topic/parks/whitefish/recreation/pets.
+- Cave Point retains existing park-area pin and tourism source above. No trail route geometry drawn.
+- Fall hunting guidance: https://www.doorcountylandtrust.org/visit/. Distances are published trail lengths; difficulty language follows terrain descriptions. Rankings are editorial recommendations for this two-dog trip. No on-site trail-condition check or drive-time claim.

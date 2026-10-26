@@ -64,7 +64,8 @@
     "address": "5360 Schauer Road, Jacksonport",
     "desc": "A drive south of Innlet for limestone cliffs, lake views and trails. Leashed dogs welcome; stay back from cliff edges. Marker shows the park area.",
     "kr": "Innlet 남쪽으로 차를 타고 가는 석회암 절벽, 호수 전망과 산책로입니다. 목줄을 한 반려견 동반 가능. 절벽 가장자리에서 떨어져 걸으세요. 표시는 공원 구역입니다.",
-    "source": "https://www.doorcounty.com/business-directory/recreation/cave-point/"
+    "source": "https://www.doorcounty.com/business-directory/recreation/cave-point/",
+    "hike": true
   },
   {
     "id": "chives",
@@ -104,5 +105,47 @@
     "desc": "Drive inland for separate large- and small-dog areas. Open dawn to dusk. Marker is geocoded to the street address.",
     "kr": "내륙 쪽으로 차를 타고 가는 반려견 공원으로 대형견·소형견 구역이 나뉩니다. 일출부터 일몰까지 운영. 주소를 기준으로 지도에 표시했습니다.",
     "source": "https://baileysharbor.com/parks-and-beaches/"
+  },
+  {
+    "id": "whitefish",
+    "label": "7",
+    "name": "Whitefish Dunes",
+    "ko": "Whitefish Dunes",
+    "lat": 44.924572,
+    "lon": -87.1981238,
+    "address": "3275 Clark Lake Road, Sturgeon Bay",
+    "desc": "Black Trail: 2.1 miles or 1.2-mile shorter loop. Marker shows the park area, not a trailhead.",
+    "kr": "Black Trail: 2.1마일 또는 짧은 1.2마일 코스. 표시는 공원 구역이며 출발점이 아닙니다.",
+    "source": "https://dnr.wisconsin.gov/topic/parks/whitefish/recreation/hiking",
+    "hike": true,
+    "town": "hikes"
+  },
+  {
+    "id": "heins",
+    "label": "8",
+    "name": "Heins Creek",
+    "ko": "Heins Creek",
+    "lat": 45.0168,
+    "lon": -87.148316,
+    "address": "7112 Highway 57, Baileys Harbor",
+    "desc": "Easy 0.75-mile loop through forest and ancient dunes beside a creek. Official preserve directions point.",
+    "kr": "개울과 오래된 사구 옆 숲을 지나는 쉬운 0.75마일 순환 코스. 보호구역 공식 길찾기 지점입니다.",
+    "source": "https://doorcountylandtrust.org/properties/heins-creek/",
+    "hike": true,
+    "town": "hikes"
+  },
+  {
+    "id": "kangaroo",
+    "label": "9",
+    "name": "Kangaroo Lake",
+    "ko": "Kangaroo Lake",
+    "lat": 45.054924,
+    "lon": -87.172977,
+    "address": "Kangaroo Lake Nature Preserve, Baileys Harbor",
+    "desc": "1.5-mile loop from an ancient shoreline ridge to the lake. Official preserve directions point.",
+    "kr": "옛 호숫가 능선에서 호수로 내려가는 1.5마일 순환 코스. 보호구역 공식 길찾기 지점입니다.",
+    "source": "https://doorcountylandtrust.org/properties/kangaroo-lake/",
+    "hike": true,
+    "town": "hikes"
   }
 ]
